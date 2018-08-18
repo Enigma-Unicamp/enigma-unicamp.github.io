@@ -1,6 +1,6 @@
 # Repositório para gerenciar e operar nosso blog.
 
-Criado utilizando [Hugo](https://gohugo.io/) e o tema [hyde-hyde](https://themes.gohugo.io/hyde-hyde/). </br>
+Criado utilizando [Hugo](https://gohugo.io/) e o tema [hyde-hyde](https://themes.gohugo.io/hyde-hyde/). <br/>
 A página está configurada aqui no GitLab no endereço: [https://enigmaster.gitlab.io/blog/](https://enigmaster.gitlab.io/blog/)
 
 
@@ -17,7 +17,7 @@ e digitar: ```hugo server```.
 ```
 hugo new posts/my-first-post.md
 ```
-Você também pode simplesmente criar um .md na pasta content/posts com o header apropriado. </br>
+Você também pode simplesmente criar um .md na pasta content/posts com o header apropriado.
 Há muitas outras opções para adicionar ao header, basta verificar em algum dos posts já existentes como isso foi feito.
 
 ```
