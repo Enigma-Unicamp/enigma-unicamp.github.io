@@ -23,3 +23,10 @@ tags: ["hugo", "theme", "html", "css"]
 ---
 ```
 Há muitas outras opções para adicionar ao header, basta verificar em algum dos posts já existentes como isso foi feito.
+
+Sobre o tema *hyde-hyde*, ele foi feito utilizando Sass: CSS with superpowers. Então, é necessário instalar essa ferramente para
+fazer alguma alteração. Depois de instalar, modifique o que for necessário na pasta themes/hyde-hyde/static-src/scss/hyde-hyde, navegue
+até esta pasta (blog) e digite o seguinte comando:
+```
+sass themes/hyde-hyde/static-src/scss/hyde-hyde.scss themes/hyde-hyde/static/css/hyde-hyde.css
+```
