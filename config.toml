@@ -22,14 +22,8 @@ theme = "hyde-hyde"
 
 ## Social Accounts
 [params.social]
-    github = "<username>"
-    instagram = "<username>"
-    xing = "<username>"
-    linkedin = "<username>"
-    twitter = "<username>"
-    facebook = "<username>"
-    stackoverflow = "<username>"
-    email = "your-email@example.com"
+    telegram = "enigmaunicamp"
+    email = "enigmaunicamp@tutanota.com"
 
 ## Main Menu
 [[menu.main]]
