@@ -11,10 +11,10 @@ theme = "hyde-hyde"
 
 ## Site Settings
 [params]
-    author = "Enigma Unicamp"
-    title = "Enigma Unicamp"
-    description = "Enigma Unicamp"
-    authorimage = "/img/teste.png"
+    author = "ENIGMA"
+    title = "ENIGMA"
+    description = "ENIGMA"
+    authorimage = "/img/enigma_logo.png"
     dateformat = "Jan 2, 2006"
     highlightjs = true
     highlightjsstyle = "github"

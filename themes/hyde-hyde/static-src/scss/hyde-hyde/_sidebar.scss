@@ -24,6 +24,7 @@
 }
 
 .sidebar-nav {
+  font-family: "Nunito";
   text-align: center;
   list-style: none;
   margin-bottom: 2rem;
@@ -48,7 +49,9 @@
 
 .site__description {
   font-size: 1.285rem;
-  font-weight: 300;
+  font-weight: bold;
+  font-family: "Nunito";
+  color: white;
 }
 
 .social {
