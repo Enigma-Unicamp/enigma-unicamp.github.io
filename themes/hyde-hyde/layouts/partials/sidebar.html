@@ -4,9 +4,12 @@
     <div class="sidebar-about">
       {{ with .Site.Params.authorimage }}
       {{ $strippedSlash := ($.Site.Params.authorimage | replaceRE "^(/)+(.*)" "$2") }}
+      {{ $homeURL := $.Site.BaseURL }}
       {{ $authorImage := (printf "%s%s" $.Site.BaseURL $strippedSlash) }}
       <div class="author-image">
-        <img src="{{$authorImage}}" alt="Author Image" class="img--headshot element--center"> 
+        <a href="{{$homeURL}}">
+            <img src="{{$authorImage}}" alt="Author Image" class="img--headshot element--center">
+        </a>
       </div>
       {{ end }}
       <p class="site__description">
