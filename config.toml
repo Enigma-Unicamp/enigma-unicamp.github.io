@@ -1,7 +1,7 @@
 ## Basic Configuration
-baseurl = "https://enigmaster.gitlab.io/blog/"
-languageCode = "en"
-
+baseURL = "https://enigmaster.gitlab.io/blog/"
+languageCode = "en-us"
+title = "Enigma"
 theme = "hyde-hyde"
 
 ## Hugo Built-in Features
@@ -12,7 +12,6 @@ theme = "hyde-hyde"
 ## Site Settings
 [params]
     author = "ENIGMA"
-    title = "ENIGMA"
     description = "ENIGMA"
     authorimage = "/img/enigma_logo.png"
     dateformat = "Jan 2, 2006"
