@@ -22,6 +22,7 @@ theme = "hyde-hyde"
 ## Social Accounts
 [params.social]
     telegram = "enigmaunicamp"
+    gitlab = "enigmaster"
     email = "enigmaunicamp@tutanota.com"
 
 ## Main Menu
