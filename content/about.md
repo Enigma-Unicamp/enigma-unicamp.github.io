@@ -1,6 +1,7 @@
 +++
 title = "Quem somos?"
 date = "2018-08-18"
+type = "about"
 +++
 
 O **Enigma** é uma entidade formada por alunos e alunas da Unicamp com o propósito de estudar
