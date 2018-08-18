@@ -1,5 +1,5 @@
 +++
-title = "Quem somos?"
+title = "Sobre nós"
 date = "2018-08-18"
 type = "about"
 +++
