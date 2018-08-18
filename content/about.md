@@ -1,17 +1,10 @@
 +++
-title = "About Hugo"
-date = "2014-04-09"
+title = "Quem somos?"
+date = "2018-08-18"
 +++
 
-Hugo is a static site engine written in Go.
+O **Enigma** é uma entidade formada por alunos e alunas da Unicamp com o propósito de estudar
+privacidade, segurança e criptografia, além de outros assuntos relacionados.
 
-
-It makes use of a variety of open source projects including:
-
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
-
+Assim, organizamos encontros, mini cursos, palestras e desafios para incentivar o desenvolvimento desta área na universidade.
+Todas as pessoas são bem vindas, independentemente do seu curso e nível técnico!
