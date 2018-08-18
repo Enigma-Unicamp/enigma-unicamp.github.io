@@ -16,7 +16,7 @@ theme = "hyde-hyde"
     authorimage = "/img/enigma_logo.png"
     dateformat = "Jan 2, 2006"
     highlightjs = true
-    highlightjsstyle = "github"
+    highlightjsstyle = "monokai"
     # please choose either GraphComment or Disqus
 
 ## Social Accounts
@@ -27,9 +27,14 @@ theme = "hyde-hyde"
 
 ## Main Menu
 [[menu.main]]
-    name = "About"
+    name = "Home"
+    identifier = "home"
+    weight = 200
+    url = "/"
+[[menu.main]]
+    name = "Sobre nós"
     identifier = "about"
-    weight = 100
+    weight = 200
     url = "/about/"
 [[menu.main]]
     name = "Posts"
