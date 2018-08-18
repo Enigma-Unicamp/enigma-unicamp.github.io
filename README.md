@@ -13,4 +13,13 @@ Para criar uma postagem:
 ```
 hugo new posts/my-first-post.md
 ```
-Você também pode simplesmente criar um .md na pasta posts com o header correto.
+Você também pode simplesmente criar um .md na pasta posts com o header apropriado:
+```
+---
+author: "Hackerzinho Bolado"
+date: 2018-09-28
+title: Como Hackear Tudo
+tags: ["hugo", "theme", "html", "css"]
+---
+```
+Há muitas outras opções para adicionar ao header, basta verificar em algum dos posts já existentes como isso foi feito.
