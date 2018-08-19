@@ -264,6 +264,12 @@ a {
   .sidebar-nav-item .active {
     font-weight: bold; }
 
+.site__title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem; }
+  .site__title a:hover {
+    border: none; }
+
 .site__description {
   font-size: 1.285rem;
   font-weight: bold;
