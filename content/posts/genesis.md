@@ -41,7 +41,7 @@ _Cartazes usados na divulgação,
 por [kraussx](https://www.behance.net/jupkrauss)_
 </center>
 
-O desafio foi lançado no segundo dia da SECOMP e acabou no dia da nossa palestra, durando quatro dias. O prêmio (entregue na palestra) foi uma RaspberryPi 3, e o desafio envolvia conhecimentos de engenharia reversa, criptografia, vulnerabilidades web e esteganografia. Não satisfeitos em criarmos os desafios, desenvolvemos também a plataforma web do jogo, utilizando Django. A plataforma ficou pronta muito em cima da hora, mas ela estava funcional e segura (ninguém hackeou o site dos hackers!) e mais de 50 pessoas se aventuraram em resolvê-lo, muito acima da espectativa de 15 pessoas.
+O desafio foi lançado no segundo dia da SECOMP e acabou no dia da nossa palestra, durando quatro dias. O prêmio (entregue na palestra) foi uma RaspberryPi 3, e o desafio envolvia conhecimentos de engenharia reversa, criptografia, vulnerabilidades web e esteganografia. Não satisfeitos em criarmos os desafios, desenvolvemos também a plataforma web do jogo, utilizando Django. A plataforma ficou pronta muito em cima da hora, mas ela estava funcional e segura (ninguém hackeou o site dos hackers!). Mais de 50 pessoas se aventuraram em resolvê-lo, muito acima da espectativa de 15 pessoas.
 
 Esse foi o início do Enigma, com seus três pilares: **privacidade**, **segurança** e **criptografia**. Desejamos levar isso de forma acessível e prática para todas as pessoas interessadas, independentemente do seu nível técnico. Também achamos importante utilizar e promover serviços que não firam a privacidade e que sejam software livre[^3].
 
