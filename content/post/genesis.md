@@ -3,14 +3,14 @@ author: "tony"
 date: 2018-08-18
 linktitle: Gênesis
 title: Gênesis
+subtitle: O início do Enigma
 categories: ["ENIGMA"]
 tags: ["história", "arquivo"]
 weight: 1
-description: Dois alunos da Unicamp, depois de quase um ano de pesquisa e trabalho em privacidade, segurança e criptografia, sentiam que a comunidade do Instituto de Computação podia (e merecia!) ir muito mais longe no assunto. Contudo, com a saída de um dos mais importantes pesquisadores da área para a Europa somada a falta de pespectiva para a contratação de novas/os professoras/es devido a situação financeira da Univerisidade, levaram a crer que uma iniciativa somente seria possível se viesse do corpo estudantil.
 ---
 
 <center>
-{{< figure src="/blog/img/posts/genesis/thecreationoflight.jpg" width="400" >}}
+{{< figure src="/img/posts/genesis/thecreationoflight.jpg" width="400" >}}
 _The Creation of Light,  
 por Gustave Dore_
 </center>
@@ -37,7 +37,7 @@ chegamos em um nome, **ENIGMA**[^1], e um logo, um labirinto.
 Nosso primeiro compromisso firmado foi uma palestra na [SECOMP 2018](https://secomp.com.br/), e aconteceu dois meses depois do primeiro encontro do grupo. A palestra "Quem mexeu nos meus dados?" tratou de quatro vulnerabilidades comuns no dia-a-dia das pessoas e que eram fáceis de serem previnidas (_man-in-the-middle_, _Android Clipboard Security Hole_, _spoof caller id_ e disco-rígido não criptografado). Para aumentar o alcance do grupo e da palestra, criamos e hospedamos um desafio de _hacking_ em [decifre.me](https://decifre.me), baseados nos moldes de CTFs[^2].
 
 <center>
-{{< figure src="/blog/img/posts/genesis/cartazes.png" width="450" >}}
+{{< figure src="/img/posts/genesis/cartazes.png" width="450" >}}
 _Cartazes usados na divulgação,  
 por [kraussx](https://www.behance.net/jupkrauss)_
 </center>
