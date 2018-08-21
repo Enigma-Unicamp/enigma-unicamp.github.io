@@ -41,10 +41,6 @@ home = ["HTML", "RSS"]
   email          = "youemail@gmail.com"
   #telegram TODO
  
-  [[params.friend_link]]
-  title = "Linda的博客"
-  href =  "https://zhaozhihan.com"
-
   [[params.bookmark_link]]
   title =  "Martin Fowler"
   href =  "https://martinfowler.com"

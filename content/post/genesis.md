@@ -4,8 +4,10 @@ date: 2018-08-18
 linktitle: Gênesis
 title: Gênesis
 subtitle: O início do Enigma
-categories: ["ENIGMA"]
 tags: ["história", "arquivo"]
+description: "Dois alunos da Unicamp, depois de quase um ano de pesquisa e trabalho em 
+privacidade, segurança e criptografia, sentiam que a comunidade do Instituto 
+de Computação podia (e merecia!) ir muito mais longe no assunto."
 weight: 1
 ---
 
