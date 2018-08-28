@@ -11,13 +11,15 @@ description: "Baby Steps, Imagem 404, Tá falando grego?"
 
 Nessa série de posts, iremos resolver os desafios do [decifre.me](decifre.me)! Para conhecer um pouco mais sobre a história do desafio, veja [este post](../genesis).
 
-__decifre.me__ foi um desafio no estilo _Capture the Flag_ desenvolvido por nós, do Enigma. Nesses desafios, as/os jogadoras tem que utilizar conhecimentos de segurança, criptografia, _hacking_ e engenharia reversa para passar pelas fases. Como os três primeiros são bem simples, vamos acabar com os três em um mesmo post.
+__decifre.me__ foi um desafio no estilo _Capture the Flag_ desenvolvido por nós, do Enigma. Nesses desafios, as/os jogadoras tem que utilizar conhecimentos de segurança, criptografia, _hacking_ e engenharia reversa para passar pelas fases. Como os três primeiros são bem simples, vamos acabar com os três em um mesmo post. Nesses desafios usei o Mozilla Firefox como navegador, mas o Google Chrome também possui as mesmas funcionalidades.
 
 ## Baby Steps
 
 Nesse primeiro desafio somos contemplados com uma página com os amigáveis dizeres:
 
-_imagem_
+<center>
+{{< figure src="/blog/img/posts/resolvendo0/00.png" width="550" >}}
+</center>
 
 Esse desafio é bem direto e simples. Toda página web que você acessa é formada por um conjunto de arquivos, certo? Quando você acessa uma página, o seu navegador baixa esses arquivos para a sua máquina, para que ele consiga te mostrar na tela seu conteúdo. Esses arquivos, além de imagens e texto, incluem códigos nas linguagens: HTML, CSS e JavaScript.
 
@@ -25,7 +27,10 @@ O **HTML** é o código base de todas as páginas, não existe uma página sem u
 
 Nesse desafio, essa página contém praticamente só HTML - existem apenas 7 linhas de CSS para mudar a cor de fundo, cor e tipo da fonte. Como dito anteriormente, para o seu navegador conseguir exibir a página, ele precisa baixar os arquivos. Então essa página HTML está na sua máquina no momento em que você abre ela. Para ver o código-fonte que gerou essa página, basta usar as funcionalidades do seu próprio navegador: no Firefox e no Chrome, clique com o botão direito do mouse e no menu, você irá encontrar a opção "Ver código-fonte/_View source code_". Você encontrará algo assim:
 
-_imagem_
+<center>
+{{< figure src="/blog/img/posts/resolvendo0/01.png" width="550" >}}
+</center>
+
 
 E isto é código HTML. Esse é o código que foi utilizado para renderizar a página da imagem anterior. Em HTML, comentários de código são escritos da seguinte maneira:
 
@@ -47,10 +52,37 @@ E lá está a flag, no formato `enigma{...}`. Fácil né?
 
 ## Imagem 404
 
-Nesse desafio, encontramos mais uma página web, com esse formato:
+Nesse desafio, encontramos mais uma página web, com esse forma:
 
-_imagem_
+<center>
+{{< figure src="/blog/img/posts/resolvendo0/02.png" width="550" >}}
+</center>
 
-Contudo, apesar do texto dizer que existe uma imagem, o navegador exibe um símbolo de uma página rasgada. Esse é o símbolo usado quando a imagem não foi encontrada. Você pode resolver esse desafio com duas ferramentas diferentes: tanto com o "Ver código-fonte" usado no desafio anterior quanto usando a ferramenta de inspeção do navegador. 
+Contudo, apesar do texto dizer que existe uma imagem, o navegador exibe um símbolo de uma página rasgada. Esse é o símbolo usado quando a imagem não foi encontrada. Você pode resolver esse desafio de algumas maneiras diferentes, incluido duas ferramentas do navegador: tanto com o "Ver código-fonte" usado no desafio anterior quanto usando a ferramenta de inspeção do navegador. Usando a ferramenta de inspeção (clique com o botão direito do mouse na página rasgada e selecione "Inspecionar elemento"), a aba de desenvolvedor surge na tela com informações sobre a parte que você escolheu, além do código-fonte. Encontramos o seguinte trecho de HTML:
+
+```html
+<img src="nuwfqrd8fspyiesr.pgn">
+```
+
+Como dizia no texto, era esperado que encontrássemos uma imagem. Contudo, lendo o nome do arquivo, vemos que a extensão do arquivo é `.pgn`. Segundo a Wikipédia:
+
+> _Portable Game Notation_ é um formato de arquivo para computadores criado para o registro de partidas de xadrez.
+
+Bom, não parece muito com uma imagem né? Esses são os tipos de imagens mais comuns: JPEG/JPG, GIF, BMF e... PNG! 
+
+> _Portable Network Graphics_ é um formato de dados utilizado para imagens
+
+Parece que quem desenvolveu essa página errou no nome. Na ferramenta de inspecionar o elemento, clicamos em cima de `nuwfqrd8fspyiesr.pgn` e podemos editá-lo. Substituindo PGN por PNG e apertando `ENTER`, a página se atualiza e mostra a imagem. Pronto, flag na mão.
+
 
 ## Tá Falando Grego?
+
+<center>
+{{< figure src="/blog/img/posts/resolvendo0/03.png" width="550" >}}
+</center>
+
+A página do desafio exibe um texto confuso e uma foto de uma estátua. Bom, o que será que houve com o texto?
+
+Esse texto foi **criptografado** (ou **cifrado**) ou seja, alguma lógica foi implementada para remover o conteúdo semântico do texto, deixando ele parecendo uma sequência aleatório de letras. A ideia é que uma cifra só seja resolvida pela pessoa que contém a **chave**. Contudo, dependendo do algoritmo utilizado na cifra, essa chave pode ser fácilmente quebrada.
+
+No nosso desafio, a estátua é a imagem de Júlio César, líder militar e político de Roma. Mas e daí? Bom, uma rápida busca nas interwebs usando os temos "criptografia" e "Júlio César" nos apresentam o conceito de **Cifra de César**. Já sabemos qual a cifra utilizada, mas e a chave?
