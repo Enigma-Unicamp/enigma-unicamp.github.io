@@ -66,14 +66,23 @@ Define um destinatário para a saída de um comando
 ### 2.1 - `cat`, `head`, `tail`
 
 ### 2.2 - `grep`
+Busca termos em arquivos
 
-### 2.3 - `find` e `curl`
+### 2.3 - `find`
+Busca de arquivos
 
 ### 2.4 - `strings`
+Exibe as strings de um arquivo (mesmo que este esteja codificado como binário)
 
 ### 2.5 - `ps` e `top`
+Exibem os programas em execução
 
 ### 2.6 - `awk` e `sed`
+
+
+### 2.7 - `wget` e `curl`
+Realiza requisições http
+
                 
 # 3 - Prática
 ## 3.1 - Matrioska
