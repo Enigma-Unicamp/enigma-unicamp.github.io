@@ -25,17 +25,22 @@ Cria diretórios
 -p: Cria o caminho se inexistente
 
 ## 0.4 - `cd`, `pushd` e `popd`
-Movimentação em diretórios
+Navegação em diretórios
 
 ## 0.5 - `touch`
 Altera a data de modificação ou acesso de um arquivo (útil para criar um arquivo vazio)
 
 ## 0.6 - `vim` e `nano`
-Editores 
-
+Editores
 
 # 1 - Bash
 ## 1.1 - Variáveis
+- $?: Último reusltado
+- $1..9: Parâmetros
+
+## 1.1.1 - `export` (Escopo)
+
+## 1.1.2 - `(( ))` (Operações aritméticas)
 
 ## 1.2 - Entrada e saída de texto
 ### 1.2.1 - `read`
@@ -46,6 +51,7 @@ Preenche uma variável com um valor digitado pelo usuário
 ### 1.2.2 - `echo`
 Escrever no destino definido, seja arquivo ou terminal
 -n: não quebra linha
+-e: Interpreta caracteres especiais
 
 ### 1.2.3 - `|` (pipe)
 Redireciona a saída de um comando para o seguinte
@@ -54,13 +60,37 @@ Redireciona a saída de um comando para o seguinte
 Define um destinatário para a saída de um comando
 
 ### 1.3 - Condição
+http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
+### 1.3.1 - `[ ]` e `test`
+
+### 1.3.2 - `[[ ]]`
 
 ### 1.4 - Loop
+```
+while [ CONDIÇÂO ]
+do
+    COMANDOS
+done
+```
+
+```
+for i in $( COMANDO ); do
+    COMANDOS
+done
+```
+
+### 1.4.1 - `seq`
+Exibe um sequência de números
+
 
 ### 1.5 - Função
+function FUNCNAME {
+    echo $1
+    exit
+} 
 
 ### 1.6 - Tratamento de string
-
+${stringZ:7:3}
 
 ## 2 - Programas úteis
 ### 2.1 - `cat`, `head`, `tail`
