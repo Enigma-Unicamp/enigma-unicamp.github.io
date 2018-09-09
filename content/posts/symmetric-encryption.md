@@ -20,11 +20,11 @@ milhares de anos, visto que o sigilo de informações não é uma necessidade
 recente. Na Roma Antiga, o ditador Júlio César (personagem crucial na transição
 da República Romana para o Império Romano) utilizava cifras [^1] para se
 comunicar com outros militares e governantes. É daí que vem o nome da famosa
-*cifra de César*.
+**cifra de César**.
 
-Os algoritmos criptográficos que veremos são denominados *simétricos*. Isso
+Os algoritmos criptográficos que veremos são denominados **simétricos**. Isso
 significa que para encriptar e decriptar mensagens a partir deles, a mesma chave
-(denominada *chave privada*) é utilizada. Para deixar mais claro, vamos supor
+(denominada **chave privada**) é utilizada. Para deixar mais claro, vamos supor
 que Alice e Bob queiram trocar mensagens sigilosas em um canal inseguro, bem
 como é o caso da nossa queridinha Internet.
 
@@ -34,7 +34,7 @@ guardá-la com muito sigilo. Como fazer isso utilizando a Internet? Um atacante
 (que chamaremos de Eve) pode interceptar a conexão e obter a chave, sendo capaz
 de decifrar qualquer mensagem enviada por um dos dois. Esse é um problema muito
 delicado, mas deixaremos para explicar em detalhes numa futura palestra/postagem
-sobre *algoritmos criptográficos assimétricos*. Então, vamos supor que eles
+sobre **algoritmos criptográficos assimétricos**. Então, vamos supor que eles
 tenham se encontrado em um bar e combinado a chave pessoalmente, antes do início
 da troca de mensagens.
 
@@ -53,11 +53,31 @@ utilizados nos livros de criptografia_
 </center>
 
 Essa é a ideia principal dos algoritmos de chave simétrica. Agora, veremos
-alguns exemplos muito famosos.
+alguns exemplos muito famosos no mundo da criptografia.
+
+### Cifras de Substituição e Cifras de Transposição
+
+Cifras de subsituição são aquelas em que unidades do texto são substituídas
+segundo alguma regra pré-definida. Por exemplo, a letra A será sempre trocada
+pela letra C, a letra C pela letra Z, e assim por diante. Já as cifras de
+transposição são aquelas em que apenas a ordem dos caracteres é alterada.
+Essas duas técnicas podem ser utilizadas conjuntamente, para que a criptografia
+seja mais forte.
+
 
 ### Cifra de César
 
-### Cifras de Substituição
+A cifra de César é um dos algoritmos criptográficos mais simples. É uma cifra
+de substituição em que cada letra é trocada por outra que está a um número
+fixo de posições de distância. A chave é simplesmente esse número. Por exemplo,
+se a chave for ```K=4```, a letra A será substituída em E. Seguindo essa
+lógica, o texto **ENIGMA** seria transformado em **IRMKQE**.
+
+<center>
+{{< figure src="/blog/img/posts/symmetric-encryption/caesar-scheme.png"
+    width="420">}}
+_Esquema demonstrando a cifra de César para ```K=-3```_
+</center>
 
 ### Cifra de Vigenère
 
