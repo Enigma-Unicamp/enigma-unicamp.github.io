@@ -81,4 +81,23 @@ _Esquema demonstrando a cifra de César para ```K=-3```_
 
 ### Cifra de Vigenère
 
-[^1]: cifra: algoritmos criptográficos que atuam encriptando ou decriptando uma mensagem a partir de uma determinada chave.
+Agora podemos entender a cifra de Vigenère, já que o algoritmo funciona com
+múltiplas aplicações da cifra de César. Vamos supor que queiramos encriptar
+a frase ```REUNIAODOENIGMAQUARTAFEIRA```. É escolhida uma palavra qualquer, por
+exemplo, ```CARRO```. Ela é então repetida até atingir o tamanho da mensagem,
+gerando a chave ```K=CARROCARROCARROCARROCARROC```. Então, a mensagem será
+encriptada assim: à primeira letra da mensagem devem ser adicionadas 2 unidades,
+pois a primeira letra da chave é C, terceira letra do alfabeto. Então, o R é
+substituído por U. À segunda letra da mensagem (E), 0 unidades devem ser
+adicionadas, pois a segunda letra da chave é A. E assim por diante. O resultado
+final é:
+
+<center>
+```
+mensagem: REUNIAODOENIGMAQUARTAFEIRA
+chave:    CARROCARROCARROCARROCARROC
+cifra:    TELEWCOUFSPIXDOSURIHCFVZFC
+```
+</center>
+
+[^1]: cifra: TODO definir o que é
