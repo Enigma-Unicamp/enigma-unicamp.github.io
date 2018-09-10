@@ -71,9 +71,16 @@ _Esquema demonstrando a cifra de César para ```K=-3```_
 quebrá-la, podemos executar o algoritmo com todas as opções de chave
 disponíveis até encontrarmos um texto que fique coerente.
 
+**TODO: exercicio**
+
 ### Cifras de Substituição e Cifras de Transposição
 
-Cifras de subsituição são aquelas em que cada letra é substituída por outra pré-definida, só que, ao contrário da Cifra de César (um caso específico da Cifra de Substituição), não existe uma relação de distância entre as letras. Então, se `a` corresponder à `B`, `b` pode corresponder a qualquer outra letra disponível, seja `A`, `C`, `D`, ... Nessa cifra, a chave é o alfabeto correspondente. Por exemplo, podemos criar um alfabeto da seguinte forma:
+Cifras de subsituição são aquelas em que cada letra é substituída por outra
+pré-definida, só que, ao contrário da Cifra de César (um caso específico da
+Cifra de Substituição), não existe uma relação de distância entre as letras.
+Então, se `a` corresponder à `B`, `b` pode corresponder a qualquer outra letra
+disponível, seja `A`, `C`, `D`, ... Nessa cifra, a chave é o alfabeto
+correspondente. Por exemplo, podemos criar um alfabeto da seguinte forma:
 
 | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -81,15 +88,35 @@ Cifras de subsituição são aquelas em que cada letra é substituída por outra
 
 Se quisermos cifrar a frase (acentos removidos propositalmente):
 
-> Os primeiros ativistas no final dos anos 1980, com o embrionario movimento dos Cypherpunks, ja atentavam para falta de seguranca em torno dos dados trocados na internet. Esta preocupacao com uma suposta vigilancia voluntaria sendo construida na rede vai resultar no “Manifesto Cypherpunk”, escrito por Eric Hughes, em 1993, que clama pela liberdade, privacidade e anonimato.
+> Os primeiros ativistas no final dos anos 1980, com o embrionario movimento
+dos Cypherpunks, ja atentavam para falta de seguranca em torno dos dados
+trocados na internet. Esta preocupacao com uma suposta vigilancia voluntaria
+sendo construida na rede vai resultar no “Manifesto Cypherpunk”, escrito por
+Eric Hughes, em 1993, que clama pela liberdade, privacidade e anonimato.
 
 Com este alfabeto obteríamos:
 
-> DR XKAOIAKDR PCASARCPR FD UAFPN GDR PFDR 1980, QDO D IOHKADFPKAD ODSAOIFCD GDR QWXEIKXVFLR, YP PCIFCPSPO XPKP UPNCP GI RIMVKPFÇP IO CDKFD GDR GPGDR CKDQPGDR FP AFCIKFIC. IRCP XKIDQVXPQPD QDO VOP RVXDRCP SAMANPFQAP SDNVFCPKAP RIFGD QDFRCKVAGP FP KIGI SPA KIRVNCPK FD “OPFAUIRCD QWXEIKXVFL”, IRQKACD XDK IKAQ EVMEIR, IO 1993, JVI QNPOP XINP NAHIKGPGI, XKASPQAGPGI I PFDFAOPCD.
+> DR XKAOIAKDR PCASARCPR FD UAFPN GDR PFDR 1980, QDO D IOHKADFPKAD ODSAOIFCD
+GDR QWXEIKXVFLR, YP PCIFCPSPO XPKP UPNCP GI RIMVKPFÇP IO CDKFD GDR GPGDR
+CKDQPGDR FP AFCIKFIC. IRCP XKIDQVXPQPD QDO VOP RVXDRCP SAMANPFQAP SDNVFCPKAP
+RIFGD QDFRCKVAGP FP KIGI SPA KIRVNCPK FD “OPFAUIRCD QWXEIKXVFL”, IRQKACD XDK
+IKAQ EVMEIR, IO 1993, JVI QNPOP XINP NAHIKGPGI, XKASPQAGPGI I PFDFAOPCD.
 
-E como atacamos isto? Dessa vez, temos muitas mais opções de chave do que na Cifra de César. Como cada variação do alfabeto é uma chave válida, temos 26! - 1 (aproximadamente 4 x 10^26) chaves! Logo, atacar esse problema com força bruta no número de chaves não parece uma boa alternativa. A fraqueza dessa cifra está em outro ponto. Mesmo se removéssemos espaços, números e pontuação, o texto ainda estará com uma estrutura muito próxima do texto original, no que tange a ordem dos caracteres e na frequência deles. Quem percebeu isso foi um [religioso árabe](https://en.wikipedia.org/wiki/Al-Kindi) do século IX, enquanto tentava descobrir a data dos textos do Alcorão segundo a frequência de suas letras. O mesmo vale se cada letra, em vez de subsitituída por outra do alfabeto latino, recebesse símbolos diferentes, como `a` = `%`, `b` = `^`, `c` = `£`, `d` = `21`, ...
+E como atacamos isto? Dessa vez, temos muitas mais opções de chave do que na
+Cifra de César. Como cada variação do alfabeto é uma chave válida, temos 26! -
+1 (aproximadamente 4 x 10^26) chaves! Logo, atacar esse problema com força
+bruta no número de chaves não parece uma boa alternativa. A fraqueza dessa
+cifra está em outro ponto. Mesmo se removéssemos espaços, números e pontuação,
+o texto ainda estará com uma estrutura muito próxima do texto original, no que
+tange a ordem dos caracteres e na frequência deles. Quem percebeu isso foi um
+[religioso árabe](https://en.wikipedia.org/wiki/Al-Kindi) do século IX,
+enquanto tentava descobrir a data dos textos do Alcorão segundo a frequência de
+suas letras. O mesmo vale se cada letra, em vez de subsitituída por outra do
+alfabeto latino, recebesse símbolos diferentes, como `a` = `%`, `b` = `^`, `c`
+= `£`, `d` = `21`, ...
 
-Se fizermos um histograma da frequência das letras do nosso texto cifrado, obteremos algo como:
+Se fizermos um histograma da frequência das letras do nosso texto cifrado,
+obteremos algo como:
 
 | Letra | Ocorrências | Frequência |
 | --- | --- | --- |
@@ -104,9 +131,15 @@ Se fizermos um histograma da frequência das letras do nosso texto cifrado, obte
 | G | 14 | 5% |
 | ... | ... | ... |
 
-Notou como as frequência das letras progredir da forma `f(n) = 1/x`? Isso acontece por causa da [Lei de Zipf](https://en.wikipedia.org/wiki/Zipf's_law), e ocorre em todos os idiomas e não afeta só a frequência das letras, também a das palavras. Aliás, afeta muitas coisas além de linguística. Recomendo [ver este vídeo](https://www.youtube.com/watch?v=fCn8zs912OE) se quiser saber mais.
+Notou como as frequência das letras parece progredir na forma `f(n) = 1/x`? Isso
+acontece por causa da [Lei de Zipf](https://en.wikipedia.org/wiki/Zipf's_law),
+e ocorre em todos os idiomas e não afeta só a frequência das letras, também a
+das palavras. Aliás, afeta muitas coisas além de linguística. Recomendo [ver
+este vídeo](https://www.youtube.com/watch?v=fCn8zs912OE) se quiser saber mais.
 
-Agora, comparando com o a [frequência média das letras](https://pt.wikipedia.org/wiki/Frequ%C3%AAncia_de_letras) na língua portuguesa e com a chave, obtemos a seguinte tabela:
+Agora, comparando com o a [frequência média das
+letras](https://pt.wikipedia.org/wiki/Frequ%C3%AAncia_de_letras) na língua
+portuguesa e com a chave, obtemos a seguinte tabela:
 
 
 | Letra (nosso texto) | Frequência | Letra (português) | Frequência | Chave |
@@ -122,11 +155,19 @@ Agora, comparando com o a [frequência média das letras](https://pt.wikipedia.o
 | g | 5%  | m | 5%  | A |
 | ... | ... | ... | ... | ... |
 
-Comparando com a chave, parece que não chegamos tão perto assim, e isso se deve ao tamanho do texto: quanto maior, mais próximo da frequência média estaremos. Contudo, já temos algumas boas pistas: sabendo o lugar do `a`, conseguimos alguns trechos de palavras e ao tentarmos as letras próximas, aos poucos vamos conseguindo chegar até o texto original.
+Comparando com a chave, parece que não chegamos tão perto assim, e isso se deve
+ao tamanho do texto: quanto maior, mais próximo da frequência média estaremos.
+Contudo, já temos algumas boas pistas: sabendo o lugar do `a`, conseguimos
+alguns trechos de palavras e ao tentarmos as letras próximas, aos poucos vamos
+conseguindo chegar até o texto original.
 
-Já as cifras de transposição são aquelas em que apenas a ordem dos caracteres é alterada.
+Já as cifras de transposição são aquelas em que apenas a ordem dos caracteres é
+alterada.
 Essas duas técnicas podem ser utilizadas conjuntamente, para que a criptografia
-seja mais forte.
+seja mais forte, já que apesar de mantermos a frequência, agora temos que as
+letras embaralhadas.
+
+**TODO: exercicio**
 
 ### Cifra de Vigenère
 
@@ -148,5 +189,23 @@ chave:    CARROCARROCARROCARROCARROC
 cifra:    TELEWCOUFSPIXDOSURIHCFVZFC
 ```
 </center>
+
+Qual a vantagem disto? Uma cifra feita desta maneira previne criptoanálise
+sobre a frequência das letras, já que a letra que mais aparece nos textos em
+português, a letra `a`, vai ser transformada tanto em `C`, `A`, `R` e `O`.
+
+Para facilitar nosso trabalho, usamos o "Quadrado de Vigenère", que contem
+todas as rotações possíveis e as suas letras correspondentes.
+
+<center>
+{{< figure src="/blog/img/posts/symmetric-encryption/vigenere-square.png"
+    width="420">}}
+_Quadrado ou tabela de Vigenère_
+</center>
+
+**TODO: como quebrar vigenere?**
+**TODO: exercicio**
+
+### ENIGMA, DES, AES
 
 [^1]: cifra: TODO definir o que é
