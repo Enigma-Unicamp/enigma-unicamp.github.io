@@ -55,7 +55,8 @@ alguns exemplos muito famosos no mundo da criptografia.
 
 ### Cifra de César
 
-A cifra de César é um dos algoritmos criptográficos mais simples (usamos ela em um dos [desafios do decifre.me!](../resolvendo0)). É uma cifra
+A cifra de César é um dos algoritmos criptográficos mais simples (usamos ela em
+um dos [desafios do decifre.me!](../resolvendo0)). É uma cifra
 de substituição em que cada letra é trocada por outra que está a um número
 fixo de posições de distância. A chave é simplesmente esse número. Por exemplo,
 se a chave for ```K=4```, a letra A será substituída em E. Seguindo essa
@@ -67,11 +68,24 @@ lógica, o texto `enigma` seria transformado em `IRMKQE`.
 _Esquema demonstrando a cifra de César para ```K=-3```_
 </center>
 
-É fácil perceber que só existem 25 chaves para essa cifra, já que nosso alfabeto possui 26 letras. Logo, para
-quebrá-la, podemos executar o algoritmo com todas as opções de chave
-disponíveis até encontrarmos um texto que fique coerente.
+É fácil perceber que só existem 25 chaves para essa cifra, já que nosso
+alfabeto possui 26 letras. Logo, para quebrá-la, podemos executar o algoritmo
+com todas as opções de chave disponíveis até encontrarmos um texto que fique
+coerente.
 
-**TODO: exercicio**
+#### Exercício
+
+Cifre a seguinte frase com cifra de César, com `K = 15`:
+
+> A privacidade é necessária para termos uma sociedade aberta na era
+eletrônica.
+
+Decifre a seguinte frase:
+
+> ABF, BF PLCURECHAXF, ABF QRQVPNZBF N PBAFGEHVE FVFGRZNF NABAVZBF. ABF
+RFGNZBF QRSRAQRAQB N ABFFN CEVINPVQNQR PBZ PEVCGBTENSVN, PBZ FVFGRZNF
+QR RAPNZVAUNZRAGB QR R-ZNVY NABAVZBF, PBZ NFFVANGHENF QVTVGNVF R PBZ
+QVAURVEB RYRGEBAVPB.
 
 ### Cifras de Substituição e Cifras de Transposição
 
@@ -88,86 +102,163 @@ correspondente. Por exemplo, podemos criar um alfabeto da seguinte forma:
 
 Se quisermos cifrar a frase (acentos removidos propositalmente):
 
-> Os primeiros ativistas no final dos anos 1980, com o embrionario movimento
-dos Cypherpunks, ja atentavam para falta de seguranca em torno dos dados
-trocados na internet. Esta preocupacao com uma suposta vigilancia voluntaria
-sendo construida na rede vai resultar no “Manifesto Cypherpunk”, escrito por
-Eric Hughes, em 1993, que clama pela liberdade, privacidade e anonimato.
+> Os primeiros ativistas no final dos anos 1980, com o embrionario
+movimento dos Cypherpunks, ja atentavam para falta de seguranca em torno
+dos dados trocados na internet. Esta preocupacao com uma suposta
+vigilancia voluntaria sendo construída na rede vai resultar no
+“Manifesto Cypherpunk”, escrito por Eric Hughes, em 1993, que clama pela
+liberdade, privacidade e anonimato.
+Assim como indica a traducao do grego (palavra-escondida), a
+criptografia consiste em sistemas que embaralham a mensagem a partir do
+emissor e apenas quando chega em seu receptor ela e decodificada, ou
+desembaralhada. Internacionalmente, a criptografia ficou conhecida com a
+ascensao do fundador e líder do Wikileaks, Julian Assange, que defende
+sua “democratizacao e popularizacao”, afirmando que esta e a grande
+ferramenta de resistencia do seculo XXI.
 
 Com este alfabeto obteríamos:
 
-> DR XKAOIAKDR PCASARCPR FD UAFPN GDR PFDR 1980, QDO D IOHKADFPKAD ODSAOIFCD
-GDR QWXEIKXVFLR, YP PCIFCPSPO XPKP UPNCP GI RIMVKPFÇP IO CDKFD GDR GPGDR
-CKDQPGDR FP AFCIKFIC. IRCP XKIDQVXPQPD QDO VOP RVXDRCP SAMANPFQAP SDNVFCPKAP
-RIFGD QDFRCKVAGP FP KIGI SPA KIRVNCPK FD “OPFAUIRCD QWXEIKXVFL”, IRQKACD XDK
-IKAQ EVMEIR, IO 1993, JVI QNPOP XINP NAHIKGPGI, XKASPQAGPGI I PFDFAOPCD.
+> DR XKAOIAKDR PCASARCPR FD UAFPN GDR PFDR 1980, QDO D IOHKADFPKAD
+ODSAOIFCD GDR QWXEIKXVFLR, YP PCIFCPSPO XPKP UPNCP GI RIMVKPFQP IO CDKFD
+GDR GPGDR CKDQPGDR FP AFCIKFIC. IRCP XKIDQVXPQPD QDO VOP RVXDRCP
+SAMANPFQAP SDNVFCPKAP RIFGD QDFRCKVÍGP FP KIGI SPA KIRVNCPK FD
+“OPFAUIRCD QWXEIKXVFL”, IRQKACD XDK IKAQ EVMEIR, IO 1993, JVI QNPOP XINP
+NAHIKGPGI, XKASPQAGPGI I PFDFAOPCD.
+PRRAO QDOD AFGAQP P CKPGVQPD GD MKIMD (XPNPSKP-IRQDFGAGP), P
+QKAXCDMKPUAP QDFRARCI IO RARCIOPR JVI IOHPKPNEPO P OIFRPMIO P XPKCAK GD
+IOARRDK I PXIFPR JVPFGD QEIMP IO RIV KIQIXCDK INP I GIQDGAUAQPGP, DV
+GIRIOHPKPNEPGP. AFCIKFPQADFPNOIFCI, P QKAXCDMKPUAP UAQDV QDFEIQAGP QDO P
+PRQIFRPD GD UVFGPGDK I NÍGIK GD TALANIPLR, YVNAPF PRRPFMI, JVI GIUIFGI
+RVP “GIODQKPCABPQPD I XDXVNPKABPQPD”, PUAKOPFGD JVI IRCP I P MKPFGI
+UIKKPOIFCP GI KIRARCIFQAP GD RIQVND ZZA.
 
-E como atacamos isto? Dessa vez, temos muitas mais opções de chave do que na
-Cifra de César. Como cada variação do alfabeto é uma chave válida, temos 26! -
-1 (aproximadamente 4 x 10^26) chaves! Logo, atacar esse problema com força
-bruta no número de chaves não parece uma boa alternativa. A fraqueza dessa
-cifra está em outro ponto. Mesmo se removéssemos espaços, números e pontuação,
-o texto ainda estará com uma estrutura muito próxima do texto original, no que
-tange a ordem dos caracteres e na frequência deles. Quem percebeu isso foi um
+E como atacamos isto? Dessa vez, temos muitas mais opções de chave do
+que na
+Cifra de César. Como cada variação do alfabeto é uma chave válida,
+temos 26! -
+1 (aproximadamente 4 x 10^26) chaves! Logo, atacar esse problema com
+força
+bruta no número de chaves não parece uma boa alternativa. A fraqueza
+dessa
+cifra está em outro ponto. Mesmo se removéssemos espaços, números e
+pontuação,
+o texto ainda estará com uma estrutura muito próxima do texto
+original, no que
+tange a ordem dos caracteres e na frequência deles. Quem percebeu isso
+foi um
 [religioso árabe](https://en.wikipedia.org/wiki/Al-Kindi) do século IX,
-enquanto tentava descobrir a data dos textos do Alcorão segundo a frequência de
-suas letras. O mesmo vale se cada letra, em vez de subsitituída por outra do
-alfabeto latino, recebesse símbolos diferentes, como `a` = `%`, `b` = `^`, `c`
+enquanto tentava descobrir a data dos textos do Alcorão segundo a
+frequência de
+suas letras. O mesmo vale se cada letra, em vez de subsitituída por
+outra do
+alfabeto latino, recebesse símbolos diferentes, como `a` = `%`, `b` =
+`^`, `c`
 = `£`, `d` = `21`, ...
 
-Se fizermos um histograma da frequência das letras do nosso texto cifrado,
-obteremos algo como:
+Se fizermos um histograma da frequência das letras do nosso texto
+cifrado, obteremos algo como:
 
 | Letra | Ocorrências | Frequência |
 | --- | --- | --- |
-| P | 40 | 13% |
-| D | 31 | 10% |
-| I | 28 | 9% |
-| K | 22 | 7% |
-| A | 22 | 7% |
-| F | 22 | 7% |
-| R | 21 | 7% |
-| C | 19 | 6% |
-| G | 14 | 5% |
+| P | 100 | 15% |
+| I | 77 | 11% |
+| D | 61 | 9% |
+| A | 48 | 7% |
+| K | 46 | 7% |
+| R | 45 | 6% |
+| F | 42 | 6% |
+| C | 39 | 5% |
+| Q | 36 | 5% |
 | ... | ... | ... |
 
-Notou como as frequência das letras parece progredir na forma `f(n) = 1/x`? Isso
-acontece por causa da [Lei de Zipf](https://en.wikipedia.org/wiki/Zipf's_law),
-e ocorre em todos os idiomas e não afeta só a frequência das letras, também a
-das palavras. Aliás, afeta muitas coisas além de linguística. Recomendo [ver
-este vídeo](https://www.youtube.com/watch?v=fCn8zs912OE) se quiser saber mais.
+Notou como as frequência das letras parece progredir na forma `f(n) =
+1/x`? Isso
+acontece por causa da [Lei de
+Zipf](https://en.wikipedia.org/wiki/Zipf's_law),
+e ocorre em todos os idiomas e não afeta só a frequência das letras,
+também a
+das palavras. Aliás, afeta muitas coisas além de linguística.
+Recomendo [ver
+este vídeo](https://www.youtube.com/watch?v=fCn8zs912OE) se quiser
+saber mais.
 
 Agora, comparando com o a [frequência média das
-letras](https://pt.wikipedia.org/wiki/Frequ%C3%AAncia_de_letras) na língua
+letras](https://pt.wikipedia.org/wiki/Frequ%C3%AAncia_de_letras) na
+língua
 portuguesa e com a chave, obtemos a seguinte tabela:
 
 
-| Letra (nosso texto) | Frequência | Letra (português) | Frequência | Chave |
+| Letra (nosso texto) | Frequência | Letra (média) | Frequência | Chave |
 | --- | --- | --- | --- | --- |
-| p | 13% | a | 15% | P |
-| d | 10% | e | 13% | H |
-| i | 9%  | o | 11% | Q |
-| k | 7%  | s | 8%  | G |
-| a | 7%  | r | 7%  | I |
-| f | 7%  | i | 6%  | U |
-| r | 7%  | n | 5%  | M |
-| c | 6%  | d | 5%  | E |
-| g | 5%  | m | 5%  | A |
+| **P** | 15% | _a_ | 15% | `P` |
+| **I** | 11% | _e_ | 13% | `I` |
+| **D** | 9%  | _o_ | 11% | `D` |
+| **A** | 7%  | _s_ | 8%  | `R` |
+| **K** | 7%  | _r_ | 7%  | `K` |
+| **R** | 6%  | _i_ | 6%  | `A` |
+| **F** | 6%  | _n_ | 5%  | `F` |
+| **C** | 5%  | _d_ | 5%  | `G` |
+| **Q** | 5%  | _m_ | 5%  | `O` |
 | ... | ... | ... | ... | ... |
 
-Comparando com a chave, parece que não chegamos tão perto assim, e isso se deve
-ao tamanho do texto: quanto maior, mais próximo da frequência média estaremos.
-Contudo, já temos algumas boas pistas: sabendo o lugar do `a`, conseguimos
-alguns trechos de palavras e ao tentarmos as letras próximas, aos poucos vamos
-conseguindo chegar até o texto original.
+Comparando com a chave, percebermos que nosso histograma está bem
+perto de decifrar o texto, ou pelo menos as letras com mais
+ocorrências. Como esse é o histograma médio, cada texto terá um leve
+desvio, mas quanto maior o texto, mais perto da média será. Já temos
+algumas boas pistas: sabendo o lugar das três primeiras letras de
+maior ocorrência conseguimos decifrar 35% do texto. É necessário ter
+senso crítico na hora de decifrar, já que algumas letras do histograma
+não estão com seus correspondentes perfeitamente alinhados.
 
-Já as cifras de transposição são aquelas em que apenas a ordem dos caracteres é
+Substituindo corretamente as 5 primeiras letras do texto cifrado,
+obtemos:
+
+> oR XriOeiroR aCiSiRCaR Fo UiFaN GoR aFoR 1980, QoO o eOHrioFario
+OoSiOeFCo GoR QWXEerXVFLR, Ya aCeFCaSaO Xara UaNCa Ge ReMVraFQa eO
+CorFo GoR GaGoR CroQaGoR Fa iFCerFeC...
+
+Assim, o texto em claro começa a tomar forma. Podemos, depois de
+alguns palpites, perceber que `XriOeiroR` significa `primeiros`, e já
+podemos substuir corretamente `X = p`, `O = m` e `R = s`.
+
+Quanto menos frequente a letra, mais chances dela estar desalinhada
+com a chave, mas isso não é um grande empecilho porque podemos
+completar as partes que estão erradas.
+
+Já as cifras de transposição são aquelas em que apenas a ordem dos
+caracteres é
 alterada.
-Essas duas técnicas podem ser utilizadas conjuntamente, para que a criptografia
-seja mais forte, já que apesar de mantermos a frequência, agora temos que as
-letras embaralhadas.
+Essas duas técnicas podem ser utilizadas conjuntamente, para que a
+criptografia
+seja mais forte, já que apesar de mantermos a frequência, agora temos
+que as letras embaralhadas.
 
-**TODO: exercicio**
+### Exercício
+
+Tente quebrar essa cifra:
+
+> VLR YBQ VLRO XPP TB'OB XII XIFHB... TB'SB YBBK PMLLK-CBA YXYV CLLA
+XQ PZELLI TEBK TB ERKDBOBA CLO PQBXH... QEB YFQP LC JBXQ QEXQ VLR AFA
+IBQ PIFM QEOLRDE TBOB MOB-ZEBTBA XKA QXPQBIBPP. TB'SB YBBK ALJFKXQBA
+YV PXAFPQP, LO FDKLOBA YV QEB XMXQEBQFZ. QEB CBT QEXQ EXA PLJBQEFKD QL
+QBXZE CLRKA RP TFIIFKD MRMFIP, YRQ QELPB CBT XOB IFHB AOLMP LC TXQBO
+FK QEB ABPBOQ.
+QEFP FP LRO TLOIA KLT... QEB TLOIA LC QEB BIBZQOLK XKA QEB PTFQZE, QEB
+YBXRQV LC QEB YXRA. TB JXHB RPB LC X PBOSFZB XIOBXAV BUFPQFKD TFQELRQ
+MXVFKD CLO TEXQ ZLRIA YB AFOQ-ZEBXM FC FQ TXPK'Q ORK YV MOLCFQBBOFKD
+DIRQQLKP, XKA VLR ZXII RP ZOFJFKXIP. TB BUMILOB... XKA VLR ZXII RP
+ZOFJFKXIP. TB PBBH XCQBO HKLTIBADB... XKA VLR ZXII RP ZOFJFKXIP. TB
+BUFPQ TFQELRQ PHFK ZLILO, TFQELRQ KXQFLKXIFQV, TFQELRQ OBIFDFLRP
+YFXP... XKA VLR ZXII RP ZOFJFKXIP. VLR YRFIA XQLJFZ YLJYP, VLR TXDB
+TXOP, VLR JROABO, ZEBXQ, XKA IFB QL RP XKA QOV QL JXHB RP YBIFBSB FQ'P
+CLO LRO LTK DLLA, VBQ TB'OB QEB ZOFJFKXIP.
+VBP, F XJ X ZOFJFKXI. JV ZOFJB FP QEXQ LC ZROFLPFQV. JV ZOFJB FP QEXQ
+LC GRADFKD MBLMIB YV TEXQ QEBV PXV XKA QEFKH, KLQ TEXQ QEBV ILLH IFHB.
+JV ZOFJB FP QEXQ LC LRQPJXOQFKD VLR, PLJBQEFKD QEXQ VLR TFII KBSBO
+CLODFSB JB CLO.
+F XJ X EXZHBO, XKA QEFP FP JV JXKFCBPQL. VLR JXV PQLM QEFP FKAFSFARXI,
+YRQ VLR ZXK'Q PQLM RP XII... XCQBO XII, TB'OB XII XIFHB.
+
 
 ### Cifra de Vigenère
 
@@ -207,5 +298,9 @@ _Quadrado ou tabela de Vigenère_
 **TODO: exercicio**
 
 ### ENIGMA, DES, AES
+
+---
+
+Os textos de exemplo para criptograr foram retirados [dessa reportagem](https://www.revistaforum.com.br/digital/138/criptografia-e-distopia-da-sociedade-controle/).
 
 [^1]: cifra: TODO definir o que é
