@@ -5,8 +5,8 @@ linktitle: Criptografia de chave simétrica
 title: Criptografia de chave simétrica
 tags: ["criptografia", "simétrica"]
 description: "Os primeiros algoritmos criptográficos foram os de chave
-              simétrica. Dentre eles, Cifra de César, Cifras de Substituição,
-              Cifra de Vigenère, etc. Esse post foi feito para auxiliar na
+              simétrica. Dentre eles, Cifra de César, Cifra de Vigenère,
+              Cifras de Substituição, etc. Esse post foi feito para auxiliar na
               palestra do dia 12/09/2018, e contém explicações e demonstrações
               práticas para introduzir o conceito de chave simétrica."
 weight: 1
@@ -55,21 +55,22 @@ alguns exemplos muito famosos no mundo da criptografia.
 
 ### Cifra de César
 
-A cifra de César é um dos algoritmos criptográficos mais simples (usamos ela em um dos [desafios do decifre.me!](../resolvendo0)). É uma cifra
+A cifra de César é um dos algoritmos criptográficos mais simples (usamos ela em
+um dos [desafios do decifre.me!](../resolvendo0)). É uma cifra
 de substituição em que cada letra é trocada por outra que está a um número
 fixo de posições de distância. A chave é simplesmente esse número. Por exemplo,
-se a chave for ```K=4```, a letra A será substituída em E. Seguindo essa
+se a chave for `K=4`, a letra A será substituída por E. Seguindo essa
 lógica, o texto `enigma` seria transformado em `IRMKQE`.
 
 <center>
 {{< figure src="/blog/img/posts/symmetric-encryption/caesar-scheme.png"
     width="420">}}
-_Esquema demonstrando a cifra de César para ```K=-3```_
+_Esquema demonstrando a cifra de César para `K=-3`_
 </center>
 
-É fácil perceber que só existem 25 chaves para essa cifra, já que nosso alfabeto possui 26 letras. Logo, para
-quebrá-la, podemos executar o algoritmo com todas as opções de chave
-disponíveis até encontrarmos um texto que fique coerente.
+É fácil perceber que só existem 25 chaves para essa cifra, já que nosso alfabeto
+possui 26 letras. Logo, para quebrá-la, podemos executar o algoritmo com todas
+as opções de chave disponíveis até encontrarmos um texto que fique coerente.
 
 **TODO: exercicio**
 
@@ -173,22 +174,20 @@ letras embaralhadas.
 
 Agora podemos entender a cifra de Vigenère, já que o algoritmo funciona com
 múltiplas aplicações da cifra de César. Vamos supor que queiramos encriptar
-a frase ```reuniaodoenigmaquartafeira```. É escolhida uma palavra qualquer, por
-exemplo, ```CARRO```. Ela é então repetida até atingir o tamanho da mensagem,
-gerando a chave ```K=CARROCARROCARROCARROCARROC```. Então, a mensagem será
+a frase `reuniaodoenigmaquartafeira`. É escolhida uma palavra qualquer, por
+exemplo, `CARRO`. Ela é então repetida até atingir o tamanho da mensagem,
+gerando a chave `K=CARROCARROCARROCARROCARROC`. Então, a mensagem será
 encriptada assim: à primeira letra da mensagem devem ser adicionadas 2 unidades,
 pois a primeira letra da chave é C, terceira letra do alfabeto. Então, o R é
 substituído por U. À segunda letra da mensagem (E), 0 unidades devem ser
 adicionadas, pois a segunda letra da chave é A. E assim por diante. O resultado
 final é:
 
-<center>
-```
+<center><pre>
 mensagem: reuniaodoenigmaquartafeira
 chave:    CARROCARROCARROCARROCARROC
 cifra:    TELEWCOUFSPIXDOSURIHCFVZFC
-```
-</center>
+</pre></center>
 
 Qual a vantagem disto? Uma cifra feita desta maneira previne criptoanálise
 sobre a frequência das letras, já que a letra que mais aparece nos textos em
@@ -203,9 +202,43 @@ todas as rotações possíveis e as suas letras correspondentes.
 _Quadrado ou tabela de Vigenère_
 </center>
 
-**TODO: como quebrar vigenere?**
-**TODO: exercicio**
+Mas então, podemos utilizar a cifra de Vigenère para encriptar mensagens?
+Na verdade, **não**. Ela também possui uma fraqueza, a natureza repetitiva
+da chave. Em 1863, Friedrich Kasiski foi o primeiro a publicar um ataque 
+à cifra de Vigenère. Ele se baseou no fato de que palavras repetitidas de um
+texto podem acabar sendo cifradas pela mesma parte da chave. Por exemplo:
+
+<center>
+<pre>
+chave: <b>ABCDAB</b>CDABCDABCD<b>ABCDAB</b>CDABCD
+texto: <b>crypto</b>isshortfor<b>crypto</b>graphy
+cifra: <b>CSASTP</b>KVSIQUTGQU<b>CSASTP</b>IUAQJB
+</pre>
+<i> Exemplo do [Wikipedia]
+    (https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher)
+</i>
+</center>
+
+A distância entre a repetição **CSASTP** é de 16 caracteres. Assim, todos os
+divisores de 16 são possíveis tamanhos da chave K. Isso porque se o tamanho da
+chave não fosse divisor de 16, |K| pertenceria ao conjunto dos reais,
+o que é impossível. Então, por absurdo, ela só pode ter tamanho
+`1, 2, 4, 8, 16`. 
+
+Caso o atacante perceba que há mais de uma repetição, ele pode repetir o
+procedimento acima, obtendo diversos conjuntos divisores. Depois, basta
+calcular a intersecção entre esses conjuntos. Com isso ele sabe todos os
+possíveis tamanhos de chaves.
+
+<center>
+<pre>
+<b>VHVS</b>SP<b>QUCE</b>MRVBVBBB<b>VHVS</b>URQGIBDUGRNICJ<b>QUCE</b>RVUAXSSR
+</pre>
+<i>Texto cifrado com Vigenère e mais de uma repetição visível</i>
+</center>
+
+**TODO : EXERCICIO**
 
 ### ENIGMA, DES, AES
 
-[^1]: cifra: TODO definir o que é
+[^1]: cifra: algoritmo que encripta e decripta dados; sinônimo de algoritmo criptográfico.
