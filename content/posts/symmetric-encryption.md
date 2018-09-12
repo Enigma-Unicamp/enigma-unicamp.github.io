@@ -1,14 +1,12 @@
 ---
-author: "Tony e Leandro"
-date: 2018-09-07
+author: ["Tony", "Leandro"]
+date: 2018-09-12
 linktitle: Criptografia de chave simétrica
 title: Criptografia de chave simétrica
 tags: ["criptografia", "simétrica"]
 description: "Os primeiros algoritmos criptográficos foram os de chave
               simétrica. Dentre eles, Cifra de César, Cifra de Vigenère,
-              Cifras de Substituição, etc. Esse post foi feito para auxiliar na
-              palestra do dia 12/09/2018, e contém explicações e demonstrações
-              práticas para introduzir o conceito de chave simétrica."
+              Cifras de Substituição, etc."
 weight: 1
 ---
 
@@ -327,12 +325,9 @@ possíveis tamanhos de chaves.
 <i>Texto cifrado com Vigenère e mais de uma repetição visível</i>
 </center>
 
-**TODO : EXERCICIO**
 
 ### ENIGMA, DES, AES
 
-
----
 
 Os textos de exemplo para criptografar foram retirados [desta reportagem](https://www.revistaforum.com.br/digital/138/criptografia-e-distopia-da-sociedade-controle/).
 
