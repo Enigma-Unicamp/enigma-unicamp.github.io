@@ -111,14 +111,16 @@ Então estão todos convidados a ficar conosco até o sol raiar aproveitando mui
 shows e a nossa festa no Clube! Aconselhamos todos a ler o nosso CÓDIGO DE
 CONDUTA​ <https://roadsec.com.br/conduta> para curtir 100% do evento
 
-#### Informações Principais:
+#### Informações Principais do Evento
 
+<pre>
 Data: ​10/11/2018
 Local: ​Áudio Clube (Avenida Francisco Mattarazzo, 694 - Água Branca)
 Horários Evento:
-- 09:00h - Abertura de Credenciamento para Caravanas
-- 11:30h - Abertura do Evento
-- 21:00h - Encerramento Evento (palestras)
-- 22:00h - Início Shows
-- 05:00h - Encerramento geral Evento
+  - 09:00h - Abertura de Credenciamento para Caravanas
+  - 11:30h - Abertura do Evento
+  - 21:00h - Encerramento Evento (palestras)
+  - 22:00h - Início Shows
+  - 05:00h - Encerramento geral Evento
+</pre>
 OBS.: ​Horários sujeitos a alteração.
