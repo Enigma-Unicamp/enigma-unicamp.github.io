@@ -9,7 +9,7 @@ weight: 1
 description: "A Roadsec é um evento intinerante sobre hacking, segurança e tecnologia que roda o Brasil e tem sua edição de encerramento em São Paulo. Esse ano, irá ocorrer dia 10/11/18"
 ---
 
-A Roadsec é um evento intinerante sobre hacking, segurança e tecnologia que
+A Roadsec é um evento itinerante sobre hacking, segurança e tecnologia que
 roda o Brasil e tem sua edição de encerramento em São Paulo.
 
 O evento tem praticamente 24 horas de conteúdo na Audio Club e vai ser recheado
