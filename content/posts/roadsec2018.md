@@ -127,14 +127,13 @@ comemoração no Clube.
 
 ##### AFTER PARTY
 Então estão todos convidados a ficar conosco até o sol raiar aproveitando muito
-os shows e a nossa festa no Clube! Aconselhamos todos a ler o nosso CÓDIGO DE
-CONDUTA​ <https://roadsec.com.br/conduta> para curtir 100% do evento
+os shows e a nossa festa no Clube! Aconselhamos todos a ler o nosso [CÓDIGO DE
+CONDUTA](https://roadsec.com.br/conduta) para curtir 100% do evento
 
 #### Informações Principais do Evento
 
-<pre>
-Data: ​10/11/2018
-Local: ​Áudio Clube (Avenida Francisco Mattarazzo, 694 - Água Branca)
+Data: 10/11/2018
+Local: Áudio Clube (Avenida Francisco Mattarazzo, 694 - Água Branca)
 
 Horários Evento:
 
@@ -144,4 +143,4 @@ Horários Evento:
 - 22:00h - Início Shows
 - 05:00h - Encerramento geral Evento
 
-OBS.: ​Horários sujeitos a alteração.  
+OBS.: Horários sujeitos a alteração.  
