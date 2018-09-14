@@ -80,6 +80,8 @@ importante entender como eles funcionam e quais são suas falhas.
 {{< figure src="/blog/img/posts/symmetric-encryption/caesar1.png" width="220" height="160">}}
 </center>
 
+_Usamos essa cifra no [decifre.me](https://enigma.ic.unicamp.br/blog/posts/resolvendo0/)!_
+
 A Cifra de César é um dos algoritmos criptográficos mais simples (usamos ela em
 um dos [desafios do decifre.me!](../resolvendo0)). É uma cifra
 de substituição em que cada letra é trocada por outra que está a um número
@@ -174,7 +176,10 @@ Por exemplo, esse é o histograma da língua portuguesa:
 
 Vamos tentar quebrar o seguinte texto (veja completo [aqui](https://enigma.ic.unicamp.br/talks/simetrico/texto.txt)):
 
-> ZG GAHLAL IVGU XGAZL IVG L WJMXBSHJLEML ZVJHMV JGWGABGUGABG. LXGZLJ  NG  BGJ  ZG  USNGJAMKLNS  UVMBS  WSU  S  LNDGABS  NSZ WSUXVBLNSJGZ,  GZZL  WMGAWML  OL  GPMZBG  YL  UMRYLJGZ  NG  LASZ, DMZBS  IVG  S  ZMHMRS  NG  MAESJULWSGZ  ALS  G  VUL  AGWGZZMNLNG JGWGABG....
+> ZG GAHLAL IVGU XGAZL IVG L WJMXBSHJLEML ZVJHMV JGWGABGUGABG. LXGZLJ  NG  BGJ  
+ZG  USNGJAMKLNS  UVMBS  WSU  S  LNDGABS  NSZ WSUXVBLNSJGZ,  GZZL  WMGAWML  OL  
+GPMZBG  YL  UMRYLJGZ  NG  LASZ, DMZBS  IVG  S  ZMHMRS  NG  MAESJULWSGZ  ALS  G  
+VUL  AGWGZZMNLNG JGWGABG....
 
 Se fizemos um histograma desse texto, obteremos a seguinte tabela:
 
@@ -189,15 +194,35 @@ Se fizemos um histograma desse texto, obteremos a seguinte tabela:
 | U	|	5.83% |
 | ...	|	... |
 
-Como é uma cifra de subsituição simples, a letra que foi substituída por `L` era a letra que mais aparecia no texto original. Sabendo que o texto original estava em português, existem muitas chances de `L` ser a letra `a`, `G` ser a letra `e` e `S` ser `o`. Quanto maior o texto, mais isso é verdade, porque mais se aproxima da frequência média. Em textos muito pequenos essa análise não irá funcionar muito bem. As letras de menor ocorrência (`x`, `k`, `w`, `y`) serão as que ficarão mais longe da posição correta, mas isso não é problema para nós, já que as cinco primeiras letras já cobrem 50% do texto. No nosso texto, a relação entre o nosso histograma e o histograma da língua portuguesa não está perfeito, mas substituindo corretamente apenas as cinco primeiras letras obtemos (letras em maísculo ainda estão cifradas e minísculas estão em claro):
+Como é uma cifra de subsituição simples, a letra que foi substituída por `L`
+era a letra que mais aparecia no texto original. Sabendo que o texto original
+estava em português, existem muitas chances de `L` ser a letra `a`, `G` ser a
+letra `e` e `S` ser `o`. Quanto maior o texto, mais isso é verdade, porque mais
+se aproxima da frequência média. Em textos muito pequenos essa análise não irá
+funcionar muito bem. As letras de menor ocorrência (`x`, `k`, `w`, `y`) serão
+as que ficarão mais longe da posição correta, mas isso não é problema para nós,
+já que as cinco primeiras letras já cobrem 50% do texto. No nosso texto, a
+relação entre o nosso histograma e o histograma da língua portuguesa não está
+perfeito, mas substituindo corretamente apenas as cinco primeiras letras
+obtemos (letras em maísculo ainda estão cifradas e minísculas estão em claro):
 
-> se eAHaAa IVeU XeAsa IVe a WrMXBoHraEMa sVrHMV reWeABeUeABe. aXesar Ne Ber se UoNerAMKaNo UVMBo WoU o aNDeABo Nos WoUXVBaNores, essa WMeAWMa Oa ePMsBe Ya UMRYares Ne aAos, DMsBo IVe o sMHMRo Ne MAEorUaWoes Aao e VUa AeWessMNaNe reWeABe.
+> se eAHaAa IVeU XeAsa IVe a WrMXBoHraEMa sVrHMV reWeABeUeABe. aXesar Ne Ber se
+UoNerAMKaNo UVMBo WoU o aNDeABo Nos WoUXVBaNores, essa WMeAWMa Oa ePMsBe Ya
+UMRYares Ne aAos, DMsBo IVe o sMHMRo Ne MAEorUaWoes Aao e VUa AeWessMNaNe
+reWeABe.
 
-Apareceu um `essa`, o que indica que estamos no caminho certo! Ainda não está perfeito, mas algumas palavras estão chegando perto. Se repararmos nas palavras quase completas, encontramos um trecho quase completo:
+Apareceu um `essa`, o que indica que estamos no caminho certo! Ainda não está
+perfeito, mas algumas palavras estão chegando perto. Se repararmos nas palavras
+quase completas, encontramos um trecho quase completo:
 
-> se eAHaAa IVeU XeAsa IVe a WrMXBoHraEMa sVrHMV reWeABeUeABe. **aXesar Ne Ber** se UoNerAMKaNo UVMBo WoU o aNDeABo Nos WoUXVBaNores, essa WMeAWMa Oa ePMsBe Ya UMRYares Ne aAos, DMsBo IVe o sMHMRo Ne MAEorUaWoes Aao e VUa AeWessMNaNe reWeABe.
+> se eAHaAa IVeU XeAsa IVe a WrMXBoHraEMa sVrHMV reWeABeUeABe. **aXesar Ne
+Ber** se UoNerAMKaNo UVMBo WoU o aNDeABo Nos WoUXVBaNores, essa WMeAWMa Oa
+ePMsBe Ya UMRYares Ne aAos, DMsBo IVe o sMHMRo Ne MAEorUaWoes Aao e VUa
+AeWessMNaNe reWeABe.
 
-**aXesar Ne Ber** se parece com "apesar de ser", mas como o `s` já foi resolvido pela letra `Z`, vamos supor que seja "apesar de ter". Dessa forma, resolvemos mais três letras:
+**aXesar Ne Ber** se parece com "apesar de ser", mas como o `s` já foi
+resolvido pela letra `Z`, vamos supor que seja "apesar de ter". Dessa forma,
+resolvemos mais três letras:
 
 - `X` = `p`
 - `N` = `d`
@@ -205,16 +230,29 @@ Apareceu um `essa`, o que indica que estamos no caminho certo! Ainda não está 
 
 Substituindo mais essas letras, o texto começa a ter forma:
 
-> se eAHaAa IVeU peAsa IVe a WrMptoHraEMa sVrHMV reWeAteUeAte. **apesar de ter** se UoderAMKado UVMto WoU o adDeAto dos WoUpVtadores, essa WMeAWMa Oa ePMste **Ya UMRYares de aAos**, DMsto IVe o sMHMRo de MAEorUaWoes Aao e VUa
+> se eAHaAa IVeU peAsa IVe a WrMptoHraEMa sVrHMV reWeAteUeAte. **apesar de
+ter** se UoderAMKado UVMto WoU o adDeAto dos WoUpVtadores, essa WMeAWMa Oa
+ePMste **Ya UMRYares de aAos**, DMsto IVe o sMHMRo de MAEorUaWoes Aao e VUa
 AeWessMdade reWeAte.
 
-Vamos pegar outro trecho para analisarmos. **Ya UMRYares de aAos** se parece muito com "há milhares de anos". Dessa forma, encontramos `Y`, `U`, `M`, `R` e `A`!
+Vamos pegar outro trecho para analisarmos. **Ya UMRYares de aAos** se parece
+muito com "há milhares de anos". Dessa forma, encontramos `Y`, `U`, `M`, `R` e
+`A`!
 
-> se enHana IVem pensa IVe a WriptoHraEia sVrHiV reWentemente. apesar de ter se moderniKado mVito Wom o adDento dos WompVtadores, essa WienWia Oa ePiste **ha milhares de anos**, Disto IVe o siHilo de inEormaWoes nao e Vma neWessidade reWente.
+> se enHana IVem pensa IVe a WriptoHraEia sVrHiV reWentemente. apesar de ter se
+moderniKado mVito Wom o adDento dos WompVtadores, essa WienWia Oa ePiste **ha
+milhares de anos**, Disto IVe o siHilo de inEormaWoes nao e Vma neWessidade
+reWente.
 
-Estamos quase terminando, faltam poucas letras. Seguindo esse mesmo método, conseguimos terminar de decifrar o texto e sabemos qual a chave que foi utilizada, lembrando que a chave na cifra de subsituição é o alfabeto permutado. Por fim, temos o texto em claro:
+Estamos quase terminando, faltam poucas letras. Seguindo esse mesmo método,
+conseguimos terminar de decifrar o texto e sabemos qual a chave que foi
+utilizada, lembrando que a chave na cifra de subsituição é o alfabeto
+permutado. Por fim, temos o texto em claro:
 
-> Se engana quem pensa que a criptografia surgiu recentemente. Apesar de ter se modernizado muito com o advento dos computadores, essa ciência já existe há milhares de anos, visto que o sigilo de informações não é uma necessidade recente.
+> Se engana quem pensa que a criptografia surgiu recentemente. Apesar de ter se
+modernizado muito com o advento dos computadores, essa ciência já existe há
+milhares de anos, visto que o sigilo de informações não é uma necessidade
+recente.
 
 ### Cifra de Vigenère
 
