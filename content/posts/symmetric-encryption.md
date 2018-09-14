@@ -84,7 +84,7 @@ importante entender como eles funcionam e quais são suas falhas.
 {{< figure src="/blog/img/posts/symmetric-encryption/caesar1.png" width="220" height="160">}}
 </center>
 
-_Usamos ela em um dos desafios iniciais do [decifre.me!](decifre.me)_
+_Usamos ela em um dos desafios iniciais do [decifre.me!](https://decifre.me)_
 _Segue a [resolução](../resolvendo0) dos 3 primeiros desafios_
 
 A Cifra de César é um dos algoritmos criptográficos mais simples. É uma cifra
