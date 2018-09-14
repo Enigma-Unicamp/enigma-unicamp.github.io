@@ -15,7 +15,7 @@ weight: 1
 <center>
 _[Slides](https://enigma.ic.unicamp.br/talks/simetrico/simetrico.pdf)
 usados na palestra do dia 12/09/18, tratando sobre o mesmo assunto que este
-post.
+post_
 </center>
 
 Se engana quem pensa que a criptografia surgiu recentemente. Apesar de ter se
