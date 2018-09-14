@@ -1,39 +1,73 @@
 ---
 author: "tala1m"
-date: 2018-08-07
+date: 2018-09-14
 linktitle: Introdução ao Terminal
 title: Guia Introdutório ao Terminal do Linux
 categories: ["ENIGMA"]
-tags: ["arquivo"]
+tags: ["bash", "linux"]
 weight: 1
 description: Uma visão geral sobre alguns programas úteis do terminal do Linux para ações offline e uma breve passada por curl e wget. Aumente o seu potencial com o famigerado verde no preto, afinal quem precisa de interface gráfica?
 ---
 
-# 0 - Acesso e controle aos diretórios
-## 0.0 - `help` e `man`
-Lista de comandos e manuais de referência
+Muitas pessoas conseguem viver bem através da interface gráfica, e tudo bem! Contudo, 
+ nem sempre existirá essa opção, ou simplesmente você não estará disposta a seguir um tutorial
+ de como redirecionar o __X__ através de __SSH__, por mais tentador que isto seja. Sendo assim,
+ aqui está uma lista de comandos e programas úteis para se usar no simulador de terminal do Linux. 
 
-## 0.1 - `pwd`
+# Terminal x Shell
+Para esclarecer um pouco sobre a plataforma onde iremos inserir nossos comandos uma breve definição. 
+
+**Shell** é um programa interativo que processa comandos e retorna seu resultado. A maioria destes programas permite processos rodando em _background_, além daqueles rodando em primeiro plano, histórico de comandos e execução de _scripts_. Essas funções estão presentes no _Bash_, o shell com sintaxe baseada em _Bourne shell_ distribuído nativamente na maioria das distribuições Linux.
+
+Um **terminal** normalmente refere-se a um programa que permite a execução de um shell. Antigamente tratava-se de um dispositivo físico, consistindo de pouco mais que um teclado e um monitor. Com a melhoria dos sistemas unix/linux, com multiprocessamento e gerenciamento de janelas, o conceito foi abstraído para tornar-se um software, como o _Gnome Terminal_ que, como se esperaria pela definição aqui colocada, permite a execução de um shell dentro de uma janela do ambiente Gnome. 
+
+# Ajuda e documentação
+No _bash_ podemos executar `help` para ver uma lista dos comandos disponíveis. Para ver uma lista de programas executáveis, use `compgen -c`. Em geral existem três alternativas para ver a documentação de um comando:
+
+```sh
+COMANDO -h
+COMANDO --help
+man COMANDO
+```
+
+## Como ler a documentação
+Tomemos como exemplo o modo de uso do `man`:  
+```sh
+$ man -h
+usage: man [-acfhklw] [-C file] [-M path] [-m path] [-S subsection]
+           [[-s] section] name ...
+```
+_Obs.: O cifrão **$** presente em exemplo de códigos não deve ser copiado, ele representa um comando que está sendo executado com permissão de um usuário comum, em contraste a execução com privilégios de administrador, que teriam uma cerquilha **#** precedendo o comando._
+
+Pode parecer muito confuso, mas na verdade, como vimos, basta escrever `man COMANDO` para uma execução válida. O que temos aqui são parâmetros opcionais, marcados pelos \[colchetes\], a cada par de \[ \] temos um grupo de opções mais detalhadas no decorrer do manual do comando, todas elas, neste caso, marcadas adicionalmente por um traço horizontal **-** antes de uma letra que descreve uma opção, por exemplo `-h` para ajuda, como mostrado acima.
+
+# Acesso e controle de diretórios
+
+## `pwd`
 Mostra o **caminho** para o diretório atual
+```sh
+$ pwd
+/home/foobar
+```
 
-## 0.2 - `ls`
+## `ls [path]`
 Mostra o conteúdo do caminho especificado (padrão: diretório atual).
 -a e -A : mostra até ocultos, mas o segundo ignora link para pasta atual e superior
 
-## 0.3 - `mkdir`
+## `mkdir`
 Cria diretórios
 -p: Cria o caminho se inexistente
 
-## 0.4 - `cd`, `pushd` e `popd`
+## `cd`, `pushd` e `popd`
 Navegação em diretórios
 
-## 0.5 - `touch`
+## `touch`
 Altera a data de modificação ou acesso de um arquivo (útil para criar um arquivo vazio)
 
-## 0.6 - `vim` e `nano`
+## `vim` e `nano`
 Editores
 
-# 1 - Bash
+# Bash como linguagem
 ## 1.1 - Variáveis
 - $?: Último reusltado
 - $1..9: Parâmetros
