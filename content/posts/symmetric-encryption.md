@@ -84,10 +84,10 @@ importante entender como eles funcionam e quais são suas falhas.
 {{< figure src="/blog/img/posts/symmetric-encryption/caesar1.png" width="220" height="160">}}
 </center>
 
-_Usamos essa cifra no [decifre.me](https://decifre.me)!_
+_Usamos ela em um dos desafios iniciais do [decifre.me!](decifre.me)_
+_Segue a [resolução](../resolvendo0) dos 3 primeiros desafios_
 
-A Cifra de César é um dos algoritmos criptográficos mais simples (usamos ela em
-um dos [desafios do decifre.me!](../resolvendo0)). É uma cifra
+A Cifra de César é um dos algoritmos criptográficos mais simples. É uma cifra
 de substituição em que cada letra é trocada por outra que está a um número
 fixo de posições de distância. A chave é simplesmente esse número. Por exemplo,
 se a chave for **K=4**, a letra A será substituída por E. Seguindo essa
