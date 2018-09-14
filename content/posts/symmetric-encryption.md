@@ -6,7 +6,9 @@ title: Criptografia de chave simétrica
 tags: ["criptografia", "chave", "simétrica"]
 description: "Os primeiros algoritmos criptográficos foram os de chave
               simétrica. Dentre eles, Cifra de César, Cifra de Subsituição
-              Simples, Cifra de Vigenère, etc."
+              com Permutação do Alfabeto, Cifra de Vigenère, etc. Eles são
+              denominados algoritmos criptográficos de chave simétricas, e
+              hoje explicaremos melhor o que isso significa."
 weight: 1
 ---
 
@@ -80,7 +82,7 @@ importante entender como eles funcionam e quais são suas falhas.
 {{< figure src="/blog/img/posts/symmetric-encryption/caesar1.png" width="220" height="160">}}
 </center>
 
-_Usamos essa cifra no [decifre.me](https://enigma.ic.unicamp.br/blog/posts/resolvendo0/)!_
+_Usamos essa cifra no [decifre.me](https://decifre.me)!_
 
 A Cifra de César é um dos algoritmos criptográficos mais simples (usamos ela em
 um dos [desafios do decifre.me!](../resolvendo0)). É uma cifra
@@ -103,13 +105,13 @@ coerente.
 
 <br/>
 
-### Cifra de Substituição Simples
+### Cifra de Substituição com Permutação do Alfabeto
 
-Cifras de subsituição são aquelas em que o alfabeto é permutado. Ou seja,
-geramos um alfabeto de substituição. Então, a letra **a** deve ser substituída
-por **X**, a letra **x** por **J**, e assim por diante. Há uma variação dessa
-técnica em que as letras também podem ser substituídas por símbolos não
-pertencentes ao alfabeto. Por exemplo, **a** por **%**, **x** por **#**, etc.
+Neste modelo, permutamos o alfabeto, gerando um alfabeto de substituição. Então, a
+letra **a** deve ser substituída por **X**, a letra **x** por **J**, e assim por
+diante. Há uma variação dessa técnica em que as letras também podem ser
+substituídas por símbolos não pertencentes ao alfabeto. Por exemplo, **a** por
+**%**, **x** por **#**, etc.
 
 Por exemplo, podemos criar um alfabeto da seguinte forma:
 
@@ -143,22 +145,22 @@ E como atacamos isto? Dessa vez, temos muitas mais opções de chave do que na
 Cifra de César. Como cada variação do alfabeto é uma chave válida, temos **26!**
 chaves! Isso é algo perto de 4 x 10^26. Logo, atacar esse problema com força bruta no número de chaves não
 parece uma boa alternativa. A fraqueza dessa cifra está em outro ponto. Mesmo se
-removéssemos espaços, números e pontuação, o texto ainda manteria uma estrutura
+removêssemos espaços, números e pontuação, o texto ainda manteria uma estrutura
 muito próxima daquela existente no texto original, no que diz respeito ao
 histograma dos caracteres (a frequência em que eles ocorrem no texto). Quem
 percebeu isso foi um [religioso árabe](https://en.wikipedia.org/wiki/Al-Kindi)
 do século IX, enquanto tentava descobrir a data dos textos do Alcorão segundo a
 frequência de suas letras.
 
-Todos os idiomas tem uma [frequência média de
-letras](https://pt.wikipedia.org/wiki/Frequ%C3%AAncia_de_letras) nos textos.
-Essa frequência segue uma distribuição, sendo, então, determinístico. Isso
-ocorre por causa da [Lei de Zipf](https://en.wikipedia.org/wiki/Zipf's_law), e
-ocorre em todos os idiomas e não afeta só a frequência das letras, também a das
-palavras. Aliás, afeta muitas coisas além de linguística. Recomendo [ver este
+A Língua Portuguesa apresenta uma frequência média de ocorrência das letras nos
+textos.  Essa frequência segue uma distribuição. Isso ocorre por causa da [Lei
+de Zipf](https://en.wikipedia.org/wiki/Zipf's_law), que na verdade ocorre em
+[todos os idiomas](https://pt.wikipedia.org/wiki/Frequ%C3%AAncia_de_letras) e
+não afeta somente a frequência das letras, mas também das palavras. Aliás, afeta
+muitas coisas além de linguística. Recomendo [ver este
 vídeo](https://www.youtube.com/watch?v=fCn8zs912OE) se quiser saber mais.
 
-Por exemplo, esse é o histograma da língua portuguesa:
+Este é o histograma da língua portuguesa:
 
 | Letra | Frequência |
 |---|---|
@@ -181,7 +183,7 @@ ZG  USNGJAMKLNS  UVMBS  WSU  S  LNDGABS  NSZ WSUXVBLNSJGZ,  GZZL  WMGAWML  OL
 GPMZBG  YL  UMRYLJGZ  NG  LASZ, DMZBS  IVG  S  ZMHMRS  NG  MAESJULWSGZ  ALS  G  
 VUL  AGWGZZMNLNG JGWGABG....
 
-Se fizemos um histograma desse texto, obteremos a seguinte tabela:
+Se fizermos um histograma desse texto, obteremos a seguinte tabela:
 
 | Letra | Frequência|
 |---|---|
@@ -201,9 +203,9 @@ letra `e` e `S` ser `o`. Quanto maior o texto, mais isso é verdade, porque mais
 se aproxima da frequência média. Em textos muito pequenos essa análise não irá
 funcionar muito bem. As letras de menor ocorrência (`x`, `k`, `w`, `y`) serão
 as que ficarão mais longe da posição correta, mas isso não é problema para nós,
-já que as cinco primeiras letras já cobrem 50% do texto. No nosso texto, a
-relação entre o nosso histograma e o histograma da língua portuguesa não está
-perfeito, mas substituindo corretamente apenas as cinco primeiras letras
+já que as cinco primeiras letras já cobrem 50% do texto. A
+relação entre o histograma do nosso texto e o da língua portuguesa não está
+perfeita, mas substituindo corretamente apenas as cinco primeiras letras
 obtemos (letras em maísculo ainda estão cifradas e minísculas estão em claro):
 
 > se eAHaAa IVeU XeAsa IVe a WrMXBoHraEMa sVrHMV reWeABeUeABe. aXesar Ne Ber se
@@ -246,8 +248,8 @@ reWente.
 
 Estamos quase terminando, faltam poucas letras. Seguindo esse mesmo método,
 conseguimos terminar de decifrar o texto e sabemos qual a chave que foi
-utilizada, lembrando que a chave na cifra de subsituição é o alfabeto
-permutado. Por fim, temos o texto em claro:
+utilizada, lembrando que a chave neste modelo é o alfabeto permutado. Por fim,
+temos o texto em claro:
 
 > Se engana quem pensa que a criptografia surgiu recentemente. Apesar de ter se
 modernizado muito com o advento dos computadores, essa ciência já existe há
@@ -259,11 +261,11 @@ recente.
 Vamos supor que queiramos encriptar a frase `reuniaodoenigmaquartafeira`. É
 escolhida uma chave qualquer, por exemplo, `K=CARRO`. Ela é então repetida até
 atingir o tamanho da mensagem, gerando `CARROCARROCARROCARROCARROC`. Então, a
-mensagem será encriptada assim: à primeira letra da mensagem devem ser
-adicionadas 2 unidades, pois a primeira letra da chave é C, terceira letra do
-alfabeto. Então, o R é substituído por T. À segunda letra da mensagem (E), 0
-unidades devem ser adicionadas, pois a segunda letra da chave é A. E assim por
-diante. O resultado final é:
+mensagem será encriptada assim: à primeira letra da mensagem (`R`) devem ser
+adicionadas 2 unidades, pois a primeira letra da chave é `C`, terceira letra do
+alfabeto. Então, o `R` é substituído por `T`. À segunda letra da mensagem (`E`),
+0 unidades devem ser adicionadas, pois a segunda letra da chave é `A`. E assim
+por diante. O resultado final é:
 
 <center><pre>
 mensagem: reuniaodoenigmaquartafeira
@@ -284,11 +286,13 @@ todas as rotações possíveis e as suas letras correspondentes.
 _Quadrado ou tabela de Vigenère_
 </center>
 
-Mas então, podemos utilizar a Cifra de Vigenère para encriptar mensagens?
-Na verdade, **não**. Ela também possui uma fraqueza, a **natureza repetitiva
-da chave**. Em 1863, Friedrich Kasiski foi o primeiro a publicar um ataque
-à Cifra de Vigenère. Ele se baseou no fato de que palavras repetidas de um
-texto podem acabar sendo cifradas pela mesma parte da chave. Por exemplo:
+Mas então, podemos utilizar a Cifra de Vigenère para encriptar mensagens?  Na
+verdade, **não**. Ela também possui uma fraqueza, a **natureza repetitiva da
+chave**. Em 1863, [Friedrich
+Kasiski](https://pt.wikipedia.org/wiki/Friedrich_Kasiski) foi o primeiro a
+publicar um ataque à Cifra de Vigenère. Ele se baseou no fato de que palavras
+repetidas de um texto podem acabar sendo cifradas pela mesma parte da chave. Por
+exemplo:
 
 <center>
 <pre>
@@ -304,11 +308,12 @@ cifra: <b>CSASTP</b>KVSIQUTGQU<b>CSASTP</b>IUAQJB
 A distância entre a repetição **CSASTP** é de 16 caracteres. Assim, todos os
 divisores de 16 são possíveis tamanhos da chave K. Isso porque se o tamanho da
 chave não fosse divisor de 16, a repetição não estaria a 16 caracteres
-de distância, já que na 16ª posição não teríamos o primeiro elemento da chave.
-Então, por absurdo, ela só pode ter tamanho `1, 2, 4, 8, 16`.
+de distância da primeira ocorrência, já que na 16ª posição não teríamos o
+primeiro elemento da chave. Então, por absurdo, ela só pode ter tamanho
+`1, 2, 4, 8, 16`.
 
 Caso o atacante perceba que há mais de uma repetição, ele pode utilizar o
-mesmo procedimento acima, obtendo outros conjuntos divisores. Depois, basta
+mesmo procedimento acima, obtendo outros conjuntos de divisores. Depois, basta
 calcular a intersecção entre esses conjuntos. Com isso ele sabe todos os
 possíveis tamanhos de chaves.
 
@@ -319,18 +324,19 @@ possíveis tamanhos de chaves.
 <i>Texto cifrado com Vigenère e mais de uma repetição visível</i>
 </center>
 
-Utilizando algumas técnicas de estatística, como o **teste de Friedman**, é
+Utilizando algumas técnicas de estatística, como o [teste de
+Friedman](https://www.nku.edu/~christensen/1402%20Friedman%20test%202.pdf), é
 possível encontrar um tamanho de chave com maior probabilidade de ser o certo.
 
 Após encontrado o tamanho da chave (no nosso caso, **n=4**), sabemos que ela é
 formada pelos caracteres **K1 K2 K3 K4**. Assim, a cada 4 letras do texto
 cifrado temos uma letra que foi cifrada pelo elemento **K1** da chave.  Com
 isso, podemos pegar só as letras que foram cifradas por **K1** e fazer uma
-análise de frequência nelas, bem como faziamos nas Cifras de Substituição
-Simples. Dessa maneira, podemos identificar quem é **K1**. O mesmo vale para os
-outros elementos da chave. Após identificar alguns valores da chave, começa a
-ficar mais fácil de decriptar o texto. Porém, esse método só é valido para
-textos relativamente grandes
+análise de frequência nelas, bem como fizemos nas **Cifras de Substituição com
+Permutação do Alfabeto**. Dessa maneira, podemos identificar quem é **K1**. O
+mesmo vale para os outros elementos da chave. Após identificar alguns valores da
+chave, começa a ficar mais fácil de decriptar o texto. Porém, esse método só é
+valido para textos relativamente grandes
 
 <br/>
 
@@ -360,19 +366,24 @@ _Note que é impossível recuperar a mensagem sem conhecer a chave_
 Porém, gerar chaves não determinísticas de mesmo tamanho que as mensagens é um
 processo muito custoso. O que é feito é utilizar chaves menores do que o tamanho
 da própria mensagem. Mas como já vimos na Cifra de Vigenère, **repetir a chave
-não é uma boa ideia**, pois um padrão será formado.
+não é uma boa ideia**, pois um padrão pode ser formado na mensagem cifrada.
 
-Por isso, o DES e o AES possuem métodos para "reaproveitar" a chave. Teremos
-então um dígito binário de chave para cada dígito binário da mensagem. Porém,
-o DES utiliza uma chave muito pequena (56-bits), facilitando um possível ataque.
+Por isso, o DES e o AES possuem métodos para expandir a chave sem gerar um
+padrão de repetição. Teremos então um dígito binário de chave para cada dígito
+binário da mensagem. Porém, o DES utiliza uma chave muito pequena (56-bits),
+facilitando um possível ataque.
 
-* Em 1999, conseguiram quebrar uma mensagem encriptada pelo DES em
-aproximadamente **22h**.
-* Por esse e outros motivos políticos (a NSA ter reduzido o tamanho da chave
-do DES de 64-bits para 56-bits), o DES foi substituído.
-* Tempo para quebrar uma mensagem encriptada pelo 256-bit AES: com um poder de
-processamento **absurdo**, capaz de checar **10^28** chaves AES por segundo,
-levariam **3x10^51** anos para testar todas as possibilidades de chaves.
+* Em 1999, [conseguiram quebrar uma mensagem encriptada pelo DES em
+aproximadamente 22h](https://en.wikipedia.org/wiki/Data_Encryption_Standard).
+* Por esse motivo e outros (por exemplo, polêmicas sobre o envolvimento da NSA
+no design do algoritmo, influenciando a alteração do tamanho da chave do DES de
+64-bits para 56-bits com o argumento de ser necessário utilizar os outros 8-bits
+como bits de paridade), o DES foi substituído.
+* [Tempo para quebrar uma mensagem encriptada pelo 256-bit
+AES](https://en.wikipedia.org/wiki/Brute-force_attack): com um poder de
+processamento **absurdo**, de 50 supercomputadores capazes de checar **10^28**
+chaves por segundo (cada um deles), **3x10^51** anos seriam necessários para
+testar todas as possibilidades.
 
 <br/>
 
