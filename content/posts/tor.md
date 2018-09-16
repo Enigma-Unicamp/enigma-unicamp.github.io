@@ -15,6 +15,15 @@ Agora você, cidadã desde país, está muito insatisfeita com a atual política
 
 Você acessa o site e fica muito contente de ver que não é a única! Imprime alguns planfetos, coloca no mural do centro acadêmico, fala sobre isso no bandejaum e... é presa. 
 
+- como eles descobriram?
+
+- e se usasse Tor?
+
+- Devido a um embargo, os países não querem mais hospedar sites pró-festa em suas nações. Como hospedar anonimamente?
+
+- e se só uma pessoa do país usasse tor?
+
+
 <center>
 {{< figure src="/blog/img/posts/genesis/thecreationoflight.jpg" width="400" >}}
 _The Creation of Light,  
