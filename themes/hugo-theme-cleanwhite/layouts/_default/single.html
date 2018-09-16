@@ -35,7 +35,6 @@
 <!-- Post Content -->
 <article>
     <div class="container">
-        <div class="row">
 
             <!-- Post Container -->
             <div class="
@@ -43,7 +42,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-		{{ if eq .Params.showtoc false }}
+		{{ if eq .Site.Params.showtoc false }}
 		{{ else }}
                 <header>
                 <h2>TOC</h2>
@@ -101,7 +100,6 @@
                     {{ end }}
                 </ul>
             </div>
-        </div>
     </div>
 </article>
 
