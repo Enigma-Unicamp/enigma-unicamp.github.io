@@ -28,7 +28,7 @@ home = ["HTML", "RSS"]
   leancloud_app_key = ""
 
   # Sidebar settings
-  sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
+  sidebar_about_description = "O Enigma é uma entidade formada por alunos e alunas da Unicamp com o propósito de estudar privacidade, segurança e criptografia, além de outros assuntos relacionados."
   sidebar_avatar = "img/enigma_logo.png"
 
   featured_tags = false
@@ -40,18 +40,9 @@ home = ["HTML", "RSS"]
 
   [params.social]
   rss            = true 
-  email          = "youemail@gmail.com"
+  email          = "enigmaunicamp@tutanota.com"
   #telegram TODO
  
-  [[params.bookmark_link]]
-  title =  "Martin Fowler"
-  href =  "https://martinfowler.com"
-  [[params.bookmark_link]]
-  title = "ServiceMesh中文网"
-  href =  "http://www.servicemesh.cn"
-  [[params.bookmark_link]]
-  title = "Awesome Service Mesh"
-  href = "https://servicemesh.gitbooks.io/awesome-servicemesh"
-  [[params.bookmark_link]]
-  title =  "Image Compression"
-  href = "https://tinypng.com"
+  # [[params.bookmark_link]]
+  # title =  "Martin Fowler"
+  # href =  "https://martinfowler.com"
