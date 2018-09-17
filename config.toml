@@ -41,7 +41,8 @@ home = ["HTML", "RSS"]
   [params.social]
   rss            = true 
   email          = "enigmaunicamp@tutanota.com"
-  #telegram TODO
+  telegram       = "https://t.me/enigmaunicamp"
+  gitlab         = "https://gitlab.com/enigmaster"
  
   # [[params.bookmark_link]]
   # title =  "Martin Fowler"
