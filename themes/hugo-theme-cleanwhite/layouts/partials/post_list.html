@@ -18,8 +18,17 @@
        {{ end }}
         </div>
     </a>
-    <p class="post-meta">
-    Posted by {{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }} {{ .Date.Format "Monday, January 2, 2006" }}
+    <p class="post-meta"> Posted by 
+                          {{ if .Params.author }}
+                            {{ if eq (printf "%s" .Params.author) .Params.author }}
+                              {{ .Params.author }}
+                            {{ else }}
+                              {{ delimit .Params.author ", " " and " }}
+                            {{ end }}
+                          {{ else }}
+                            {{ .Site.Title }}
+                          {{ end }} 
+                          on {{ .Date.Format "Monday, January 2, 2006" }}
     </p>
 </div>
 <hr>

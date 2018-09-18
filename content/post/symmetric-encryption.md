@@ -1,5 +1,5 @@
 ---
-author: ["Tony", "Leandro"]
+author: ["tony", "leandro"]
 date: 2018-09-12
 linktitle: Criptografia de chave simétrica
 title: Criptografia de chave simétrica
