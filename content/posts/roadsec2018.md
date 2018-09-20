@@ -21,7 +21,7 @@ comunidades locais com atividades especiais e muito mais. Além disso, o evento
 será encerrado com shows do Gabriel Pensador e Marcelo D2.
 
 Veja a programação completa [aqui](http://roadsec.com.br/saopaulo-2018) e um
-vídeo da edição passada pode ser assistida
+vídeo da edição passada pode ser assistido
 [aqui](https://www.youtube.com/watch?v=lSy5NFQfXAk).
 
 ### Informações da caravana
@@ -47,13 +47,15 @@ formulário de inscrição
 [aqui](http://roadsec.com.br/participe/#rodies) e entrar de graça. Mesmo assim,
 para garantir a vaga no ônibus, preencha o formulário.
 
-**Para garantir sua vaga, envie o comprovante de depósito (informações de
-pagamento no link de inscrição) para: enigmaunicamp@tutanota.com**
+### Inscrição
 
 Se inscreva no formulário
 [aqui](https://oasis.sandstorm.io/shared/t3XuSKcSICELVIHQ4OJEAkOxO65P9sI5S4_BajkEcR3)!
 
-### Informações do evento (fornecidas pelos organizadores)
+**Para garantir sua vaga, envie o comprovante de depósito (informações de
+pagamento no link de inscrição) para: enigmaunicamp@tutanota.com**
+
+#### Informações do evento (fornecidas pelos organizadores)
 
 <center>
 {{< figure src="/blog/img/posts/roadsec2018/poster0.jpg" width="500" >}}
@@ -133,6 +135,7 @@ CONDUTA](https://roadsec.com.br/conduta) para curtir 100% do evento
 #### Informações Principais do Evento
 
 Data: 10/11/2018
+
 Local: Áudio Clube (Avenida Francisco Mattarazzo, 694 - Água Branca)
 
 Horários Evento:
