@@ -10,7 +10,11 @@
     <meta name="keyword"  content="{{ .Site.Params.keyword }}">
     <link rel="shortcut icon" href="{{ "img/favicon.ico" | absURL }}">
 
-    <title>{{ if .Title }}{{ .Title }}-{{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title>
+    <title>{{ if eq .Title .Site.Title }}
+             {{ .Site.Title }}
+           {{ else }}
+             {{ .Site.Title }} • {{ .Title }}
+           {{ end }} </title>
 
     <link rel="canonical" href="{{ .URL | absURL }}">
 
