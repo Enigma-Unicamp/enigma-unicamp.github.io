@@ -1,5 +1,5 @@
 baseurl = "enigma.ic.unicamp.br/blog/"
-title = "ENIGMA"
+title = "Enigma"
 theme = "hugo-theme-cleanwhite"
 languageCode = "pt-br"
 # Enable comments by entering your Disqus shortname
