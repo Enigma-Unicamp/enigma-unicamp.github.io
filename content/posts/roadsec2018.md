@@ -41,7 +41,7 @@ formulário de inscrição
 
 - **Local:** Audio Club - São Paulo, SP
 
-- **Valor:** R$85,00
+- **Valor:** R$85,00 (inclui ingresso e ônibus)
 
 - **Voluntariado:** se não puder arcar com o custo, você pode se voluntariar
 [aqui](http://roadsec.com.br/participe/#rodies) e entrar de graça. Mesmo assim,
