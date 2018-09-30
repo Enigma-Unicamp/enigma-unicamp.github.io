@@ -1,43 +1,90 @@
 ---
 author: ["tony", "danilo"]
-date: 2018-09-03
-linktitle: Tor
-title: "Tor: navegando no anonimato"
+date: 2018-09-29
+linktitle: privacidade-tor-pgp
+title: "Tor e PGP: navegando no anonimato"
 categories: ["ENIGMA", "talks"]
 tags: ["tor", "talks", "privacidade"]
 weight: 1
 description:
 ---
 
-Imagine você em um país, chamado "". Nesse país, apesar da aparente democracia, seu povo não tinha poder. Tanto que seu adorável líder proibiu o festejo nas suas dependências e, não satisfeito, delimitou plenos poderes totais aos administradores da rede estatal, em nome do fim da pirataria, disseminação de vírus na rede e conteúdo impróprio. Como era previsto no instrumento que proibia as festividades, é proibido organizar, produzir ou divulgar qualquer conteúdo pró-festa.
+<center>
+_Slides da palestra do dia 26/09/18 [aqui](https://enigma.ic.unicamp.br/talks/privacy-tor-pgp/talk.pdf)_
+</center>
 
-Agora você, cidadã desde país, está muito insatisfeita com a atual política. [pais], assim como a [pais] e [pais], é regida por hierarquias e metas contraproducentes. Uma das poucas oportunidades de encontrar seus migos e relaxar agora foi cortada. Você então descobriu um website `www.voltafesta.net`, onde é possível ler manifestos pró-festa e encontrar datas de encontros clandestinos. Esse site está hospedado no exterior, em [], portanto não está em risco de ser perseguido.
+Imagine você em um país, chamado **Oceania**[^1]. Nesse país, apesar da aparente
+democracia, seu povo não tinha poder. Tanto que seu adorável líder proibiu o
+festejo nas suas dependências e, não satisfeito, delimitou plenos poderes
+totais aos administradores da rede estatal, em nome do fim da pirataria,
+disseminação de vírus na rede e conteúdo impróprio. Como era previsto no
+instrumento que proibia as festividades, é proibido organizar, produzir ou
+divulgar qualquer conteúdo pró-festa.
 
-Você acessa o site e fica muito contente de ver que não é a única! Imprime alguns planfetos, coloca no mural do centro acadêmico, fala sobre isso no bandejaum e... é presa.
+Agora você, cidadã desde país, está muito insatisfeita com a atual política.
+Oceania, assim como a Eurásia e a Lestásia, é regida por hierarquias e metas
+contraproducentes. Uma das poucas oportunidades de encontrar seus migos e
+relaxar agora foi cortada. Você então descobriu um website
+`www.voltafesta.net`, onde é possível ler manifestos pró-festa e encontrar
+datas de encontros clandestinos. Esse site está hospedado no exterior e
+portanto não está em risco de ser perseguido.
+
+Você acessa o site e fica muito contente de ver que não é a única! Imprime
+alguns planfetos, coloca no mural do centro acadêmico, fala sobre isso no
+bandejão e... é presa.
 
 ### Rastros na navegação
 
-Apesar de ter agido discretamente, as autoridades conseguiram facilmente descobrir quem tinha acessado o `www.voltafesta.net`. Isso é por causa da arquitetura da Internet, e de como ela foi construída. Quando uma pessoa requer uma página web, ela tem que requisitar para um intermediário para realizar o serviço. A sua máquina não está conectada diretamente ao `www.facebook.com`, por exemplo, mas o seu provedor de internet (Vivo, NET, ...), esse sim está. Portanto, é assim que funciona:
+Apesar de ter agido discretamente, as autoridades conseguiram facilmente
+descobrir quem tinha acessado o `www.voltafesta.net`. Isso é por causa da
+arquitetura da Internet, e de como ela foi construída. Quando uma pessoa requer
+uma página web, ela tem que requisitar para um intermediário para realizar o
+serviço. A sua máquina não está conectada diretamente ao `www.facebook.com`,
+por exemplo, mas o seu provedor de internet (Vivo, NET, ...), esse sim está.
+Portanto, é assim que funciona:
 
 1. Você pede ao seu navegador para acessar o `www.voltafesta.net`
-1. Seu navegador envia um pacote HTTP/S para o seu ISP (Internet Service Provider)
-1. Seu ISP, conhecendo onde está hospedado o `www.voltafesta.net`, pede para ele a página e te devolve.
+1. Seu navegador envia um pacote HTTP/S para o seu ISP (_Internet Service
+Provider_) pedindo a página do site
+1. Seu ISP, conhecendo onde está hospedado o `www.voltafesta.net`, pede para ele a página e te devolve
+1. Tanto o ISP quanto o `www.voltafesta.net` conhecem o IP de quem quer a página.
 
-O conteúdo da página pode até vir de forma cifrada, de forma que só você e as administradoras do `www.voltafesta.net` conheçam seu conteúdo. Contudo, quem estiver no passo 2., pode conhecer quem pediu cada página. Como os administradores de rede do país ganharam poderes irrestritos, eles podem tranquilamete checar esse dado. E foi assim que te prenderam. Mesmo usando um serviço de internet privado, o estado pode requerer deles informações de seus usuários em nome da segurança nacional.[^1] Inclusive, poucas empresas resistiram em fazê-lo.
+O conteúdo da página pode até vir de forma cifrada, de forma que só você e as
+administradoras do `www.voltafesta.net` conheçam seu conteúdo. Contudo, quem
+estiver no passo 2., pode conhecer quem pediu cada página, através do endereço IP, que identifica máquinas na Internet (os endereços IP não são identificadores únicos de cada máquinas, mas com dados suficientes é possível traçar uma correlação). Como os
+administradores de rede do país ganharam poderes irrestritos, eles podem
+tranquilamete checar esse dado. E foi assim que te prenderam. Mesmo usando um
+provedor de internet privado, o estado pode requerer deles informações de seus
+usuários em nome da segurança nacional. Inclusive, poucas empresas
+resistiram em fazê-lo quando aconteceu.[^1][^3] Na verdade, qualquer
+intermediário entre você e o site que esteja _sniffando_ a rede consegueria ler
+seus pacotes e conhecer seu acesso.
 
 ### Navegando sem rastros
-
 Agora imaginemos que, em uma realidade alternativa a essa em que você foi a uma palestra de uma entidade de privacidade da sua faculdade, chamada Charada e com um quebra cabeça de logo. Nessa palestra você que é possível navegar anonimamente. Como isso é possível?
 
-#### Utilizando um proxy
-Um jeito de se proteger desta vigilância é a utilização de um proxy. Em vez de você se conectar diretamente com `www.voltafesta.net`, você pode primeiro conectar-se a um intermediário - o proxy. Este intermediário, que também atende a vários outros usuários, irá fazer a conexão com o destinatário para você. Desta forma, alguém que estiver espionando seu tráfego irá ver apenas uma conexão cifrada entre você e o servidor proxy. Caso o proxy também esteja sob vigilância de algum terceiro, ele poderá ver a conexão entre o proxy e o destinatário. Entretanto, como há vários outros usuários acessando o mesmo proxy para navegação, não é trivial determinar que é você quem está acessando o destinatário.
+#### VPN/Proxy
 
-Ora, parece que o problema está resolvido, então, né? É só você se conectar a um proxy. Desde que esse proxy tenha um número considerável de usuários, seja *confiável e se comprometa a não entregar as suas informações*, sua anonimidade estará protegida. Entretanto, na Internet **confiar pode ser um luxo**. Como você pode confiar em um servidor público de proxy?
+Por motivos de simplicidade, vamos considerar a arquitetura de um Proxy e de uma VPN (_Virtual Private Network_) como iguais.
+
+Já que nos descobriram pelo nosso endereço IP, vamos tentar usar o IP de outra pessoa na requisição. Esse é um dos propósitos de uma VPN: ela empresta o IP dela para que não sei saiba quem pediu o site nem qual site foi pedido. Funciona da seguinte maneira:
+
+
+1. Você envia um pacote cifrado para a VPN. Dentro desse pacote, existe um pedido para acessar o `www.voltafesta.net`
+1. Seu ISP recebe o pacote e repassa para a VPN. Como o pacote está cifrado, o ISP não sabe qual foi o pedido
+1. A VPN, com posse da chave, abre o pacote e descobre que você quer acessar `www.voltafesta.net`. Ele então faz a requisição para o `www.voltafesta.net` e faz o caminho inverso para te entregar o pacote.
+1. O `www.voltafesta.net` só conhece o IP da VPN e não sabe quem pediu a página de verdade, e o ISP só conhece o IP da VPN e não sabe qual site foi pedido.
+
+Aparentemente o problema de conhecer o IP está resolvido. Mas a VPN sabe de tudo, como confiar na VPN?
 
 #### O problema da confiança
-Nos deparamos com um problema difícil: como achar alguém em quem podemos confiar e que esteja disposto a disponibilizar um servidor proxy público? Você poderia criar seu próprio servidor proxy. Entretanto, isso não resolve o problema! É necessário que várias pessoas acessem o mesmo servidor proxy para que seu tráfego seja misturado ao dos outros usuários e seja impossível - ou pelo menos difícil - determinar qual requisição é sua. Você poderia criar um servidor público de proxy, mas isso iria requerer bastantes recursos computacionais, uma vez que o tráfego precisa ser alto para garantir a anonimidade.
+Nos deparamos com um problema difícil: como achar alguém em quem podemos confiar e que esteja disposto a disponibilizar um servidor VPN público? Você poderia criar seu próprio servidor VPN. Entretanto, isso não resolve o problema! É necessário que várias pessoas acessem o mesmo servidor para que seu tráfego seja misturado ao dos outros usuários e seja impossível - ou pelo menos difícil - determinar qual requisição é de qual usuário. Você poderia criar um servidor VPN público, mas isso iria requerer bastantes recursos computacionais, uma vez que o tráfego precisa ser alto para garantir o anonimato.
 
 Uma solução para este problema é o **Tor**. Na verdade, o Tor não resolve o problema de achar alguém confiável. Entretanto, ele faz com que ninguém precise confiar em ninguém.
+
+#### A rede Tor
+
+Agora imaginemos que, em uma realidade alternativa a essa em que você foi a uma palestra de uma entidade de privacidade da sua faculdade, chamada Charada e com um quebra cabeça de logo. Nessa palestra você ouviu falar da rede Tor, e que nessa rede é possível navegar anonimamente. Como isso é possível?
 
 O Tor é uma rede de vários *relays*, ou nós, através dos quais seu tráfego é passado de forma cifrada até que chegue ao seu destino final. Geralmente três nós são utilizados: um de entrada, um de meio e um de saída.
 
@@ -85,4 +132,10 @@ Navegar pré setado para o anonimato e já conecta na rede Tor
 
 - ~~e se só uma pessoa do país usasse tor?~~
 
-[^1]: [PRISM (programa de vigilância)](https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29)
+[^1]: Oceania, Eurásia e Lestásia são países fictícios do mundo de 1984, de
+George Orwell
+
+[^1]: [PRISM](https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29) (programa de
+    vigilância)
+
+[^3]: Cypherpunks
