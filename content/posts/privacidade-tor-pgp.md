@@ -143,7 +143,9 @@ criptografia de ponta-a-ponta. O cliente, então, pede para que o nó do meio
 extenda o canal de comunicação com um terceiro nó: o nó de saída. Novamente o
 usuário combina uma chave para cifração de ponta-a-ponta com o terceiro nó.
 Finalmente, o cliente Tor pede para que o terceiro nó acesse a página
-`www.voltafesta.net`. Embora o nó de saída saiba que alguém está acessando
+`www.voltafesta.net`.
+
+Embora o nó de saída saiba que alguém está acessando
 `wwww.voltafesta.net`, ele não sabe de onde a conexão está vindo (ele enxerga
 apenas o nó do meio). Desta maneira, é muito difícil determinar quem está
 acessando. Temos, desta forma, uma conexão totalmente anônima entre você e
@@ -162,7 +164,12 @@ página de verdade, o nó de entrada só conhece seu IP, o nó do meio não sabe
 praticamente nada e o ISP só sabe que você fez uma conexão na rede Tor.
 
 Dessa forma, mesmo se alguém quiser contar o que sabe, ninguém tem a
-informação completa, te ligando ao site que você acessou.
+informação completa, te ligando ao site que você acessou. Para uma
+desanonimização ser bem sucedida, seria necessário um operador três os
+três nós do seu circuito ao mesmo tempo. Mas como os circuitos são formados
+de maneira aleatória, isso é muito improvável de acontecer. Se ele possuir
+o primeiro e o último, ele pode fazer uma correlação temporal do acesso,
+mas ele não conseguirá ter certeza.
 
 O conteúdo que você acessa na rede Tor é sigiloso e os administradores da rede
 não sabem o que você acessou. Contudo, o acesso a rede Tor em si não é
@@ -171,6 +178,11 @@ Tor, fica fácil perceber quem andou acessando conteúdos proibidos (embora sem
 provas diretas, só indícios). Mas você tem sorte, e convenceu suas amigas a
 proteger a privacidade delas também! Agora, com vários acessos a rede Tor, não
 é possível saber quem acessou o que, e niguém foi preso!
+
+Usando o Tor Browser, podemos ver os _relays_ que estamos usando para acessar
+algum site.
+
+
 
 O projeto Tor, no compromisso de transparência, deixa listado todos os IPs dos
 nós da rede Tor. Mas se o IP dos nós da rede Tor são publicos,
@@ -193,10 +205,36 @@ Pronto! Navegação anônima com sucesso :)
 Após a ameaça de embargo comercial caso os países continuassem hospedando
 sites pró-festa, o `www.voltafesta.net` caiu. Agora, você é a única disposta
 na sua nação a continuar o movimento. Mas não é difícil descobrir onde uma
-página (ou um servido web) está hospedada.
+página (ou um servido web) está hospedada. Por exemplo, o comando do
+GNU/Linux `whois` exibe algumas informações de quem possúi o domínio:
 
-**TODO:** ferramenta `whois`
+- Informação sobre o registro do domínio, como nome de contato, número de
+telefone e endereço de email
 
+- Servidor DNS responsável pelo domínio
+
+Por exemplo:
+
+```shell
+$ whois enigma.ic.unicamp.br
+
+...
+domain:      unicamp.br
+owner:       UNIVERSIDADE ESTADUAL DE CAMPINAS
+ownerid:     46.068.425/0001-33
+responsible: Coord Tecnologia da Inform e Comunicacao
+country:     BR
+...
+nic-hdl-br:  CTICO
+person:      Coord Tecnologia da Inform e Comunicacao
+e-mail:      noc@unicamp.br
+country:     BR
+created:     20061027
+changed:     20151022
+...
+```
+Conhecendo o servidor e, dependendo das leis do seu país, é possível
+requerer informações sobre o responsável por aquele domínio.
 
 ### Hospedando sem rastros
 
@@ -204,25 +242,70 @@ E você não quer correr riscos de ser presa hospedando conteúdo proibido. Já
 conseguimos acessar anonimamente usando a rede Tor, será que ela também
 permite hospedar conteúdos dessa forma?
 
-**TODO:** hospedar onion services
+Sim! É possível usar o que chamamos de _Onion Service_, que é um servidor
+hospedado na rede Tor. Os detalhes técnicos são bem complexos, então vamos
+dar uma simplificada. Basicamente, você irá, usando a rede Tor, entrar em
+contato com o servidor usando aqueles três nós, mas, dessa vez, serão 6 nós:
+3 do lado do cliente e 3 do lado do servidor. De forma anônima vocês
+combinarão em qual relay se encontrarão e assim será formada a conexão.
+Como o servidor está atrás de 3 _relays_ da rede Tor, e como visto
+anteriormente, isso garante anonimato, não teremos como descobrir onde está
+hospedado esse servidor. O endereços de serviços onion não podem ser
+simplesmente escolhidos pelo usuário, como em domínios normais, e são gerados
+automaticamente usando algumas informações
+criptográficas suas (nenhuma que comprometa sua segurança). Por exemplo,
+alguns endereços onion:
 
+- Projeto Tor: http://expyuzz4wqqyqhjn.onion/
+- Serviço de submissão de arquivos do WikiLeaks: http://wlupld3ptjvsgwqw.onion
+- Facebook: https://facebookcorewwwi.onion/ (veja como eles conseguiram esse endereço aqui[^4])
+
+Para abrir esses links `.onion`, é necessário usar o Tor Browser ou ter
+um proxy para a rede Tor na sua máquina.
 
 ## Como instalar o cliente Tor e o navegador Tor?
 
-### Cliente Tor
-
-Faz proxy e permiter hospedar relay
-
 ### Tor Browser
 
-Navegar pré setado para o anonimato e já conecta na rede Tor
+O jeito mais fácil de usar a rede Tor. Ele é _privacy by default_, ou seja
+as configurações protegem seu anonimato por padrão. O seu histório nem
+cookies são mantidos entre sessões e vem com extensões de segurança. Verifique
+esse endereço para baixá-lo: https://www.torproject.org/download/download-easy.html.en
 
-## Como rodar um relay Tor?
+Ele não necessita de instalação, basta baixar e executar. Se você não
+estiver em algum lugar em que a rede Tor é bloqueada, basta seguir as
+configurações padrões para começar a navegar.
 
-[^1]: Oceania, Eurásia e Lestásia são países fictícios do mundo de 1984, de
-George Orwell
+### Cliente Tor
+
+O cliente da rede Tor é uma aplicação que permite, entre outras coisas
+`torrificar` todo o tráfego da sua máquina por um proxy, fazendo ele passar
+pela rede tor e hospedar um _relay_. Para instalá-lo no GNU/Linux, use o
+seu gerenciador de pacotes e procure o pacote `tor`. Por exemplo:
+
+```shell
+$ sudo apt install tor
+```
+
+### Como rodar um relay Tor?
+
+A rede Tor é hoperada por voluntárias e voluntários e para atingir maior
+anonimato e performace de rede, é preciso de cada vez mais pessoas rodando
+_relays_. Embora exista uma certa complexidade em hospedar um _relay_, não
+é muito mais difícil do que hospedar outros serviços. Você pode encontrar
+um guia em português
+[aqui](https://trac.torproject.org/projects/tor/wiki/TorRelayGuide-ptbr).
+
+
+---
+
+[^1]: Oceania, Eurásia e Lestásia são países fictícios do mundo de 1984, de George Orwell
 
 [^1]: [PRISM](https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29) (programa de
     vigilância)
 
 [^3]: Cypherpunks
+
+[^4]: https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion
+
+https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/
