@@ -142,6 +142,7 @@ nós são utilizados: um de entrada, um de meio e um de saída.
 
 <center>
 {{< figure src="/blog/img/posts/privacidade-tor-pgp/how-tor-works.jpg" width="600" >}}
+_[Créditos](http://www.visualcapitalist.com/dark-web/)_
 </center>
 
 Suponhamos que você queira acessar `www.voltafesta.net` utilizando o Tor.
@@ -181,7 +182,7 @@ praticamente nada e o ISP só sabe que você fez uma conexão na rede Tor.
 
 Dessa forma, mesmo se alguém quiser contar o que sabe, ninguém tem a
 informação completa, te ligando ao site que você acessou. Para uma
-desanonimização ser bem sucedida, seria necessário um operador três os
+desanonimização ser bem sucedida, seria necessário um operador ter os
 três nós do seu circuito ao mesmo tempo. Mas como os circuitos são formados
 de maneira aleatória, isso é muito improvável de acontecer. Se ele possuir
 o primeiro e o último, ele pode fazer uma correlação temporal do acesso,
@@ -264,20 +265,20 @@ permite hospedar conteúdos dessa forma?
 Sim! É possível usar o que chamamos de _Onion Service_, que é um servidor
 hospedado na rede Tor. Os detalhes técnicos são bem complexos, então vamos
 dar uma simplificada. Basicamente, você irá, usando a rede Tor, entrar em
-contato com o servidor usando aqueles três nós, mas, dessa vez, serão 6 nós:
-3 do lado do cliente e 3 do lado do servidor. De forma anônima vocês
+contato com o servidor usando aquela ideia de circuito, mas, dessa vez, serão
+6 nós: 3 do lado do cliente e 3 do lado do servidor. De forma anônima vocês
 combinarão em qual relay se encontrarão e assim será formada a conexão.
 Como o servidor está atrás de 3 _relays_ da rede Tor, e como visto
 anteriormente, isso garante anonimato, não teremos como descobrir onde está
 hospedado esse servidor. O endereços de serviços onion não podem ser
-simplesmente escolhidos pelo usuário, como em domínios normais, e são gerados
-automaticamente usando algumas informações
-criptográficas suas (nenhuma que comprometa sua segurança). Por exemplo,
+arbritrariamente escolhidos pelo usuário, como em domínios normais, e são
+gerados automaticamente usando algumas informações criptográficas suas
+(nenhuma que comprometa sua segurança). Por exemplo,
 alguns endereços onion:
 
 - Projeto Tor: http://expyuzz4wqqyqhjn.onion/
 - Serviço de submissão de arquivos do WikiLeaks: http://wlupld3ptjvsgwqw.onion
-- Facebook: https://facebookcorewwwi.onion/ (veja como eles conseguiram esse endereço aqui[^4])
+- Facebook: https://facebookcorewwwi.onion/ (veja como eles conseguiram esse endereço aqui[^6])
 
 Para abrir esses links `.onion`, é necessário usar o Tor Browser ou ter
 um proxy para a rede Tor na sua máquina. O exemplo do WikiLeaks é um caso claro
@@ -293,18 +294,20 @@ _Exemplo de nós usados para acessar o Onion Service do Tor Project_
 ### Tor Browser
 
 O jeito mais fácil de usar a rede Tor. Ele é _privacy by default_, ou seja
-as configurações protegem seu anonimato por padrão. O seu histório nem
+as configurações protegem seu anonimato por padrão. Nem seu histório nem
 cookies são mantidos entre sessões e vem com extensões de segurança. Verifique
-esse endereço para baixá-lo: https://www.torproject.org/download/download-easy.html.en
+[este endereço](https://www.torproject.org/download/download-easy.html.en)
+para baixá-lo.
 
-Ele não necessita de instalação, basta baixar e executar. Se você não
+Ele não necessita de instalação, basta baixar e executar (ou seja, da pra
+levar em um pendrive por aí!). Se você não
 estiver em algum lugar em que a rede Tor é bloqueada, basta seguir as
 configurações padrões para começar a navegar.
 
 ### Cliente Tor
 
 O cliente da rede Tor é uma aplicação que permite, entre outras coisas
-`torrificar` todo o tráfego da sua máquina por um proxy, fazendo ele passar
+"torrificar" todo o tráfego da sua máquina por um proxy, fazendo ele passar
 pela rede tor e hospedar um _relay_. Para instalá-lo no GNU/Linux, use o
 seu gerenciador de pacotes e procure o pacote `tor`. Por exemplo:
 
@@ -314,15 +317,113 @@ $ sudo apt install tor
 
 ### Como rodar um relay Tor?
 
-A rede Tor é hoperada por voluntárias e voluntários e para atingir maior
-anonimato e performace de rede, é preciso de cada vez mais pessoas rodando
-_relays_. Embora exista uma certa complexidade em hospedar um _relay_, não
-é muito mais difícil do que hospedar outros serviços. Você pode encontrar
-um guia em português
+A rede Tor é o conjunto de _relays_ hoperados por voluntárias e voluntários e
+para atingir maior anonimato e performace de rede, é preciso de cada vez mais
+pessoas rodando _relays_. Embora exista uma certa complexidade em hospedar um
+_relay_, não é muito mais difícil do que hospedar outros serviços. Você pode
+encontrar um guia em português
 [aqui](https://trac.torproject.org/projects/tor/wiki/TorRelayGuide-ptbr).
 
+## PGP: Pretty Good Privacy
+
+**PGP** é um programa que combina um grande conjunto de ferramentas
+criptográficas para privacidade, como ferramentas para criptografar arquivos,
+emails, bem como assiná-los digitalmente. Você também pode usar ele para gerar
+e gerenciar suas chaves criptográficas. Essa é uma forma de garantir que
+ninguém além do destinatário irá ler o seu email. Quando você manda um email, o
+seu provedor pode acessar as suas mensagens, se assim desejar. O Gmail deixou
+isso bem claro em uma funcionalidade que sugere respostas automáticas para
+você[^7].
+
+### O criador
+
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/zimmerman.jpg" width="300" >}}
+_Phill Zimmerman_
+</center>
+
+O criador dessa ferramenta foi Phill Zimmerman, com a motivação de democratizar
+o acesso a privacidade através de ferramentas criptográficas. Ele liberou o
+programa e seu código-fonte de forma pública em 1991, até que eventualmente se
+tornaria o programa de criptografar emails mais popular do mundo. Contudo, essa
+abertura permitiu com que pessoas de fora dos Estados Unidos tivessem acesso
+a ferramentas criptográficas. O problema disso é que softwares criptográficos
+fortes eram considerados como munição nos Estados Unidos, enquadrando esse
+caso como contrabando ilegal de armas. Felizmente, em 1996, a acusão caiu.
+
+### Chave pública x chave privada
+
+Na criptografia assimétrica, utilizada para troca de mensagens, existem duas
+chaves: a chave pública, disponível para todo mundo, e a chave privada,
+que só a detentora dela deve ter acesso. A chave privada é usada para abrir
+mensagens cifradas com a chave pública e para assinar digitalmente arquivos. A
+chave pública serve para cifrar um arquivo para enviar para alguém e para
+verificar assinaturas.
+
+Se eu quiser enviar Para que algúem cons
+
+### Usando PGP
+
+A implementação mais utilizada hoje em dia é a _GNU Privacy Guard_ (abreviada
+para GnuPG or GPG). Ela já vem por padrão em distribuições GNU/Linux. Alguns
+comandos básicos são:
+
+* **Criação de chave**:
+	`gpg --generate-key`
+
+* **Obter uma chave pública da Internet:**
+	`gpg --keyserver pgp.mit.edu --search-keys snowden`
+
+* **Listar chaves públicas salvas:**
+	`gpg --list-public-keys`
+
+* **Cifrar com uma chave pública**:
+	`gpg --encrypt [--armor] [--sign] -r DESTINATARIO [Mensagem]`
+
+* **Decifrar uma mensagem:**
+	`gpg --decrypt MENSAGEM`
+
+* **Cifrar utilizando chave simétrica:**
+	`gpg --symmetric [--armor] [Mensagem]`
+
+* **Mais?**
+	`gpg --help`
+
+
+## Mas, onde fica Oceania?
+
+### China
+
+### Primavera Árabe
+
+### Estados Unidos
+
+### Brasil?
 
 ---
+
+## Referências
+
+- Cypherpunks - Liberdade e o futuro da internet, livro escrito por Julian
+Assange (fundador do WikiLeaks)
+
+- Citizenfour, documentário sobre o vazamento de
+dados do Snowden
+
+- [Como recolher informações de um servidor]( https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/)
+
+- https://temboinalinha.org: página informativa sobre vigilância e ferramentas
+de defesa
+
+- https://ssd.eff.org/pt-br: Autodefesa contra Vigilância: Dicas, ferramentas
+e tutoriais para uma maior segurança nas comunicações online
+
+- https://datadetox.myshadow.org/pt/detox: Guia de desintoxicação de maus
+hábitos de privacidade em redes sociais
+
+- https://encripta.org/dicas_e_tutoriais_seguranca/: Nesta página estão
+reunidos diversos guias sobre segurança e privacidade na internet
+
 
 [^1]: Oceania, Eurásia e Lestásia são países fictícios do mundo de 1984, de George Orwell
 
@@ -334,12 +435,6 @@ um guia em português
 
 [^5]: Uma [lista](https://vpnleaks.com/) de VPNs não confiáveis que não respeitam a privacidade.
 
-[^4]: https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion
+[^6]: [Como o Facebook conseguiu obter a URL facebookcorewwwi.onion?] (https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion)
 
----
-
-## Referências
-
-- Cypherpunks,
-
-- [Como recolher informações de um servidor]( https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/)
+[^7]: ["Smart Reply" do Gmail deixa pessoas divididas](https://www.thisisinsider.com/gmails-smart-reply-has-people-divided-2018-9)
