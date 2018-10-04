@@ -360,7 +360,34 @@ mensagens cifradas com a chave pública e para assinar digitalmente arquivos. A
 chave pública serve para cifrar um arquivo para enviar para alguém e para
 verificar assinaturas.
 
-Se eu quiser enviar Para que algúem cons
+E se eu quiser enviar o email para XXX, como eu consigo a chave privada? Se
+você se encontrar com a pessoa, ela pode te entregar a chave para que você
+possa usá-la. Mas, se a pessoa estiver do outro lado do mundo, como achamos a
+chave da pessoa? Para isso, existem servidores de chave pública. Um dos mais
+famosos é do MIT, o [MIT PGP Public Key Server](https://pgp.mit.edu/). Esses
+servidores possuem rotinas de sincronia, e frequetemente trocas chaves entre
+eles para que todos permaneçam conectados. Você pode fazer uma busca pelo
+nome, email ou ID da chave e também pode submeter sua própria chave nessas
+páginas.
+
+Agora você tem a chave da pessoa. Mas será que podemos confiar que essa chave
+é dela e não de um atacante?
+
+### Web of Trust
+
+Para resolver isso, existe o conceito de "assinar" chaves. Você sabe que a
+chave K é da pessoa P, e para explicitar para o mundo que isso é verdade, você
+assina a chave da pessoa e envia sua assinatura para o servidor de chaves. E
+assim apareça no servidor "a pessoa Y assinou a chave da pessoa P". Conforme
+esse procedimento é repetido, as pessoas prosseguem assinando seus conhecidos,
+colocamos em prático o conceito de _Web of Trust_. Se encontrarmos que a chave
+da pessoa P está com várias assinaturas, parece ser um indício de que várias
+pessoas confiam naquela chave. Contudo, um atacante muito esforçado poderia
+criar várias contas falsas para te convencer de que aquela chave é confiável.
+Além de ter um número razoável de assinaturas, o ideal é encontrar pessoas
+conhecidas entre as assinaturas. Se você confia na pessoa F, e você viu que a
+pessoa F assinou a chave de P, por transitividade a chave de P é confiável.
+Quanto mais assinaturas conhecidas existirem, mais confiável é essa chave.
 
 ### Usando PGP
 
@@ -391,6 +418,12 @@ comandos básicos são:
 
 
 ## Mas, onde fica Oceania?
+
+Será que nosso país da ficção existe em algum lugar do mundo? Sim, existe e
+está espalhada pelo mundo. Todo lugar que sofre de censura e/ou vigilância na
+internet, por parte estatal ou privada tem um pouquinho da Oceania. Vamos ver
+os exemplos mais populares, mas essa é uma lista não exaustiva, nem seus
+exemplos.
 
 ### China
 
