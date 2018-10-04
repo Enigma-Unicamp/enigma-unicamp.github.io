@@ -10,13 +10,20 @@ description:
 ---
 
 <center>
-_Slides da palestra do dia 26/09/18 [aqui](https://enigma.ic.unicamp.br/talks/privacy-tor-pgp/talk.pdf)_
+_Slides da palestra do dia 26/09/18
+[aqui](https://enigma.ic.unicamp.br/talks/privacy-tor-pgp/talk.pdf)_
 </center>
 
-Imagine você em um país, chamado **Oceania**[^1]. Nesse país, apesar da aparente
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/bigbrother.jpg" width="400" >}}
+_O grande irmão está te observando_
+</center>
+
+Imagine você em um país, chamado **Oceania**[^1]. Nesse país, apesar da
+aparente
 democracia, seu povo não tinha poder. Tanto que seu adorável líder proibiu o
 festejo nas suas dependências e, não satisfeito, delimitou plenos poderes
-totais aos administradores da rede estatal, em nome do fim da pirataria,
+aos administradores da rede estatal, em nome do fim da pirataria,
 disseminação de vírus na rede e conteúdo impróprio. Como era previsto no
 instrumento que proibia as festividades, é proibido organizar, produzir ou
 divulgar qualquer conteúdo pró-festa.
@@ -48,17 +55,16 @@ usar a infraestrutura da sua operadora telefônica. Inclusive, as URLs
 Protocol_, endereços como este: `143.106.7.54`) seria como o número do
 telefone, o dado que os protocolos precisam para efetuar a conexão. Todo
 equipamento que se conecta à internet tem um endereço IP, como celulares e
-computadores. Eles não são únicos e podem mudar com frequência de acordo com o
+computadores. Eles não são exatamente únicos e podem mudar com frequência de acordo com o
 seu provedor.
-
 
 Portanto, é assim que funciona:
 
 1. Você pede ao seu navegador para acessar o `www.voltafesta.net`
-1. Seu navegador envia um pacote HTTP/S para o seu ISP (_Internet Service
+1. Seu navegador envia um pacote HTTP/S (_Hypertext Transfer Protocol_ protocolo para comunicação usado pelas páginas web) para o seu ISP (_Internet Service
 Provider_, o seu provedor de internet) pedindo a página do site
 1. Seu ISP, conhecendo onde está hospedado o `www.voltafesta.net`, pede para ele a página e te devolve
-1. Tanto o ISP quanto o `www.voltafesta.net` conhecem o IP de quem quer a página.
+1. Tanto o ISP quanto o `www.voltafesta.net` conhecem o IP de quem pediu a página
 
 O conteúdo da página pode até vir de forma cifrada, de forma que só você e as
 administradoras do `www.voltafesta.net` conheçam seu conteúdo. Contudo, quem
@@ -67,11 +73,11 @@ IP, que identifica máquinas na Internet (os endereços IP não são exatamente
 identificadores únicos de cada máquinas, mas com dados suficientes é possível
 traçar uma correlação de uso). Como os
 administradores de rede do país ganharam poderes irrestritos, eles podem
-tranquilamete checar esse dado. E foi assim que te prenderam. Mesmo usando um
+tranquilamete checar esse dado. Esse dado sobre um dado é o que chamamos de **metadado**. Apesar de não relatar o conteúdo, metadados contam muito sobre nossos hábitos[^2]. E foi assim que te prenderam. Mesmo usando um
 provedor de internet privado, o estado pode requerer deles informações de seus
 usuários em nome da segurança nacional. Inclusive, poucas empresas
-resistiram em fazê-lo quando aconteceu.[^1][^3] Na verdade, qualquer
-intermediário entre você e o site que esteja _sniffando_[^1] a rede
+resistiram em fazê-lo quando aconteceu.[^3] Na verdade, qualquer
+intermediário entre você e o site que esteja _sniffando_[^4] a rede
 consegueria ler
 seus pacotes e conhecer seu acesso.
 
@@ -85,20 +91,22 @@ uma VPN (_Virtual Private Network_) como iguais.
 Já que nos descobriram pelo nosso endereço IP, vamos tentar usar o IP de outra
 pessoa na requisição. Esse é um dos propósitos de uma VPN: ela empresta o IP
 dela para que o site não saiba quem pediu a página nem o ISP qual site foi
-pedido. Funciona da seguinte maneira:
+pedido. Antes de começar, você e a VPN combinam uma chave criptográfica, para
+garantir sigilo entre vocês. Funciona da seguinte maneira:
 
-1. Você envia um pacote cifrado para a VPN. Dentro desse pacote, existe um
-pedido para acessar o `www.voltafesta.net`
-1. Seu ISP recebe o pacote e repassa para a VPN. Como o pacote está cifrado, o
-ISP não sabe seu conteúdo
-1. A VPN, com posse da chave criptográfica, abre o pacote e descobre que você quer acessar
-`www.voltafesta.net`. Ele então faz a requisição para o `www.voltafesta.net` e
-faz o caminho inverso para te entregar o pacote (também cifrado).
+1. Você envia um pacote criptografado para a VPN. Dentro desse pacote, existe
+um pedido para acessar o `www.voltafesta.net`
+1. Seu ISP recebe o pacote e repassa para a VPN. Como o pacote está
+criptografado, o ISP não sabe seu conteúdo
+1. A VPN, com posse da chave criptográfica, abre o pacote e descobre que você
+quer acessar `www.voltafesta.net`. Ele então faz a requisição para o
+`www.voltafesta.net` e faz o caminho inverso para te entregar o pacote (também
+criptografado).
 1. O `www.voltafesta.net` só conhece o IP da VPN e não sabe quem pediu a
 página de verdade, e o ISP só conhece o IP da VPN e não sabe qual site foi
 pedido.
 
-Aparentemente o problema de conhecer o IP está resolvido. Mas a VPN sabe de tudo, como confiar na VPN?
+Aparentemente o problema de conhecer o IP está resolvido. Mas se a VPN sabe de tudo, como confiar na VPN?[^5]
 
 #### O problema da confiança
 
@@ -119,6 +127,10 @@ precise confiar em ninguém.
 
 ### A rede Tor
 
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/onion.png" width="400" >}}
+</center>
+
 Agora imaginemos que, em uma realidade alternativa a essa em que você foi a
 uma palestra de uma entidade de privacidade da sua faculdade, chamada Charada
 e com um quebra cabeça de logo. Nessa palestra você ouviu falar da rede Tor, e
@@ -127,6 +139,10 @@ que nela é possível navegar anonimamente. Como?
 Tor é uma rede de vários *relays*, ou nós, através dos quais seu tráfego é
 passado de forma cifrada até que chegue ao seu destino final. Geralmente três
 nós são utilizados: um de entrada, um de meio e um de saída.
+
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/how-tor-works.jpg" width="600" >}}
+</center>
 
 Suponhamos que você queira acessar `www.voltafesta.net` utilizando o Tor.
 Primeiramente, seu cliente Tor irá abrir uma conexão cifrada com um nó de
@@ -151,14 +167,14 @@ apenas o nó do meio). Desta maneira, é muito difícil determinar quem está
 acessando. Temos, desta forma, uma conexão totalmente anônima entre você e
 `www.voltafesta.net`. No passo-a-passo, funciona assim:
 
-1. Você envia um pacote três vezes cifrado para a nó de entrada. Dentro desse
+1. Você envia um pacote três vezes criptografado para a nó de entrada. Dentro desse
 pacote, existe um pedido para acessar o `www.voltafesta.net`
 1. O nó de entrada pega e repassa para o nó do meio, sem conhecer seu conteúdo
 1. O nó do meio pega e repassa para o nó final, sem conhecer quem enviou o
 pacote e o que tem dentro
 1. O nó final então abre o pacote e descobre que você quer acessar
 `www.voltafesta.net`. Ele então faz a requisição para o `www.voltafesta.net` e
-faz o caminho inverso para te entregar o pacote (também cifrado).
+faz o caminho inverso para te entregar o pacote (também criptografado).
 1. O `www.voltafesta.net` só conhece o IP do nó final e não sabe quem pediu a
 página de verdade, o nó de entrada só conhece seu IP, o nó do meio não sabe
 praticamente nada e o ISP só sabe que você fez uma conexão na rede Tor.
@@ -182,7 +198,10 @@ proteger a privacidade delas também! Agora, com vários acessos a rede Tor, nã
 Usando o Tor Browser, podemos ver os _relays_ que estamos usando para acessar
 algum site.
 
-
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/tor1.png" width="400" >}}
+_Exemplo de nós usados para acessar o torproject.org_
+</center>
 
 O projeto Tor, no compromisso de transparência, deixa listado todos os IPs dos
 nós da rede Tor. Mas se o IP dos nós da rede Tor são publicos,
@@ -261,7 +280,13 @@ alguns endereços onion:
 - Facebook: https://facebookcorewwwi.onion/ (veja como eles conseguiram esse endereço aqui[^4])
 
 Para abrir esses links `.onion`, é necessário usar o Tor Browser ou ter
-um proxy para a rede Tor na sua máquina.
+um proxy para a rede Tor na sua máquina. O exemplo do WikiLeaks é um caso claro
+de endereço sensível em que é perigoso que se conheça onde está hospedado.
+
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/tor2.png" width="400" >}}
+_Exemplo de nós usados para acessar o Onion Service do Tor Project_
+</center>
 
 ## Como instalar o cliente Tor e o navegador Tor?
 
@@ -301,11 +326,20 @@ um guia em português
 
 [^1]: Oceania, Eurásia e Lestásia são países fictícios do mundo de 1984, de George Orwell
 
-[^1]: [PRISM](https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29) (programa de
-    vigilância)
+[^2]: Como já diria um funcionário da NSA, "Nós matamos pessoas basedo em metadados". [Fonte](https://www.rt.com/usa/158460-cia-director-metadata-kill-people/).
 
-[^3]: Cypherpunks
+[^3]: [PRISM](https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29) (programa de vigilância na internet dos EUA)
+
+[^4]: _Sniffar_ é uma tradução forçada do termo em inglês _sniffing_, que significa fareijar, que também é usado para "cheirar" a rede, interceptar e analisar passivamente uma rede.
+
+[^5]: Uma [lista](https://vpnleaks.com/) de VPNs não confiáveis que não respeitam a privacidade.
 
 [^4]: https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion
 
-https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/
+---
+
+## Referências
+
+- Cypherpunks,
+
+- [Como recolher informações de um servidor]( https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/)
