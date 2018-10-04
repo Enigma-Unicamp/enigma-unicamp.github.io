@@ -427,11 +427,46 @@ exemplos.
 
 ### China
 
+A China, além de possuir a "Grande Muralha", também possui o "Grande Firewall". As conexões cabeadas, ao entrarem em território chinês passam por máquinas que já bloqueiam pacotes de acordo com seu domínio, mantendo a censura ativa e indo totalmente contra o conceito de neutralidade da rede. O governo anuncia que os assuntos bloquedos são "superstição, pornografia, violência e jogos de azar". Contudo, se você tentar fazer uma busca usando algum buscador chinês dos seguintes termos, você receberá uma página em branco:
+"Tibete, brutalidade policial, Tawian, liberdade de expressão, 1989, ..."
+
+Entre os sites bloquedos, estão:
+
+- Gmail, YouTube, Blogspot
+- Gmail, YouTube, Blogspot,
+- Facebook, Twitter, Instagram, Reddit
+- Pirate Bay, Dropbox
+- New York Times
+- Projeto Tor e seus _relays_
+
 ### Primavera Árabe
+
+- Internet e redes sociais tinham papel essencial para organizar o movimento
+- Egito, Síria e Líbano
+	-  Sites bloqueados até blecaute total da internet
+- Tunísia
+	- Senhas de Facebook hackeadas
+- Arábia Saudita e Bahrein
+	- Blogueiros presos e mortos
+
 
 ### Estados Unidos
 
+- Após o atentado terrorista de 2001, foi aprovado o "Ato Patriota", concedendo super poderes ao órgãos investigativos para "combater o terrorismo"
+- Snowden vaza documentos da NSA (2013)
+- Cópia de todos os telefonemas nos EUA
+- Grampo em Brasília
+- Exerce papel fundamental na vigilância global
+
+- EUA possúi grande parte dos servidores privados do mundo
+- Boa parte da conexão que passa por eles é grampeada nas operadoras
+- EternalBlue e WannaCry
+
 ### Brasil?
+
+- Mandato de prisão para executivo da Google por vídeo no YouTube que falava mal de prefeito
+- Bloqueio do WhatsApp
+
 
 ---
 
