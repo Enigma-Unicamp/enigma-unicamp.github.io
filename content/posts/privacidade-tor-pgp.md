@@ -324,6 +324,11 @@ _relay_, não é muito mais difícil do que hospedar outros serviços. Você pod
 encontrar um guia em português
 [aqui](https://trac.torproject.org/projects/tor/wiki/TorRelayGuide-ptbr).
 
+### No celular
+
+É possível usar o Tor no Android também! Instale [este
+aplicativo.](https://guardianproject.info/apps/orbot/)
+
 ## PGP: Pretty Good Privacy
 
 **PGP** é um programa que combina um grande conjunto de ferramentas
@@ -427,45 +432,91 @@ exemplos.
 
 ### China
 
-A China, além de possuir a "Grande Muralha", também possui o "Grande Firewall". As conexões cabeadas, ao entrarem em território chinês passam por máquinas que já bloqueiam pacotes de acordo com seu domínio, mantendo a censura ativa e indo totalmente contra o conceito de neutralidade da rede. O governo anuncia que os assuntos bloquedos são "superstição, pornografia, violência e jogos de azar". Contudo, se você tentar fazer uma busca usando algum buscador chinês dos seguintes termos, você receberá uma página em branco:
-"Tibete, brutalidade policial, Tawian, liberdade de expressão, 1989, ..."
+A China, além de possuir a "Grande Muralha", também possui o "Grande
+Firewall". As conexões cabeadas, ao entrarem em território chinês passam por
+máquinas que já bloqueiam pacotes de acordo com seu domínio, mantendo a
+censura ativa e indo totalmente contra o conceito de neutralidade da rede. O
+governo anuncia que os assuntos bloquedos são "superstição, pornografia,
+violência e jogos de azar". Contudo, se você tentar fazer uma busca usando
+algum buscador chinês dos seguintes termos, você receberá uma página em branco:
+"Tibete, brutalidade policial, Tawian, liberdade de expressão, 1989[^8], ..."
 
 Entre os sites bloquedos, estão:
 
 - Gmail, YouTube, Blogspot
-- Gmail, YouTube, Blogspot,
 - Facebook, Twitter, Instagram, Reddit
 - Pirate Bay, Dropbox
 - New York Times
 - Projeto Tor e seus _relays_
 
+As pontes são muito úteis na China, onde todos os relays são bloqueados. Se
+você usar somente os meios permitidos pelo governos, você nunca conseguirá ver
+essa icónica foto:
+
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/tankman.jpg" width="500" >}}
+_Homem anônimo para temporariamente tanques durante protestos na China, 1989_
+</center>
+
 ### Primavera Árabe
 
-- Internet e redes sociais tinham papel essencial para organizar o movimento
-- Egito, Síria e Líbano
-	-  Sites bloqueados até blecaute total da internet
-- Tunísia
-	- Senhas de Facebook hackeadas
-- Arábia Saudita e Bahrein
-	- Blogueiros presos e mortos
+Durante os movimentos revolucionários ocorridos no norte da África e Oriente
+Médio entre 2010 e 2012, a internet exerceu um papel fundamental para seu
+alcance e propagação de ideias, bem como sua organização. O YouTube era usado
+para mostrar para o mundo a repressão policial, o Twitter para troca
+rapidamente novidades e o Facebook para marcar protestos.
 
+No início, algumas páginas pró-revolucionárias forem sendo bloqueados, até o
+momento em que toda as conexões foram cortadas, causando um blecaute total da
+internet. Ironicamente, em alguns lugares as pessoas, ao notarem que não havia
+internet, saíram as ruas para buscar informações e se juntaram aos protestos.
+Também ocorreram casos de invasão de contas de Facebook e blogueiras/os sendo
+presos e mortos pelo conteúdo de seus posts.
 
 ### Estados Unidos
 
-- Após o atentado terrorista de 2001, foi aprovado o "Ato Patriota", concedendo super poderes ao órgãos investigativos para "combater o terrorismo"
-- Snowden vaza documentos da NSA (2013)
-- Cópia de todos os telefonemas nos EUA
-- Grampo em Brasília
-- Exerce papel fundamental na vigilância global
+Após os atentados terroristas de setembro de 2001 nos Estados Unidos, o
+governo norte-americano aprovou o "Ato Patriota", que concede "super poderes
+jurídicos" aos órgãos investigativos, como a NSA e CIA, para combater o
+terrorismo. Durante muito tempo, boatos de que a NSA estaria espionando sua
+própria população se espalharam, mas não tinham muito embasamento e logo eram
+desacreditados.
 
-- EUA possúi grande parte dos servidores privados do mundo
-- Boa parte da conexão que passa por eles é grampeada nas operadoras
-- EternalBlue e WannaCry
+#### O vazamento
+
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/snowden.jpg" width="500" >}}
+_Edward Snowden_
+</center>
+
+Em 2013, um analista de segurança subcontratado pela NSA, decidiu que era
+necessário alertar o mundo e seus compatriotas do que estava acontecendo. Ele
+então recolheu muitos dados internos, incluindo apresentações de slides de
+programas de espionagem. Ele então contactou o jornalista Glenn Greenwald e a
+diretora de cinema Laura Poitras para divulgar o conteúdo que encontrou. Eles
+se encontram em Hong Kong, onde Laura gravou um documentário[^9] sobre o
+ocorrido.
+
+Os vazamentos mostraram dados assustadores: a espionagem estava
+institucionalisada no governo a nas empresas. Os telefonemas dos
+norte-americanos eram copiados, bem como o tráfego que passava pela operadoras
+de internet. É válido lembrar que, devido a grande infraestrutra tecnológica
+dos EUA, boa parte do tráfego de dados passa por lá. Ou seja, o uso de
+internet de boa parte do planeta está sendo registrado para eventual consulta.
+Grampos também foram feitos em outros países, como, por exemplo, no gabinete
+presidencial em Brasília. Isso significa uma vantagem dos EUA sobre trâmites
+políticos e econômicos internacionais, já que eles possuiam informação
+privilegiada, bem como significa o enfraquecimento da soberania nacional do
+Brasil.
 
 ### Brasil?
 
-- Mandato de prisão para executivo da Google por vídeo no YouTube que falava mal de prefeito
-- Bloqueio do WhatsApp
+O Brasil não possúi grandes ocorrências de censura ou vigilância, comparado
+com os outros países. Entre os exemplos mais famosos, estão os seguintes:
+
+- Em 2012, o diretor-geral da Google no Brasil foi preso pela Polícia Federal porque a Google não removeu um vídeo no YouTube que atacava um candidato a prefeito de Campo Grande (MS)[^10]
+
+- O bloqueio do WhatsApp por operadoras (duas vezes), através de madato judical após a empresa não quebrar o sigilo de usuários para uma investigação policial. Quando bloquear da próxima vez, já sabe: use o Tor![^11]
 
 
 ---
@@ -475,8 +526,7 @@ Entre os sites bloquedos, estão:
 - Cypherpunks - Liberdade e o futuro da internet, livro escrito por Julian
 Assange (fundador do WikiLeaks)
 
-- Citizenfour, documentário sobre o vazamento de
-dados do Snowden
+- No Place to Hide: Edward Snowden, The NSA and the US Surveillance State - livro do jornalista [Glenn Greenwald](http://www.glenngreenwald.net/)
 
 - [Como recolher informações de um servidor]( https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/)
 
@@ -506,3 +556,11 @@ reunidos diversos guias sobre segurança e privacidade na internet
 [^6]: [Como o Facebook conseguiu obter a URL facebookcorewwwi.onion?] (https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion)
 
 [^7]: ["Smart Reply" do Gmail deixa pessoas divididas](https://www.thisisinsider.com/gmails-smart-reply-has-people-divided-2018-9)
+
+[^8]: [Massacre da Praça da Paz Celestial de 1989](https://pt.wikipedia.org/wiki/Protesto_na_Pra%C3%A7a_da_Paz_Celestial_em_1989)
+
+[^9]: Citizenfour, documentário sobre o vazamento de dados do Snowden
+
+[^10]: https://politica.estadao.com.br/noticias/geral,diretor-geral-do-google-no-brasil-e-preso-pela-policia-federal,936220
+
+[^11]: https://www1.folha.uol.com.br/mercado/2016/05/1766869-justica-determina-bloqueio-do-whatsapp-em-todo-o-brasil-por-72-horas.shtml
