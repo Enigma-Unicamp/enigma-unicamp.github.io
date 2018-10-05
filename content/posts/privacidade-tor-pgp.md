@@ -6,7 +6,8 @@ title: "Tor e PGP: navegando no anonimato"
 categories: ["ENIGMA", "talks"]
 tags: ["tor", "talks", "privacidade"]
 weight: 1
-description:
+description: "Quem controla o canal, controla a mensagem. Como contornar a 
+vigilância e a censura na internet?"
 ---
 
 <center>
