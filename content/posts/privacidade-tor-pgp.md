@@ -365,7 +365,7 @@ mensagens cifradas com a chave pública e para assinar digitalmente arquivos. A
 chave pública serve para cifrar um arquivo para enviar para alguém e para
 verificar assinaturas.
 
-E se eu quiser enviar o email para XXX, como eu consigo a chave privada? Se
+E se eu quiser enviar o email para alguém, como eu consigo a chave privada? Se
 você se encontrar com a pessoa, ela pode te entregar a chave para que você
 possa usá-la. Mas, se a pessoa estiver do outro lado do mundo, como achamos a
 chave da pessoa? Para isso, existem servidores de chave pública. Um dos mais
@@ -394,6 +394,49 @@ conhecidas entre as assinaturas. Se você confia na pessoa F, e você viu que a
 pessoa F assinou a chave de P, por transitividade a chave de P é confiável.
 Quanto mais assinaturas conhecidas existirem, mais confiável é essa chave.
 
+#### Exemplo de como pegar uma chave
+
+Vamos supor que gostaríamos de conversar com Roger Dingledine, um dos criadores
+do Tor, para tirarmos algumas dúvidas sobre seu funcionamento. Vamos ao
+procedimento:
+
+1. Começamos com algum servidor de chave públicas, escolhi este aqui:
+https://pgp.surfnet.nl/
+
+2. Fazemos uma busca com o nome dele, "Roger Dingledine"
+
+	<center>
+	{{< figure src="/blog/img/posts/privacidade-tor-pgp/roger1.png" width="400" >}}
+	</center>
+
+3. Temos várias opções, algumas estão marcadas com `*** KEY REVOKED ***`. Isso
+significa que a pessoa quem possuía a chave, por motivos de vazamento da chave
+privada, porque não tem mais acesso a chave ou esqueceu sua senha revogou
+ela, marcando ela para não ser mais usada.
+
+4. Analisamos a primeira chave, mas parece que ninguém assinou ela...
+
+	<center>
+	{{< figure src="/blog/img/posts/privacidade-tor-pgp/roger2.png" width="400" >}}
+	</center>
+
+5. Agora, analisando a próxima chave válida, encontramos que muitas pessoas
+assinaram. Se você conhece alguém dessa lista, parece que é um bom sinal de
+que você está no caminho certo!
+
+<center>
+{{< figure src="/blog/img/posts/privacidade-tor-pgp/roger3.png" width="400" >}}
+</center>
+
+Nesse exemplo, poderíamos ter consultado o site do Tor Project para conseguir a
+chave [aqui](https://www.torproject.org/about/corepeople.html.en). Agora podemos usar isso para ver se é a mesma. Como é a 
+mesma, parece que acertamos :)
+
+A chave será uma grande sequência de caracteres sem sentido. Você precisará
+colar essa chave no seu programa de PGP quando for usá-la, ou adicioná-la usando
+as ferramentas de busca disponíveis no seu PGP. Todo esse procedimento que
+realizamos poderia ter sido feito pelo terminal também.
+
 ### Usando PGP
 
 A implementação mais utilizada hoje em dia é a _GNU Privacy Guard_ (abreviada
@@ -405,6 +448,9 @@ comandos básicos são:
 
 * **Obter uma chave pública da Internet:**
 	`gpg --keyserver pgp.mit.edu --search-keys snowden`
+
+* **Procurar e adicionar uma chave:**
+	`gpg --search-keys [nome, email ou ID da chave]`
 
 * **Listar chaves públicas salvas:**
 	`gpg --list-public-keys`
