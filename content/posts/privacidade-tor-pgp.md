@@ -29,7 +29,7 @@ disseminação de vírus na rede e conteúdo impróprio. Como era previsto no
 instrumento que proibia as festividades, é proibido organizar, produzir ou
 divulgar qualquer conteúdo pró-festa.
 
-Agora você, cidadã desde país, está muito insatisfeita com a atual política.
+Agora você, cidadã desse país, está muito insatisfeita com a atual política.
 Oceania, assim como a Eurásia e a Lestásia, é regida por hierarquias e metas
 contraproducentes. Uma das poucas oportunidades de encontrar seus migos e
 relaxar agora foi cortada. Você então descobriu um website
@@ -74,7 +74,7 @@ IP, que identifica máquinas na Internet (os endereços IP não são exatamente
 identificadores únicos de cada máquinas, mas com dados suficientes é possível
 traçar uma correlação de uso). Como os
 administradores de rede do país ganharam poderes irrestritos, eles podem
-tranquilamete checar esse dado. Esse dado sobre um dado é o que chamamos de **metadado**. Apesar de não relatar o conteúdo, metadados contam muito sobre nossos hábitos[^2]. E foi assim que te prenderam. Mesmo usando um
+tranquilamete checar esse dado. Esse dado sobre um dado é o que chamamos de **metadado**. Apesar de não revelar o conteúdo, metadados contam muito sobre nossos hábitos[^2]. E foi assim que te prenderam. Mesmo usando um
 provedor de internet privado, o estado pode requerer deles informações de seus
 usuários em nome da segurança nacional. Inclusive, poucas empresas
 resistiram em fazê-lo quando aconteceu.[^3] Na verdade, qualquer
