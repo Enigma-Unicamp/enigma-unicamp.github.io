@@ -6,7 +6,7 @@ title: Gênesis
 categories: ["ENIGMA"]
 tags: ["história", "arquivo"]
 weight: 1
-description: Dois alunos da Unicamp, depois de quase um ano de pesquisa e trabalho em privacidade, segurança e criptografia, sentiam que a comunidade do Instituto de Computação podia (e merecia!) ir muito mais longe no assunto. Contudo, com a saída de um dos mais importantes pesquisadores da área para a Europa somada a falta de pespectiva para a contratação de novas/os professoras/es devido a situação financeira da Univerisidade, levaram a crer que uma iniciativa somente seria possível se viesse do corpo estudantil.
+description: Dois alunos da Unicamp, depois de quase um ano de pesquisa e trabalho em privacidade, segurança e criptografia, sentiam que a comunidade do Instituto de Computação podia (e merecia!) ir muito mais longe no assunto. 
 ---
 
 <center>
