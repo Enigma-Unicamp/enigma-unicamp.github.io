@@ -94,7 +94,7 @@ B<sup>a</sup> mod p = A<sup>b</sup> mod p
 (g<sup>ba</sup> mod p) = (g<sup>ab</sup> mod p)
 </center></pre>
 
-Isso é **MUITO** legal. Alice e Bob chegaram a um mesmo valor sem que tenham
+Isso é **MUITO** legal. Alice e Bob chegaram em um mesmo valor sem que tenham
 enviado o valor secreto de um para o outro. Mas como garantimos que isso é
 seguro de um possível atacante?
 
