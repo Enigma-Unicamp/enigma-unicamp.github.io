@@ -11,8 +11,6 @@ description: "Existe uma vulnerabilidade conhecida no sistema operacional da
 weight: 1
 ---
 
-# Área de transferência do Android
-
 Esse post tratará de uma vulnerabilidade do popular sistema operacional para
 dispositivos móveis **Android**, mais especificamente de um dos seus módulos
 responsáveis por gerenciar a área de transferência.
@@ -145,8 +143,9 @@ de executar em segundo plano;
 Vamos aos exemplos:
 
 Um aplicativo minimalista que captura os dados da área de transferência pode ser
-implementada assim(Passos 1,2,3 e 4):
-```
+implementada assim (passos 1, 2, 3 e 4):
+
+```java
 import android.app.Service;
 import android.os.IBinder;
 import android.content.ClipData;
@@ -206,7 +205,8 @@ public class ClipService extends Service {
 
 Para que o serviço possa ser rodado, é necessário registrá-lo ao `AndroidManifest.xml`,
 para isso basta adicionar ao escopo **application** as seguintes linhas(Passo 5):
-```
+
+```xml
     <service
     android:name=".ClipService"
     android:enabled="true"
@@ -215,7 +215,8 @@ para isso basta adicionar ao escopo **application** as seguintes linhas(Passo 5)
 
 Por fim, quando o aplicativo for iniciado deve-se chamar o serviço. Isso pode
 ser feito, por exemplo, no método _OnCreate_ do arquivo `MainActivity.java`:
-```
+
+```java
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
 
@@ -272,5 +273,5 @@ seus dados continuarão seguros.
 
 ## Referências
 
-Estudo acadêmico completo sobre a vulnerabilidade(Em inglês) - 
+Estudo acadêmico completo sobre a vulnerabilidade (em inglês) - 
 [Attacks on Android Clipboard](http://www.cis.syr.edu/~wedu/Research/paper/clipboard_attack_dimva2014.pdf)
