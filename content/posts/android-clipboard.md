@@ -1,6 +1,6 @@
 ---
 author: ["Gaba"]
-date: 2018-10-03
+date: 2018-10-10
 linktitle: Área de transferência compartilhada - Android
 title: Área de transferência compartilhada - Android
 tags: ["vulnerabilidade", "android"]
