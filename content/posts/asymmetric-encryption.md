@@ -38,37 +38,26 @@ _Ralph Merkle, Martin Hellman e Whitfield Diffie, da esquerda para a direita. Os
  inventores do conceito de chave pública_
 </center>
 
-Whitfield Diffie já era fascinado por matemática desde a sua infância. Seguindo
-nessa linha, entrou no Massachusetts Institute of Technology (MIT) e se graduou
-em Matemática, em 1965. Começou a se interessar por criptografia e segurança de
-computadores, e até foi trabalhar com isso na Sun Mycrosistems - empresa famosa
-pelo desenvolvimento da linguagem de programação Java. Na mesma época, a
-Internet começava a engatinhar, com o desenvolvimento da ARPANET pelos
-militares e cientistas das universidades norte-americanas. Atento ao cenário
-da época, Diffie antecipava o advento da Internet, com as pessoas utilizando
-computadores interconectados e trocando mensagens. Muitas delas confidenciais.
-Mas como a privacidade delas seria mantida? A troca de chaves privadas ainda era
-um problema, e seria muito mais grave no futuro. Foi então que Diffie começou
-a buscar desenfreadamente por uma solução.
+Na década de 70, a Internet começava a engatinhar, com o desenvolvimento da
+ARPANET pelos militares e cientistas das universidades norte-americanas. Atento
+ao cenário, o matemático Whitfield Diffie antecipava o advento da Internet como
+a conhecemos, com muitas pessoas utilizando computadores interconectados e
+trocando mensagens. Muitas delas confidenciais.  Mas como a privacidade delas
+seria mantida? A troca de chaves privadas já era um problema, e isso se
+agravaria no futuro. Foi pensando nisso que Diffie começou a buscar
+desenfreadamente por uma solução.
 
-Em uma certa ocasião, a International Business Machines Corporation (IBM)
-convidou Diffie para dar uma palestra, que abordou então o seu tema de maior
-interesse: o problema da distribuição de chaves. Alan Blabla o avisou que
-já tinha ouvido uma outra palestra de um professor de Stanford que citou o mesmo
-problema. Foi então que Diffie ouviu falar de Martin Hellman pela primeira vez.
+Ao ouvir falar sobre Martin Hellman, que também estava muito interessado no
+problema, Diffie pegou seu carro e atravessou os Estados Unidos para que
+pudessem conversar. Diffie logo abandonou seu emprego e se inscreveu para entrar
+na graduação de Stanford e pesquisar com Hellman, que lecionava por lá.
 
-Diffie pegou seu carro e atravessou os Estados Unidos para conversar com
-Hellman. Ao se conhecerem, perceberam que os dois eram as pessoas mais bem
-informadas sobre o problema da distribuição de chaves, e que tinham muitos
-interesses mútuos. Diffie abandonou seu emprego e se inscreveu para entrar
-na graduação de Stanford e pesquisar com Hellman.
-
-Na mesma época, Merkle tentava se aprofundar no problema no grupo de estudos
+Na mesma época, Merkle tentava se aprofundar no problema em um grupo de estudos
 do qual participava, também em Stanford. Porém, seu professor não viu muito
-futuro no tema, dizendo que não fazia sentido. Quando ficou sabendo sobre
-Diffie e Hellman, se aproximou dos dois e começou a fazer pesquisa com eles.
-Durante muito tempo buscaram por uma solução para o problema, o que criou bases
-para que, em 1975, Hellman tivesse a sacada.
+futuro no tema, dizendo que não fazia sentido. Quando ficou sabendo sobre Diffie
+e Hellman, se aproximou dos dois e começou a fazer pesquisa com eles. Durante
+muito tempo buscaram por uma solução para o problema, o que criou bases para
+que, em 1975, Hellman a encontrasse.
 
 ### A troca de chaves de Diffie-Hellman-Merkle
 
@@ -76,17 +65,14 @@ Em 1976, Martin Hellman e Whitfield Diffie (com contribuições de Ralph Merkle)
 publicaram o famoso artigo [New Directions in
 Cryptography](https://ee.stanford.edu/~hellman/publications/24.pdf). Nesse
 artigo, uma maneira muito interessante de combinar chaves públicas em um canal
-de comunicação inseguro é proposto. A partir dessa chave seria possível
-criptografar mensagens com algoritmos simétricos e enviá-las com segurança.
-Além disso, também propuseram o conceito de **chave pública**, apesar de não
-terem encontrado um algoritmo bom para isso.
+de comunicação inseguro é proposto. Além disso, também apresentaram o conceito
+de **chave pública**, apesar de não terem encontrado um bom algoritmo para isso.
 
 Em 1997, foi revelado que a agência de inteligência britânica já havia
 desenvolvido um esquema para a combinação de chaves em meios inseguros. Porém,
-isso foi mantido em segredo durante todo esse tempo. **Na minha opinião**,
-Diffie, Hellman e Merkle são merecedores dos créditos, pois foram ele que
-desenvolveram uma solução para o problema e a disponibilizaram para o mundo.
-Mas agora chega de blablabla e vamos entender como isso é possível.
+isso foi mantido em segredo durante todo esse tempo. Há algumas teorias de que
+um dos militares vazou essas informações para Hellman, mas não há provas.
+Agora chega de blablabla e vamos entender como isso é possível.
 
 ### Uma explicação simplificada
 
@@ -95,20 +81,21 @@ Mas agora chega de blablabla e vamos entender como isso é possível.
 _Ideia do método proposto por Diffie, Hellman e Merkle_
 </center>
 
-Para facilitar na compreensão da troca de chaves de Diffie-Hellman-Merkle,
-podemos utilizar cores. Isso mesmo, cores. Vamos supor que Alice e Bob queiram
-combinar uma chave criptográfica, mas Eve está realizando um ataque na conexão
-insegura que eles utilizam. Então, Alice e Bob combinam uma cor pública
-qualquer, ou seja, utilizando o o canal inseguro: amarelo. Agora, cada um
-escolhe uma cor secreta. Alice escolheu laranja e Bob escolheu azul. Agora, eles
-misturam a cor secreta com o amarelo. Alice obtém um balde de tinta com laranja
-claro e Bob com azul claro. Depois, eles trocam esses baldes. Finalmente, basta
-eles misturarem a cor secreta que possuem com a mistura que receberam. E pronto,
-eles possuem uma cor comum e secreta. Essa seria a chave privada que eles
-conseguiram combinar, ainda que numa conexão insegura.
+Para facilitar a compreensão do algoritmo de troca de chaves de
+Diffie-Hellman-Merkle, podemos utilizar **cores**. Vamos supor que Alice e Bob
+queiram combinar uma chave criptográfica, mas Eve esteja realizando um ataque na
+conexão insegura que eles utilizam. Então, Alice e Bob combinam uma cor pública
+qualquer, ou seja, uma informação que Eve também pode descobrir:
+**amarelo**. Agora, cada um escolhe uma cor secreta. Alice escolhe **laranja** e
+Bob escolhe **azul**. Depois, eles misturam a cor secreta com o amarelo. Alice
+obtém um balde de tinta **laranja claro** e Bob **azul claro**. Então, eles
+trocam essas misturas através do meio inseguro. Finalmente, basta eles
+misturarem a cor secreta que possuem com a mistura que receberam. E pronto, eles
+conseguiram uma cor secreta, que só eles dois conhecem. Essa seria a chave
+privada que eles obtiveram, ainda que utilizando uma conexão insegura.
 
-Segue um [vídeo](https://www.youtube.com/watch?v=NmM9HA2MQGI) com uma demonstração do algoritmo
-utilizando tintas.
+Segue um [vídeo](https://www.youtube.com/watch?v=NmM9HA2MQGI) com uma
+demonstração do algoritmo utilizando tintas.
 
 Mas e se Eve, atacante do canal inseguro, conseguisse interceptar os baldes com:
 amarelo, azul claro e laranja claro? Não adiantaria, pois se misturasse tudo,
@@ -116,12 +103,11 @@ teríamos: 2x amarelo, 1x azul e 1x laranja. O segredo é composto por: 1x
 amarelo, 1x azul e 1x laranja. A única forma de obter o segredo é pegar o balde
 com azul claro e tentar separar a cor pública, amarelo, da cor privada, azul. E
 depois fazer o mesmo para o balde com laranja claro: tentar separar o amarelo do
-laranja. Agora veremos um pouco de aritmética modular para depois,
-matematicamente, verificar que é muito difícil de separar a tinta pública
-da tinta privada.
-
+laranja. Agora veremos um pouco de aritmética modular para que, matematicamente,
+verificarmos que é muito difícil "separar a cor pública da cor privada".
 
 ### Aritmética modular
+
 Apesar do nome chique, aritmética modular é uma parte da matemática que temos
 muita intimidade; de fato, usamos ela **todo dia**! De maneira simples,
 operações modulares são aquelas onde "voltamos para o começo" depois de um certo
@@ -247,7 +233,7 @@ com a chave **A** e envia para Alice.
 ### Outro problema do algoritmo
 
 Já falamos sobre uma maneira de combinar chaves simétricas em um meio inseguro.
-Mas porque Diffie, Hellman e Merkle não pararam por aí? Porque o algoritmo deles
+Mas por que Diffie, Hellman e Merkle não pararam por aí? Porque o algoritmo deles
 não é perfeito. Há algumas limitações. Por exemplo, vamos supor que Alice nunca
 tenha entrado em contato com Bob, e eles vivem em regiões que possuem
 fusos-horários distoantes. Enquanto Alice está acordada, Bob está dormindo, e
