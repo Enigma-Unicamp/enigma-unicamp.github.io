@@ -1,37 +1,18 @@
-{{ define "header" }}
-  {{ partial "header.html" . }}
-{{ end }}
-
-{{ define "content" }}
-  <div class="post-list">
-    {{ range (where .Data.Pages "Type" "not in" (slice "about" "portfolio")).GroupBy "Section" }}
-    {{ range .Pages }}
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }}<sup> <i class="fas fa-pen-square fa-xs"></i></sup>{{ end }}
-        </span>
-        <span class="item__date">
-          {{ .Date.Format (.Site.Params.dateformat | default "Jan 02, 2006") }}
-        </span>
-        {{ with .Description }}
-          {{ $.Scratch.Set "summary" (markdownify .) }}
-	{{ end }}
-	{{ $.Scratch.Get "summary" }}
-        {{ if .Truncated }}
-        <div class="read-more-link">
-            <a href="{{ .RelPermalink }}">Read More…</a>
-        </div>
-        {{ end }}
-        </div>
-        {{ end }}
-     {{ end }}
+{{ define "main" -}}
+<div class="posts">
+{{ range .Site.RegularPages -}}
+<article class="post">
+  <h1 class="post-title">
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  </h1>
+  <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+  {{ .Summary }}
+  {{ if .Truncated }}
+  <div class="read-more-link">
+    <a href="{{ .RelPermalink }}">Read More…</a>
   </div>
-{{ end }}
-
-{{ define "footer" }}
-{{ if .Site.GoogleAnalytics }}
-  <!-- Google Analytics -->
-  {{ template "_internal/google_analytics_async.html" . }}
-{{ end }}
-{{ partial "footer/font-awesome-js.html" . }}
-{{ end }}
+  {{ end }}
+</article>
+{{- end }}
+</div>
+{{- end }}

@@ -1,18 +1,17 @@
-name = "hyde-hyde"
+name = "Hyde"
 license = "MIT"
-licenselink = "https://github.com/htr3n/hyde-hyde/blob/master/LICENSE.md"
-description = "A simply cool Hyde inspired theme"
-tags = ["blog", "theme", "hyde", "highlight.js", "font-awesome", "google analytics", "disqus", "personal", "syntax highlighting", "responsive", "graphcomment"]
-features = ["blog", "theme", "highlight.js", "font-awesome", "responsive", "disqus", "graphcomment", "portfolio"]
-homepage = "https://github.com/htr3n/hyde-hyde"
-min_version = "0.33"
+licenselink = "https://github.com/spf13/hyde/blob/master/LICENSE.md"
+description = "An elegant open source and mobile first theme"
+tags = ["blog", "company"]
+features = ["blog", "themes", "disqus"]
+min_version = 0.53
 
 [author]
-    name = "htr3n"
-    homepage = "https://htr3n.github.io"
+    name = "spf13"
+    homepage = "http://spf13.com"
 
 # If Porting existing theme
 [original]
-    author =  "spf13"
-    homepage = "http://spf13.com/"
-    repo = "https://github.com/spf13/hyde"
+    author =  "mdo"
+    homepage = "http://markdotto.com/"
+    repo = "https://www.github.com/mdo/hyde"
