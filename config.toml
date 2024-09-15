@@ -1,43 +1,106 @@
-## Basic Configuration
-baseURL = "https://enigmaster.gitlab.io/blog/"
+baseURL = "https://enigma.ic.unicamp.br"
+title   = "Enigma Unicamp"
 languageCode = "en-us"
-title = "Enigma"
-theme = "hyde-hyde"
+# publishDir = "docs"
 
-## Hugo Built-in Features
-# disqusShortname = "your-disqus-shortname"
-# googleAnalytics = "your-google-analytics-id"
-# enableRobotsTXT = true
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
 
-## Site Settings
+paginate  = 10
+rssLimit  = 10  # Maximum number of items in the RSS feed.
+# googleAnalytics = ""
+
+canonifyURLs = true
+enableEmoji = true
+
+[permalinks]
+  "/" = "/posts/:slug/"
+
+[author]
+  name = "Enigma UNICAMP"
+
+[blackfriday]
+  hrefTargetBlank = true
+
+[taxonomies]
+  tag      = "tags"
+  category = "categories"
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]']]
+          inline = [['\(', '\)'], ['$$', '$$']]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+
+
+
 [params]
-    author = "ENIGMA"
-    description = "ENIGMA"
-    authorimage = "/img/enigma_logo.png"
-    dateformat = "Jan 2, 2006"
-    highlightjs = true
-    highlightjsstyle = "monokai"
-    # please choose either GraphComment or Disqus
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+  subtitle  = ""
+  math = true
 
-## Social Accounts
-[params.social]
-    telegram = "enigmaunicamp"
-    gitlab = "enigmaster"
-    email = "enigmaunicamp@tutanota.com"
+  # Metadata mostly used in document's head
+  description = "ENIGMA Unicamp"
+  keywords = ""
+  images = [""]
 
-## Main Menu
-[[menu.main]]
-    name = "Home"
-    identifier = "home"
-    weight = 200
-    url = "/"
-[[menu.main]]
-    name = "Sobre nós"
-    identifier = "about"
-    weight = 200
-    url = "/about/"
-[[menu.main]]
-    name = "Posts"
-    weight = 200
-    identifier = "posts"
-    url = "/posts/"
+  # Home subtitle of the index page.
+  homeSubtitle = """O Enigma, fundado em 2018 por alunos da UNICAMP, é uma organização estudantil dedicada à promoção do estudo da cybersegurança. Com uma equipe diversificada, o grupo oferece eventos, palestras e exercícios práticos, visando a democratização do conhecimento e a elevação da comunidade acadêmica no campo da cybersegurança."""
+
+  # Enable theme toggle
+  enableThemeToggle = true
+
+  # link local files with their path relative to the static folder, e.g. "css/styles.css"
+  customCSS = []
+  customJS  = []
+  justifyContent = true
+
+  [params.footer]
+    rss = true
+    bottomText = [
+      "<a href=\"http://gohugo.io\">Hugo</a> template by <a href=\"https://github.com/rhazdon\">rhazdon</a>. Adapted by Andreis Purim."
+    ]
+
+  [params.favicon.color]
+    mask = "#1b1c1d"
+    msapplication = "#1b1c1d"
+    theme = "#1b1c1d"
+
+  [params.logo]
+    logoText = "> $ cd /enigma.ic/"
+    logoHomeLink = "/"
+    # logoCursorColor = "#67a2c9"
+    logoCursorPathname = true
+
+  # Social icons
+  # [[params.social]]
+  #   name = "google-scholar"
+  #   url  = "https://www.instagram.com/andreis.purim/"
+  [[params.social]]
+    name = "instagram"
+    url  = "https://www.instagram.com/enigma.unicamp"
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/Enigma-Unicamp"
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/in/andreispurim/"
+  [[params.social]]
+    name = "youtube"
+    url  = "https://www.youtube.com/@EnigmaUnicamp"
+
+#[menu]
+#  [[menu.main]]
+#    identifier = "website"
+#    name       = "Website"
+#    url        = "https://andreis.lv"

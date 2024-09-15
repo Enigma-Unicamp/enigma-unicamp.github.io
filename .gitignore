@@ -1,5 +1,2 @@
-/public
-
-# sass files
-
-.sass-cache/
+resources/
+.hugo-build.lock
