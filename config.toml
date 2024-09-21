@@ -1,4 +1,4 @@
-baseURL = "https://enigma.ic.unicamp.br"
+baseURL = "https://enigma-unicamp.github.io"
 title   = "Enigma Unicamp"
 languageCode = "en-us"
 # publishDir = "docs"
@@ -13,8 +13,9 @@ rssLimit  = 10  # Maximum number of items in the RSS feed.
 canonifyURLs = true
 enableEmoji = true
 
-[permalinks]
-  "/" = "/posts/:slug/"
+#
+#[permalinks]
+#  "/" = "/posts/:slug/"
 
 [author]
   name = "Enigma UNICAMP"
@@ -44,7 +45,7 @@ enableEmoji = true
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
-  dateformNum     = "2006-01-02"
+  dateformNum     = "02/01/2006"
   dateformNumTime = "2006-01-02 15:04"
   subtitle  = ""
   math = true
@@ -59,7 +60,11 @@ enableEmoji = true
 
   # Enable theme toggle
   enableThemeToggle = true
-
+  # There are a lot of buttons preconfigured. If you want to change them,
+  # generate the buttons here: https://sharingbuttons.io
+  # and add them into your own `layouts/partials/sharing-buttons.html`
+  #
+  enableSharingButtons = true
   # link local files with their path relative to the static folder, e.g. "css/styles.css"
   customCSS = []
   customJS  = []
@@ -99,8 +104,19 @@ enableEmoji = true
     name = "youtube"
     url  = "https://www.youtube.com/@EnigmaUnicamp"
 
-#[menu]
-#  [[menu.main]]
-#    identifier = "website"
-#    name       = "Website"
-#    url        = "https://andreis.lv"
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name       = "Home"
+    url        = "/"
+    weight     = 1
+  [[menu.main]]
+    identifier = "posts"
+    name       = "Posts"
+    url        = "posts/"
+    weight     = 2
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "about"
+    weight     = 3

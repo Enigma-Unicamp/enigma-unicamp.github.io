@@ -22,20 +22,20 @@
     {{ $paginator := .Paginate .Data.Pages }}
     
     <main class="posts">
-        {{ range $paginator.Pages.GroupByDate "2006" }}
+        {{ range (where site.RegularPages "Section" "posts").GroupByDate "2006" }}
             <div class="posts-group">
                 <ul class="posts-list">
-                    {{ range .Pages }}
+                    {{ range where .Pages "Section" "posts" }}
                         <li class="post-item">
                             <a href="{{.Permalink}}" class="post-item-inner">
                                 <span class="post-title">{{.Title}}</span>
                                 <span class="post-day">
                                     {{ .Params.categories }}
-                                    <!-- {{ if .Site.Params.dateformShort }}
-                                        {{ .Date.Format .Site.Params.dateformShort }}
+                                    {{ if .Site.Params.dateformNum }}
+                                        {{ .Date.Format .Site.Params.dateformNum }}
                                     {{ else }}
                                         {{ .Date.Format "Jan 2"}}
-                                    {{ end }} -->
+                                    {{ end }}
                                 </span>
                             </a>
                         </li>
