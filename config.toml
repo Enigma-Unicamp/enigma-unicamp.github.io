@@ -82,7 +82,7 @@ enableEmoji = true
     theme = "#1b1c1d"
 
   [params.logo]
-    logoText = "> $ cd /enigma.ic/"
+    logoText = "> $ cd /enigma@unicamp/"
     logoHomeLink = "/"
     # logoCursorColor = "#67a2c9"
     logoCursorPathname = true
