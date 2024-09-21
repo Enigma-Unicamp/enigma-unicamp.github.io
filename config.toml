@@ -1,4 +1,4 @@
-baseURL = "https://enigma-unicamp.github.io"
+baseURL = "/"
 title   = "Enigma Unicamp"
 languageCode = "en-us"
 # publishDir = "docs"
