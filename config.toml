@@ -12,6 +12,7 @@ rssLimit  = 10  # Maximum number of items in the RSS feed.
 
 canonifyURLs = true
 enableEmoji = true
+publishDir = 'docs'
 
 #
 #[permalinks]

@@ -1,0 +1,125 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>decifre.me on Enigma Unicamp</title>
+        <link>https://enigma-unicamp.github.io/tags/decifre.me/</link>
+        <description>Recent content in decifre.me on Enigma Unicamp</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 21 Aug 2018 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://enigma-unicamp.github.io/tags/decifre.me/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Resolvendo o decifre.me: 0, 1 e 2</title>
+            <link>https://enigma-unicamp.github.io/posts/resolvendo0/</link>
+            <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+            
+            <guid>https://enigma-unicamp.github.io/posts/resolvendo0/</guid>
+            <description>Nessa série de posts, iremos resolver os desafios do decifre.me! Para conhecer um pouco mais sobre a história de como criamos o desafio, veja este post.
+decifre.me foi um desafio no estilo Capture the Flag desenvolvido por nós, do Enigma. Nesses desafios, as/os jogadoras tem que utilizar conhecimentos de segurança, criptografia, hacking e engenharia reversa para passar pelas fases. Como os três primeiros são bem simples, vamos acabar com os três em um mesmo post.</description>
+            <content type="html"><![CDATA[<p>Nessa série de posts, iremos resolver os desafios do <a href="decifre.me">decifre.me</a>! Para conhecer um pouco mais sobre a história de como criamos o desafio, veja <a href="../genesis">este post</a>.</p>
+<p><strong>decifre.me</strong> foi um desafio no estilo <em>Capture the Flag</em> desenvolvido por nós, do Enigma. Nesses desafios, as/os jogadoras tem que utilizar conhecimentos de segurança, criptografia, <em>hacking</em> e engenharia reversa para passar pelas fases. Como os três primeiros são bem simples, vamos acabar com os três em um mesmo post. Nesses desafios usei o Mozilla Firefox como navegador, mas o Google Chrome também possui as mesmas ferramentas.</p>
+<h2 id="baby-steps">Baby Steps</h2>
+<p>Nesse primeiro desafio somos contemplados com uma página com os amigáveis dizeres:</p>
+<center>
+<figure><img src="/img/posts/resolvendo0/00.png" width="550"/>
+</figure>
+
+</center>
+<p>Esse desafio é bem direto e simples. Toda página web que você acessa é formada por um conjunto de arquivos, certo? Quando você acessa uma página, o seu navegador baixa esses arquivos para a sua máquina, para que ele consiga te mostrar na tela seu conteúdo. Esses arquivos, além de imagens e texto, incluem códigos nas linguagens: HTML, CSS e JavaScript.</p>
+<p>O <strong>HTML</strong> é o código base de todas as páginas, não existe uma página sem um arquivo <code>.html</code>. Essa linguagem de marcação define onde e quais componentes serão exibidos na página, enquanto o CSS e o JavaScript (que são facultativos) cuidam de melhorar a aparência, usabilidade e interação da página.</p>
+<p>Nesse desafio, essa página contém praticamente só HTML - existem apenas 7 linhas de CSS para mudar a cor de fundo, cor e tipo da fonte. Como dito anteriormente, para o seu navegador conseguir exibir a página, ele precisa baixar os arquivos. Então essa página HTML está na sua máquina no momento em que você abre ela. Para ver o código-fonte que gerou essa página, basta usar as funcionalidades do seu próprio navegador: no Firefox e no Chrome, clique com o botão direito do mouse e no menu, você irá encontrar a opção &ldquo;Ver código-fonte/<em>View source code</em>&rdquo;. Você encontrará algo assim:</p>
+<center>
+<figure><img src="/img/posts/resolvendo0/01.png" width="501"/>
+</figure>
+
+</center>
+<p>E isto é código HTML. Esse é o código que foi utilizado para renderizar a página da imagem anterior. Em HTML, comentários de código são escritos da seguinte maneira:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- seu comentário aqui --&gt;</span>
+</span></span></code></pre></div><p>E foi assim que a flag desse desafio foi inserida na página sem que você visse ela, já que comentários não aparecem na página.</p>
+<p>Por fim, entre as linhas 22 e 23, encontramos a flag:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Vou te botar na cara do gol: no código fonte tem a flag!&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--Aqui ó, a flag: enigma{4s_Fl4g5_73m_3553_f0rM470}--&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Boa sorte nos próximos desafios!&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span></code></pre></div><p>E lá está a flag, no formato <code>enigma{...}</code>. Fácil né?</p>
+<h2 id="imagem-404">Imagem 404</h2>
+<p>Nesse desafio, encontramos mais uma página web, com esse forma:</p>
+<center>
+<figure><img src="/img/posts/resolvendo0/02.png" width="550"/>
+</figure>
+
+</center>
+<p>Contudo, apesar do texto dizer que existe uma imagem, o navegador exibe um símbolo de uma página rasgada. Esse é o símbolo usado quando a imagem não foi encontrada. Você pode resolver esse desafio de algumas maneiras diferentes, incluido duas ferramentas do navegador: tanto com o &ldquo;Ver código-fonte&rdquo; usado no desafio anterior quanto usando a ferramenta de inspeção do navegador. Usando a ferramenta de inspeção (clique com o botão direito do mouse na página rasgada e selecione &ldquo;Inspecionar elemento&rdquo;), a aba de desenvolvedor surge na tela com informações sobre a parte que você escolheu, além do código-fonte. Encontramos o seguinte trecho de HTML:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nuwfqrd8fspyiesr.pgn&#34;</span>&gt;
+</span></span></code></pre></div><p>Como dizia no texto, era esperado que encontrássemos uma imagem. Contudo, lendo o nome do arquivo, vemos que a extensão do arquivo é <code>.pgn</code>. Segundo a Wikipédia:</p>
+<blockquote>
+<p><em>Portable Game Notation</em> é um formato de arquivo para computadores criado para o registro de partidas de xadrez.</p>
+</blockquote>
+<p>Bom, não parece muito com uma imagem né? Esses são os tipos de imagens mais comuns: JPEG/JPG, GIF, BMF e&hellip; PNG!</p>
+<blockquote>
+<p><em>Portable Network Graphics</em> é um formato de dados utilizado para imagens</p>
+</blockquote>
+<p>Parece que quem desenvolveu essa página errou no nome. Na ferramenta de inspecionar o elemento, clicamos em cima de <code>nuwfqrd8fspyiesr.pgn</code> e podemos editá-lo. Substituindo PGN por PNG e apertando <code>ENTER</code>, a página se atualiza e mostra a imagem. Pronto, flag na mão.</p>
+<h2 id="tá-falando-grego">Tá Falando Grego?</h2>
+<center>
+<figure><img src="/img/posts/resolvendo0/03.png" width="550"/>
+</figure>
+
+</center>
+<p>A página do desafio exibe um texto confuso e uma foto de uma estátua. Bom, o que será que houve com o texto?</p>
+<p>Esse texto foi <strong>criptografado</strong> (ou <strong>cifrado</strong>) ou seja, alguma lógica foi aplicada para remover o conteúdo semântico do texto, deixando ele parecendo uma sequência aleatório de letras. A ideia é que uma cifra só seja resolvida pela pessoa que contém a <strong>chave</strong>. Contudo, dependendo do algoritmo utilizado na cifra, essa chave pode ser fácilmente quebrada.</p>
+<p>No nosso desafio, a estátua é a imagem de Júlio César, líder militar e político de Roma. Mas e daí? Bom, uma rápida busca nas interwebs usando os temos &ldquo;criptografia&rdquo; e &ldquo;Júlio César&rdquo; nos apresentam o conceito de <strong>Cifra de César</strong>. Já sabemos qual a cifra utilizada, agora só falta a chave. Mas antes, precisamos saber mais alguns detalhes sobre essa cifra.</p>
+<h3 id="cifra-de-césar">Cifra de César</h3>
+<p>Essa cifra, muito utilizada para transmitir com sigilo mensagens do Império Romano, consiste em substituir cada letra por outra &ldquo;mais abaixo&rdquo; no alfabeto, em um número constate de posições. Por exemplo, se esse número for 3, temos que:</p>
+<table>
+<thead>
+<tr>
+<th>Alfabeto</th>
+<th>Alfabeto + 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>D</td>
+</tr>
+<tr>
+<td>B</td>
+<td>E</td>
+</tr>
+<tr>
+<td>C</td>
+<td>F</td>
+</tr>
+<tr>
+<td>D</td>
+<td>G</td>
+</tr>
+<tr>
+<td>E</td>
+<td>H</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<p>E o número de rotações no alfabeto é a chave dessa cifra. Cifrando a palavra <code>enigma</code> com essa chave obtemos <code>HQLJPD</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>Essa cifra, além de deixar uma forte relação de frequência entre o texto em claro e o cifrado, também peca em outro aspecto: existem pouquíssimas chaves. Como nosso alfabeto tem 23 letras, existem apenas 22 rotações. Dessa forma, fica fácil quebrar a cifra, basta apenas tentar as 22 repetições até encontrar alguma em que o texto faça sentido! Agora, basta usar alguma ferramenta (ou fazer a sua própria!) que teste algumas rotações até achar alguma em que o texto fique coerente no idioma esperado, que no nosso caso é o português<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>Portanto, para termos um algoritmo criptográfico forte temos que garantir que não haja nenhuma ou pouco relação entre o texto em claro e cifrado (dificultando uma criptoanálise) e um grande número de chaves possíveis (dificultando tentativas por força bruta).</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Nesse texto aplico uma convenção usada em criptografia: o texto claro em caixa baixa e o texto cifrado em caixa alta.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Ferramenta para quebrar a cifra de César: <a href="https://www.xarg.org/tools/caesar-cipher/">https://www.xarg.org/tools/caesar-cipher/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

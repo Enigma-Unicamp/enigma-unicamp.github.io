@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="[tony danilo]">
+<meta name="description" content="Quem controla o canal, controla a mensagem. Como contornar a vigilância e a censura na internet?" />
+<meta name="keywords" content=", tor, talks, privacidade" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://enigma-unicamp.github.io/posts/privacidade-tor-pgp/" />
+
+
+    <title>
+        
+            Tor e PGP: navegando no anonimato :: Enigma Unicamp 
+        
+    </title>
+
+
+
+
+
+<link rel="stylesheet" href="https://enigma-unicamp.github.io/main.2ccfb7eff38fb2d37f23dfb93d209ac6a42d33d4ab3f6bbf54e356706a55967e.css" integrity="sha256-LM&#43;37/OPstN/I9&#43;5PSCaxqQtM9SrP2u/VONWcGpVln4=">
+
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://enigma-unicamp.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://enigma-unicamp.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://enigma-unicamp.github.io/favicon-16x16.png">
+<link rel="manifest" href="https://enigma-unicamp.github.io/site.webmanifest">
+<link rel="mask-icon" href="https://enigma-unicamp.github.io/safari-pinned-tab.svg" color="">
+<link rel="shortcut icon" href="https://enigma-unicamp.github.io/favicon.ico">
+<meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Tor e PGP: navegando no anonimato">
+<meta itemprop="description" content="Quem controla o canal, controla a mensagem. Como contornar a vigilância e a censura na internet?"><meta itemprop="datePublished" content="2018-09-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-09-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4163"><meta itemprop="image" content="https://enigma-unicamp.github.io"/>
+<meta itemprop="keywords" content="tor,talks,privacidade," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://enigma-unicamp.github.io"/>
+
+<meta name="twitter:title" content="Tor e PGP: navegando no anonimato"/>
+<meta name="twitter:description" content="Quem controla o canal, controla a mensagem. Como contornar a vigilância e a censura na internet?"/>
+
+
+
+
+
+    <meta property="article:section" content="ENIGMA" />
+
+    <meta property="article:section" content="talks" />
+
+
+
+    <meta property="article:published_time" content="2018-09-29 00:00:00 &#43;0000 UTC" />
+
+
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]']],  
+      inlineMath: [['\\(', '\\)'], ['$$', '$$']]                  
+    }
+  };
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+    <body>
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://enigma-unicamp.github.io/" style="text-decoration: none;">
+            <div class="logo">
+                <span class="logo__text logo__pathname">
+                    &gt; $ cd /enigma@unicamp/</span>
+                <span class="logo__cursor" style=
+                    "
+                    
+                    ">
+                </span>
+            </div>
+        </a>
+        <span class="header__right">
+            
+            <nav class="menu">
+                <ul class="menu__inner"><li><a href="https://enigma-unicamp.github.io/">Home</a></li><li><a href="https://enigma-unicamp.github.io/posts/">Posts</a></li><li><a href="https://enigma-unicamp.github.io/about">About</a></li>
+                </ul>
+            </nav>
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+            <span class="theme-toggle not-selectable">
+                <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+                    3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+                    13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+                    </svg>
+            </span>
+        </span>
+    </span>
+</header>
+
+            <div class="content">
+  <main class="post">
+
+    
+      
+    <article>
+      <h1 class="post-title">
+        <a href="https://enigma-unicamp.github.io/posts/privacidade-tor-pgp/">Tor e PGP: navegando no anonimato</a>
+      </h1>
+
+      
+        <div class="post-excerpt">Quem controla o canal, controla a mensagem. Como contornar a vigilância e a censura na internet?</div>
+      
+
+      
+
+      <hr />
+      <div class="post-info">
+        
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+                <span class="tag"><a href="https://enigma-unicamp.github.io/tags/tor/">tor</a></span>
+                <span class="tag"><a href="https://enigma-unicamp.github.io/tags/talks/">talks</a></span>
+                <span class="tag"><a href="https://enigma-unicamp.github.io/tags/privacidade/">privacidade</a></span>
+                
+            </p>
+        
+        
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                <span class="tag"><a href="https://enigma-unicamp.github.io/categories/enigma/">ENIGMA</a></span>
+                <span class="tag"><a href="https://enigma-unicamp.github.io/categories/talks/">talks</a></span>
+                
+            </p>
+        
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-09-28 21:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+    <hr />
+        
+
+      
+
+      <div class="post-content">
+        <center>
+Slides da palestra do dia 26/09/18
+[aqui](https://enigma.ic.unicamp.br/talks/privacy-tor-pgp/talk.pdf)
+</center>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/bigbrother.jpg" width="400"/>
+</figure>
+
+O grande irmão está te observando
+</center>
+<p>Imagine você em um país, chamado <strong>Oceania</strong><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Nesse país, apesar da
+aparente
+democracia, seu povo não tinha poder. Tanto que seu adorável líder proibiu o
+festejo nas suas dependências e, não satisfeito, delimitou plenos poderes
+aos administradores da rede estatal, em nome do fim da pirataria,
+disseminação de vírus na rede e conteúdo impróprio. Como era previsto no
+instrumento que proibia as festividades, é proibido organizar, produzir ou
+divulgar qualquer conteúdo pró-festa.</p>
+<p>Agora você, cidadã desse país, está muito insatisfeita com a atual política.
+Oceania, assim como a Eurásia e a Lestásia, é regida por hierarquias e metas
+contraproducentes. Uma das poucas oportunidades de encontrar seus migos e
+relaxar agora foi cortada. Você então descobriu um website
+<code>www.voltafesta.net</code>, onde é possível ler manifestos pró-festa e encontrar
+datas de encontros clandestinos. Esse site está hospedado no exterior e
+portanto não está em risco de ser perseguido.</p>
+<p>Você acessa o site e fica muito contente de ver que não é a única! Imprime
+alguns planfetos, coloca no mural do centro acadêmico, fala sobre isso no
+bandejão e&hellip; é presa.</p>
+<h3 id="rastros-na-navegação">Rastros na navegação</h3>
+<p>Apesar de ter agido discretamente, as autoridades conseguiram facilmente
+descobrir quem tinha acessado o <code>www.voltafesta.net</code>. Isso é por causa da
+arquitetura da Internet, e de como ela foi construída. Quando uma pessoa requer
+uma página web, ela tem que requisitar para um intermediário para realizar o
+serviço. A sua máquina não está conectada diretamente ao <code>www.facebook.com</code>, por
+exemplo, mas o seu provedor de internet (Vivo, NET, Claro, &hellip;), esse sim
+está. É algo parecido com o sistema telefônico: você sabe o nome da pessoa e
+onde ela está e tudo mais, mas isso não é suficiente para realizar a ligação, é
+preciso usar a infraestrutura da sua operadora telefônica. Inclusive, as URLs
+(<code>www.site.com.br</code>) são como os nomes dos seus contatos e o IP (<em>Internet
+Protocol</em>, endereços como este: <code>143.106.7.54</code>) seria como o número do telefone,
+o dado que os protocolos precisam para efetuar a conexão. Todo equipamento que
+se conecta à internet tem um endereço IP, como celulares e computadores. Eles
+não são exatamente únicos e podem mudar com frequência de acordo com o seu
+provedor.</p>
+<p>Portanto, é assim que funciona:</p>
+<ol>
+<li>Você pede ao seu navegador para acessar o <code>www.voltafesta.net</code></li>
+<li>Seu navegador envia um pacote HTTP/S (<em>Hypertext Transfer Protocol</em> protocolo
+para comunicação usado pelas páginas web) para o seu ISP (<em>Internet Service
+Provider</em>, o seu provedor de internet) pedindo a página do site</li>
+<li>Seu ISP, conhecendo onde está hospedado o <code>www.voltafesta.net</code>, pede para ele
+a página e te devolve</li>
+<li>Tanto o ISP quanto o <code>www.voltafesta.net</code> conhecem o IP de quem pediu a
+página</li>
+</ol>
+<p>O conteúdo da página pode até vir de forma cifrada, de forma que só você e as
+administradoras do <code>www.voltafesta.net</code> conheçam seu conteúdo. Contudo, quem
+estiver no passo <code>2.</code> pode conhecer quem pediu cada página, através do endereço
+IP, que identifica máquinas na Internet (os endereços IP não são exatamente
+identificadores únicos de cada máquinas, mas com dados suficientes é possível
+traçar uma correlação de uso). Como os administradores de rede do país ganharam
+poderes irrestritos, eles podem tranquilamete checar esse dado. Esse dado sobre
+um dado é o que chamamos de <strong>metadado</strong>. Apesar de não revelar o conteúdo,
+metadados contam muito sobre nossos hábitos<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. E foi assim que te
+prenderam. Mesmo usando um provedor de internet privado, o estado pode requerer
+deles informações de seus usuários em nome da segurança nacional. Inclusive,
+poucas empresas resistiram em fazê-lo quando aconteceu.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> Na verdade, qualquer
+intermediário entre você e o site que esteja <em>sniffando</em><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> a rede consegueria
+ler seus pacotes e conhecer seu acesso.</p>
+<h3 id="navegando-sem-rastros">Navegando sem rastros</h3>
+<h4 id="vpnproxy">VPN/Proxy</h4>
+<p>Por motivos de simplicidade, vamos considerar a arquitetura de um Proxy e de
+uma VPN (<em>Virtual Private Network</em>) como iguais.</p>
+<p>Já que nos descobriram pelo nosso endereço IP, vamos tentar usar o IP de outra
+pessoa na requisição. Esse é um dos propósitos de uma VPN: ela empresta o IP
+dela para que o site não saiba quem pediu a página nem o ISP qual site foi
+pedido. Antes de começar, você e a VPN combinam uma chave criptográfica, para
+garantir sigilo entre vocês. Funciona da seguinte maneira:</p>
+<ol>
+<li>Você envia um pacote criptografado para a VPN. Dentro desse pacote, existe
+um pedido para acessar o <code>www.voltafesta.net</code></li>
+<li>Seu ISP recebe o pacote e repassa para a VPN. Como o pacote está
+criptografado, o ISP não sabe seu conteúdo</li>
+<li>A VPN, com posse da chave criptográfica, abre o pacote e descobre que você
+quer acessar <code>www.voltafesta.net</code>. Ele então faz a requisição para o
+<code>www.voltafesta.net</code> e faz o caminho inverso para te entregar o pacote (também
+criptografado).</li>
+<li>O <code>www.voltafesta.net</code> só conhece o IP da VPN e não sabe quem pediu a
+página de verdade, e o ISP só conhece o IP da VPN e não sabe qual site foi
+pedido.</li>
+</ol>
+<p>Aparentemente o problema de conhecer o IP está resolvido. Mas se a VPN sabe de
+tudo, como confiar na VPN?<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<h4 id="o-problema-da-confiança">O problema da confiança</h4>
+<p>Nos deparamos com uma situação difícil: como achar alguém em quem podemos
+confiar e que esteja disposto a disponibilizar um servidor VPN público?
+Existem vários serviçoes pagos de VPNs por aí, geridos por empresas. Você
+poderia criar seu próprio servidor VPN. Entretanto, isso não resolve o
+problema! É necessário que várias pessoas acessem o mesmo servidor para que
+seu tráfego seja misturado ao dos outros usuários e seja impossível - ou pelo
+menos difícil - determinar qual requisição é de qual usuário. Você poderia
+criar um servidor VPN público, mas isso iria requerer bastantes recursos
+computacionais, uma vez que o tráfego precisa ser alto para garantir o
+anonimato.</p>
+<p>Uma solução para este problema é o <strong>Tor</strong>. Na verdade, o Tor não resolve o
+problema de achar alguém confiável. Entretanto, ele faz com que ninguém
+precise confiar em ninguém.</p>
+<h3 id="a-rede-tor">A rede Tor</h3>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/onion.png" width="400"/>
+</figure>
+
+</center>
+<p>Agora, imaginemos que, em uma realidade alternativa, você foi a
+uma palestra de uma entidade de privacidade da sua faculdade, chamada Charada
+e com um quebra-cabeça de logo. Nessa palestra você ouviu falar da rede Tor, e
+que nela é possível navegar anonimamente. Como?</p>
+<p>Tor é uma rede de vários <em>relays</em>, ou nós, através dos quais seu tráfego é
+redirecionado de forma cifrada até que chegue ao seu destino final. Geralmente,
+três nós são utilizados: um de entrada, um de meio e um de saída.</p>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/how-tor-works.jpg" width="600"/>
+</figure>
+
+[Créditos](http://www.visualcapitalist.com/dark-web/)
+</center>
+<p>Suponhamos que você queira acessar <code>www.voltafesta.net</code> utilizando o Tor.
+Primeiramente, seu cliente Tor irá abrir uma conexão cifrada com um nó de
+entrada. Isso garante que os dados trafegados não possam ser interceptados por
+alguém no meio - como o governo ou seu ISP (<em>Internet Service Provider</em>, o seu
+provedor de internet) - embora o administrador do nó de entrada possa saber quem
+você é através do seu endereço de IP. Em seguida, seu cliente Tor irá pedir para
+o nó de entrada estender a conexão com outro nó (de meio). Esse canal de
+comunicação estendido agora tem duas camadas de criptografia: uma criptografia
+de ponta-a-ponta com o nó de entrada e outra de ponta-a-ponta com o nó do
+meio. O nó de entrada consegue identificar que o usuário está se comunicando com
+o nó do meio, mas os dados trafegados não farão sentido para ele, uma vez que só
+você e o nó do meio conhecem o segredo da sua criptografia de ponta-a-ponta. O
+cliente, então, pede para que o nó do meio estenda o canal de comunicação com um
+terceiro nó: o nó de saída. Novamente, o usuário combina uma chave para cifração
+de ponta-a-ponta com o terceiro nó.  Finalmente, o cliente Tor pede para que o
+terceiro nó acesse a página <code>www.voltafesta.net</code>.</p>
+<p>Embora o nó de saída saiba que alguém está acessando <code>wwww.voltafesta.net</code>, ele
+não sabe de onde a conexão está vindo (ele enxerga apenas o nó do meio). Desta
+maneira, é muito difícil determinar quem está acessando o serviço. Temos, desta
+forma, uma conexão totalmente anônima entre você e <code>www.voltafesta.net</code>. No
+passo-a-passo, funciona assim:</p>
+<ol>
+<li>Você envia um pacote três vezes criptografado para a nó de entrada. Dentro
+desse pacote, existe um pedido para acessar o <code>www.voltafesta.net</code></li>
+<li>O nó de entrada pega e repassa para o nó do meio, sem conhecer seu conteúdo</li>
+<li>O nó do meio pega e repassa para o nó final, sem conhecer quem enviou o
+pacote e o que tem dentro</li>
+<li>O nó final então abre o pacote e descobre que você quer acessar
+<code>www.voltafesta.net</code>. Ele então faz a requisição para o <code>www.voltafesta.net</code> e
+faz o caminho inverso para te entregar o pacote (também criptografado).</li>
+<li>O <code>www.voltafesta.net</code> só conhece o IP do nó final e não sabe quem pediu a
+página de verdade, o nó de entrada só conhece seu IP, o nó do meio não sabe
+praticamente nada e o ISP só sabe que você fez uma conexão na rede Tor.</li>
+</ol>
+<p>Dessa forma, mesmo se alguém quiser contar o que sabe, ninguém tem a
+informação completa, identificando que você acessou o site. Para uma
+desanonimização ser bem sucedida, seria necessário um operador ter os
+três nós do seu circuito ao mesmo tempo. Mas como os circuitos são formados
+de maneira aleatória, isso é muito improvável de acontecer. Se ele possuir
+o primeiro e o último, ele pode fazer uma correlação temporal do acesso,
+mas ele não conseguirá ter certeza.</p>
+<p>O conteúdo que você acessa na rede Tor é sigiloso e os administradores da rede
+não sabem o que você acessou. Contudo, o acesso à rede Tor em si não é
+sigiloso, e isso os administradores de rede sabem. Se só você acessar a rede
+Tor, fica fácil perceber quem andou acessando conteúdos proibidos (embora sem
+provas diretas, apenas indícios). Mas você tem sorte e convenceu suas amigas a
+proteger a privacidade delas também! Agora, com vários acessos à rede Tor, não
+é possível saber quem acessou o que, e niguém será preso!</p>
+<p>Usando o Tor Browser, podemos ver os <em>relays</em> que estamos usando para acessar
+algum site.</p>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/tor1.png" width="400"/>
+</figure>
+
+Exemplo de nós usados para acessar o torproject.org
+</center>
+<p>O projeto Tor, compromissado com a transparência, deixa listado todos os IPs dos
+nós da rede Tor. Mas se os IPs dos nós da rede Tor são publicos,
+não basta bloqueá-los e ninguém mais irá conseguir entrar na rede?</p>
+<h4 id="pontes">Pontes</h4>
+<p>De fato, isso acontece em lugares onde a rede Tor é proibida, como a China.
+Nesse caso, a rede Tor tem alguns <em>relays</em> especiais, chamados <em>bridges</em>
+(pontes),que não são listados publicamente. Se a rede Tor é bloqueada no seu
+país, você requisita ao projeto Tor alguns IPs de pontes para poder usar. A rede
+te provê alguns por alguma horas depois de você responder um CAPTCHA<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Dessa
+forma, um atacante demoraria muito tempo e necessitaria de muitos recursos para
+conseguir bloquear todas as <em>bridges</em>.</p>
+<p>Pronto! Navegação anônima com sucesso :)</p>
+<h3 id="hospedando-com-rastros">Hospedando com rastros</h3>
+<p>Após a ameaça de embargo comercial caso os países continuassem hospedando
+sites pró-festa, o <code>www.voltafesta.net</code> caiu. Agora, você é a única disposta
+na sua nação a continuar o movimento. Mas não é difícil descobrir onde uma
+página (ou um servido web) está hospedada. Por exemplo, o comando do
+GNU/Linux <code>whois</code> exibe algumas informações de quem possúi o domínio:</p>
+<ul>
+<li>
+<p>Informação sobre o registro do domínio, como nome de contato, número de
+telefone e endereço de e-mail</p>
+</li>
+<li>
+<p>Servidor DNS responsável pelo domínio</p>
+</li>
+</ul>
+<p>Por exemplo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ whois enigma.ic.unicamp.br
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>domain:      unicamp.br
+</span></span><span style="display:flex;"><span>owner:       UNIVERSIDADE ESTADUAL DE CAMPINAS
+</span></span><span style="display:flex;"><span>ownerid:     46.068.425/0001-33
+</span></span><span style="display:flex;"><span>responsible: Coord Tecnologia da Inform e Comunicacao
+</span></span><span style="display:flex;"><span>country:     BR
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>nic-hdl-br:  CTICO
+</span></span><span style="display:flex;"><span>person:      Coord Tecnologia da Inform e Comunicacao
+</span></span><span style="display:flex;"><span>e-mail:      noc@unicamp.br
+</span></span><span style="display:flex;"><span>country:     BR
+</span></span><span style="display:flex;"><span>created:     <span style="color:#ae81ff">20061027</span>
+</span></span><span style="display:flex;"><span>changed:     <span style="color:#ae81ff">20151022</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Conhecendo o servidor e, dependendo das leis do seu país, é possível
+requerer informações sobre o responsável por aquele domínio.</p>
+<h3 id="hospedando-sem-rastros">Hospedando sem rastros</h3>
+<p>E você não quer correr riscos de ser presa hospedando conteúdo proibido. Já
+conseguimos acessar anonimamente usando a rede Tor, será que ela também
+permite hospedar conteúdos dessa forma?</p>
+<p>Sim! É possível usar o que chamamos de <em>Onion Service</em>, que é um servidor
+hospedado na rede Tor. Os detalhes técnicos são bem complexos, então vamos
+dar uma simplificada. Basicamente, você irá, usando a rede Tor, entrar em
+contato com o servidor usando aquela ideia de circuito, mas, dessa vez, serão
+6 nós: 3 do lado do cliente e 3 do lado do servidor. De forma anônima vocês
+combinarão em qual relay se encontrarão e assim será formada a conexão.
+Como o servidor está atrás de 3 <em>relays</em> da rede Tor e, como visto
+anteriormente, isso garante anonimato, não teremos como descobrir onde está
+hospedado esse servidor. O endereços de serviços onion não podem ser
+arbritrariamente escolhidos pelo usuário, como em domínios normais, e são
+gerados automaticamente usando algumas informações criptográficas suas
+(nenhuma que comprometa sua segurança). Por exemplo,
+alguns endereços onion:</p>
+<ul>
+<li>Projeto Tor: <a href="http://expyuzz4wqqyqhjn.onion/">http://expyuzz4wqqyqhjn.onion/</a></li>
+<li>Serviço de submissão de arquivos do WikiLeaks: <a href="http://wlupld3ptjvsgwqw.onion">http://wlupld3ptjvsgwqw.onion</a></li>
+<li>Facebook: <a href="https://facebookcorewwwi.onion/">https://facebookcorewwwi.onion/</a> (veja como eles conseguiram esse endereço aqui<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>)</li>
+</ul>
+<p>Para abrir esses links <code>.onion</code>, é necessário usar o Tor Browser ou ter
+um proxy para a rede Tor na sua máquina. O exemplo do WikiLeaks é um caso claro
+de endereço sensível em que é perigoso que se conheça onde está hospedado.</p>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/tor2.png" width="400"/>
+</figure>
+
+Exemplo de nós usados para acessar o Onion Service do Tor Project
+</center>
+<h2 id="como-instalar-o-cliente-tor-e-o-navegador-tor">Como instalar o cliente Tor e o navegador Tor?</h2>
+<h3 id="tor-browser">Tor Browser</h3>
+<p>O jeito mais fácil de usar a rede Tor. Ele é <em>privacy by default</em>, ou seja
+as configurações protegem seu anonimato por padrão. Nem seu histório nem
+cookies são mantidos entre sessões e vem com extensões de segurança. Verifique
+<a href="https://www.torproject.org/download/download-easy.html.en">este endereço</a>
+para baixá-lo.</p>
+<p>Ele não necessita de instalação, basta baixar e executar (ou seja, da pra
+levar em um pendrive por aí!). Se você não
+estiver em algum lugar em que a rede Tor é bloqueada, basta seguir as
+configurações padrões para começar a navegar.</p>
+<h3 id="cliente-tor">Cliente Tor</h3>
+<p>O cliente da rede Tor é uma aplicação que permite, entre outras coisas
+&ldquo;torrificar&rdquo; todo o tráfego da sua máquina por um proxy, fazendo ele passar
+pela rede Tor e hospedar um <em>relay</em>. Para instalá-lo no GNU/Linux, use o
+seu gerenciador de pacotes e procure o pacote <code>tor</code>. Por exemplo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo apt install tor
+</span></span></code></pre></div><h3 id="como-rodar-um-relay-tor">Como rodar um relay Tor?</h3>
+<p>A rede Tor é o conjunto de <em>relays</em> hoperados por voluntárias e voluntários e
+para atingir maior anonimato e performace de rede, é preciso de cada vez mais
+pessoas rodando <em>relays</em>. Embora exista uma certa complexidade em hospedar um
+<em>relay</em>, não é muito mais difícil do que hospedar outros serviços. Você pode
+encontrar um guia em português
+<a href="https://trac.torproject.org/projects/tor/wiki/TorRelayGuide-ptbr">aqui</a>.</p>
+<h3 id="no-celular">No celular</h3>
+<p>É possível usar o Tor no Android também! Instale <a href="https://guardianproject.info/apps/orbot/">este
+aplicativo.</a></p>
+<h2 id="pgp-pretty-good-privacy">PGP: Pretty Good Privacy</h2>
+<p><strong>PGP</strong> é um programa que combina um grande conjunto de ferramentas
+criptográficas para privacidade, como ferramentas para criptografar arquivos,
+e-mails, bem como assiná-los digitalmente. Você também pode usar ele para gerar
+e gerenciar suas chaves criptográficas. Essa é uma forma de garantir que
+ninguém além do destinatário irá ler o seu e-mail. Quando você manda um e-mail,
+o seu provedor pode acessar as suas mensagens, se assim desejar. O Gmail deixou
+isso bem claro em uma funcionalidade que sugere respostas automáticas para
+você<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+<h3 id="o-criador">O criador</h3>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/zimmerman.jpg" width="300"/>
+</figure>
+
+Phill Zimmerman
+</center>
+<p>O criador dessa ferramenta foi Phill Zimmerman, com a motivação de democratizar
+o acesso à privacidade através de ferramentas criptográficas. Ele liberou o
+programa e seu código-fonte de forma pública em 1991, até que eventualmente se
+tornaria o programa de criptografar e-mails mais popular do mundo. Contudo, essa
+abertura permitiu com que pessoas de fora dos Estados Unidos tivessem acesso
+a ferramentas criptográficas. O problema disso é que softwares criptográficos
+fortes eram considerados como munição nos Estados Unidos, enquadrando esse
+caso como contrabando ilegal de armas. Felizmente, em 1996, a acusão caiu.</p>
+<h3 id="chave-pública-x-chave-privada">Chave pública x chave privada</h3>
+<p>Na criptografia assimétrica, utilizada para troca de mensagens, existem duas
+chaves: a chave pública, disponível para todo mundo, e a chave privada,
+que só a detentora dela deve ter acesso. A chave privada é usada para abrir
+mensagens cifradas com a chave pública e para assinar digitalmente arquivos. A
+chave pública serve para cifrar um arquivo para enviar para alguém e para
+verificar assinaturas.</p>
+<p>E se eu quiser enviar o e-mail para alguém, como eu consigo a chave privada? Se
+você se encontrar com a pessoa, ela pode te entregar a chave para que você
+possa usá-la. Mas, se a pessoa estiver do outro lado do mundo, como achamos a
+chave da pessoa? Para isso, existem servidores de chave pública. Um dos mais
+famosos é do MIT, o <a href="https://pgp.mit.edu/">MIT PGP Public Key Server</a>. Esses
+servidores possuem rotinas de sincronia, e frequetemente trocas chaves entre
+eles para que todos permaneçam conectados. Você pode fazer uma busca pelo
+nome, e-mail ou ID da chave e também pode submeter sua própria chave nessas
+páginas.</p>
+<p>Agora você tem a chave da pessoa. Mas será que podemos confiar que essa chave
+é dela e não de um atacante?</p>
+<h3 id="web-of-trust">Web of Trust</h3>
+<p>Para resolver isso, existe o conceito de &ldquo;assinar&rdquo; chaves. Você sabe que a
+chave K é da pessoa P, e para explicitar para o mundo que isso é verdade, você
+assina a chave da pessoa e envia sua assinatura para o servidor de chaves. E
+assim, aparece no servidor: &ldquo;a pessoa Y assinou a chave da pessoa P&rdquo;. Conforme
+esse procedimento é repetido, as pessoas prosseguem assinando seus conhecidos.
+Colocamos em prática o conceito de <em>Web of Trust</em>. Se verificarmos que a chave
+da pessoa P está com várias assinaturas, parece ser um indício de que várias
+pessoas confiam naquela chave. Contudo, um atacante muito esforçado poderia
+criar várias contas falsas para te convencer de que aquela chave é confiável.
+Além de ter um número razoável de assinaturas, o ideal é encontrar pessoas
+conhecidas entre as assinaturas. Se você confia na pessoa F, e você viu que a
+pessoa F assinou a chave de P, por transitividade a chave de P é confiável.
+Quanto mais assinaturas conhecidas existirem, mais confiável é essa chave.</p>
+<h4 id="exemplo-de-como-pegar-uma-chave">Exemplo de como pegar uma chave</h4>
+<p>Vamos supor que gostaríamos de conversar com Roger Dingledine, um dos criadores
+do Tor, para tirarmos algumas dúvidas sobre seu funcionamento. Vamos ao
+procedimento:</p>
+<ol>
+<li>
+<p>Começamos com algum servidor de chave públicas, escolhi este aqui:
+<a href="https://pgp.surfnet.nl/">https://pgp.surfnet.nl/</a></p>
+</li>
+<li>
+<p>Fazemos uma busca com o nome dele, &ldquo;Roger Dingledine&rdquo;</p>
+ <center>
+ <figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/roger1.png" width="400"/>
+	</figure>
+
+ </center>
+</li>
+<li>
+<p>Temos várias opções, algumas estão marcadas com <code>*** KEY REVOKED ***</code>. Isso
+significa que a pessoa quem possuía a chave, por motivos de vazamento da chave
+privada, porque não tem mais acesso a chave ou esqueceu sua senha revogou
+ela, marcando ela para não ser mais usada.</p>
+</li>
+<li>
+<p>Analisamos a primeira chave, mas parece que ninguém assinou ela&hellip;</p>
+ <center>
+ <figure><img src="https://enigma-unicamp.github.io/blog/img/posts/privacidade-tor-pgp/roger2.png" width="400"/>
+	</figure>
+
+ </center>
+</li>
+<li>
+<p>Agora, analisando a próxima chave válida, encontramos que muitas pessoas
+assinaram. Se você conhece alguém dessa lista, parece que é um bom sinal de
+que você está no caminho certo!</p>
+</li>
+</ol>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/roger3.png" width="400"/>
+</figure>
+
+</center>
+<p>Nesse exemplo, poderíamos ter consultado o site do Tor Project para conseguir a
+chave <a href="https://www.torproject.org/about/corepeople.html.en">aqui</a>.
+Agora podemos usar isso para ver se é a mesma. Como é a mesma,
+parece que acertamos :)</p>
+<p>A chave será uma grande sequência de caracteres sem sentido. Você precisará
+colar essa chave no seu programa de PGP quando for usá-la, ou adicioná-la usando
+as ferramentas de busca disponíveis no seu PGP. Todo esse procedimento que
+realizamos poderia ter sido feito pelo terminal também.</p>
+<h3 id="usando-pgp">Usando PGP</h3>
+<p>A implementação mais utilizada hoje em dia é a <em>GNU Privacy Guard</em> (abreviada
+para GnuPG or GPG). Ela já vem por padrão em distribuições GNU/Linux. Alguns
+comandos básicos são:</p>
+<ul>
+<li>
+<p><strong>Criação de chave</strong>:
+<code>gpg --generate-key</code></p>
+</li>
+<li>
+<p><strong>Obter uma chave pública da Internet:</strong>
+<code>gpg --keyserver pgp.mit.edu --search-keys snowden</code></p>
+</li>
+<li>
+<p><strong>Procurar e adicionar uma chave:</strong>
+<code>gpg --search-keys [nome, e-mail ou ID da chave]</code></p>
+</li>
+<li>
+<p><strong>Listar chaves públicas salvas:</strong>
+<code>gpg --list-public-keys</code></p>
+</li>
+<li>
+<p><strong>Cifrar com uma chave pública</strong>:
+<code>gpg --encrypt [--armor] [--sign] -r DESTINATARIO [Mensagem]</code></p>
+</li>
+<li>
+<p><strong>Decifrar uma mensagem:</strong>
+<code>gpg --decrypt MENSAGEM</code></p>
+</li>
+<li>
+<p><strong>Cifrar utilizando chave simétrica:</strong>
+<code>gpg --symmetric [--armor] [Mensagem]</code></p>
+</li>
+<li>
+<p><strong>Mais?</strong>
+<code>gpg --help</code></p>
+</li>
+</ul>
+<h2 id="mas-onde-fica-oceania">Mas, onde fica Oceania?</h2>
+<p>Será que nosso país da ficção existe em algum lugar do mundo? Sim, existe e
+está espalhada pelo mundo. Todo lugar que sofre de censura e/ou vigilância na
+internet, por parte estatal ou privada, tem um pouquinho da Oceania. Vamos ver
+os exemplos mais populares, mas essa é uma lista não exaustiva, nem seus
+exemplos.</p>
+<h3 id="china">China</h3>
+<p>A China, além de possuir a &ldquo;Grande Muralha&rdquo;, também possui o &ldquo;Grande
+Firewall&rdquo;. As conexões cabeadas, ao entrarem em território chinês passam por
+máquinas que já bloqueiam pacotes de acordo com seu domínio, mantendo a
+censura ativa e indo totalmente contra o conceito de neutralidade da rede. O
+governo anuncia que os assuntos bloquedos são &ldquo;superstição, pornografia,
+violência e jogos de azar&rdquo;. Contudo, se você tentar fazer uma busca usando
+algum buscador chinês dos seguintes termos, você receberá uma página em branco:
+&ldquo;Tibete, brutalidade policial, Tawian, liberdade de expressão, 1989<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, &hellip;&rdquo;</p>
+<p>Entre os sites bloquedos, estão:</p>
+<ul>
+<li>Gmail, YouTube, Blogspot</li>
+<li>Facebook, Twitter, Instagram, Reddit</li>
+<li>Pirate Bay, Dropbox</li>
+<li>New York Times</li>
+<li>Projeto Tor e seus <em>relays</em></li>
+</ul>
+<p>As pontes são muito úteis na China, onde todos os relays são bloqueados. Se
+você usar somente os meios permitidos pelo governos, você nunca conseguirá ver
+essa icónica foto:</p>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/tankman.jpg" width="500"/>
+</figure>
+
+_Homem anônimo para temporariamente tanques durante protestos na China, 1989_
+</center>
+<h3 id="primavera-árabe">Primavera Árabe</h3>
+<p>Durante os movimentos revolucionários ocorridos no norte da África e Oriente
+Médio entre 2010 e 2012, a internet exerceu um papel fundamental para seu
+alcance e propagação de ideias, bem como sua organização. O YouTube era usado
+para mostrar para o mundo a repressão policial, o Twitter para troca
+rápida de novidades e o Facebook para marcar protestos.</p>
+<p>No início, algumas páginas pró-revolucionárias forem sendo bloqueadas, até o
+momento em que toda as conexões foram cortadas, causando um blecaute total da
+internet. Ironicamente, em alguns lugares as pessoas, ao notarem que não havia
+internet, saíram às ruas para buscar informações e se juntaram aos protestos.
+Também ocorreram casos de invasão de contas de Facebook e blogueiras/os sendo
+presos e mortos pelo conteúdo de seus posts.</p>
+<h3 id="estados-unidos">Estados Unidos</h3>
+<p>Após os atentados terroristas de setembro de 2001 nos Estados Unidos, o
+governo norte-americano aprovou o &ldquo;Ato Patriota&rdquo;, que concede &ldquo;super poderes
+jurídicos&rdquo; aos órgãos investigativos, como a NSA e CIA, para combater o
+terrorismo. Durante muito tempo, boatos de que a NSA estaria espionando sua
+própria população se espalharam, mas não tinham muito embasamento e logo eram
+desacreditados.</p>
+<h4 id="o-vazamento">O vazamento</h4>
+<center>
+<figure><img src="https://enigma-unicamp.github.io/img/posts/privacidade-tor-pgp/snowden.jpg" width="500"/>
+</figure>
+
+_Edward Snowden_
+</center>
+<p>Em 2013, um analista de segurança subcontratado pela NSA, decidiu que era
+necessário alertar o mundo e seus compatriotas do que estava acontecendo. Ele
+então recolheu muitos dados internos, incluindo apresentações de slides de
+programas de espionagem. Em seguida, contactou o jornalista Glenn Greenwald e a
+diretora de cinema Laura Poitras para divulgar o conteúdo que encontrou. Eles
+se encontram em Hong Kong, onde Laura gravou um documentário<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> sobre o
+ocorrido.</p>
+<p>Os vazamentos mostraram dados assustadores: a espionagem estava
+institucionalisada no governo a nas empresas. Os telefonemas dos
+norte-americanos eram copiados, bem como o tráfego que passava pela operadoras
+de internet. É válido lembrar que, devido à grande infraestrutra tecnológica
+dos EUA, boa parte do tráfego de dados passa por lá. Ou seja, o uso de
+internet de boa parte do planeta está sendo registrado para eventual consulta.
+Grampos também foram feitos em outros países, como, por exemplo, no gabinete
+presidencial em Brasília. Isso significa uma vantagem dos EUA sobre trâmites
+políticos e econômicos internacionais, já que eles possuiam informação
+privilegiada, o que também significa o enfraquecimento da soberania nacional do
+Brasil.</p>
+<h3 id="brasil">Brasil?</h3>
+<p>O Brasil não possúi grandes ocorrências de censura ou vigilância, comparado
+com os outros países. Entre os exemplos mais famosos, estão os seguintes:</p>
+<ul>
+<li>
+<p>Em 2012, o diretor-geral da Google no Brasil foi preso pela Polícia Federal
+porque a Google não removeu um vídeo no YouTube que atacava um candidato a
+prefeito de Campo Grande (MS)<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></p>
+</li>
+<li>
+<p>O bloqueio do WhatsApp por operadoras (duas vezes), através de madato judical
+após a empresa não quebrar o sigilo de usuários para uma investigação
+policial. Quando bloquear da próxima vez, já sabe: use o Tor!<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></p>
+</li>
+</ul>
+<hr>
+<h2 id="referências">Referências</h2>
+<ul>
+<li>
+<p>Cypherpunks - Liberdade e o futuro da internet, livro escrito por Julian
+Assange (fundador do WikiLeaks)</p>
+</li>
+<li>
+<p>No Place to Hide: Edward Snowden, The NSA and the US Surveillance State - livro do jornalista <a href="http://www.glenngreenwald.net/">Glenn Greenwald</a></p>
+</li>
+<li>
+<p><a href="https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/">Como recolher informações de um servidor</a></p>
+</li>
+<li>
+<p><a href="https://temboinalinha.org">https://temboinalinha.org</a>: página informativa sobre vigilância e ferramentas
+de defesa</p>
+</li>
+<li>
+<p><a href="https://ssd.eff.org/pt-br">https://ssd.eff.org/pt-br</a>: Autodefesa contra Vigilância: Dicas, ferramentas
+e tutoriais para uma maior segurança nas comunicações online</p>
+</li>
+<li>
+<p><a href="https://datadetox.myshadow.org/pt/detox">https://datadetox.myshadow.org/pt/detox</a>: Guia de desintoxicação de maus
+hábitos de privacidade em redes sociais</p>
+</li>
+<li>
+<p><a href="https://encripta.org/dicas_e_tutoriais_seguranca/">https://encripta.org/dicas_e_tutoriais_seguranca/</a>: Nesta página estão
+reunidos diversos guias sobre segurança e privacidade na internet</p>
+</li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Oceania, Eurásia e Lestásia são países fictícios do mundo de 1984, de George Orwell&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Como já diria um funcionário da NSA, &ldquo;Nós matamos pessoas basedo em metadados&rdquo;. <a href="https://www.rt.com/usa/158460-cia-director-metadata-kill-people/">Fonte</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29">PRISM</a> (programa de vigilância na internet dos EUA)&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><em>Sniffar</em> é uma tradução forçada do termo em inglês <em>sniffing</em>, que significa fareijar, que também é usado para &ldquo;cheirar&rdquo; a rede, interceptar e analisar passivamente uma rede.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Uma <a href="https://vpnleaks.com/">lista</a> de VPNs não confiáveis que não respeitam a privacidade.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>[Como o Facebook conseguiu obter a URL facebookcorewwwi.onion?] (<a href="https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion">https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion</a>)&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://www.thisisinsider.com/gmails-smart-reply-has-people-divided-2018-9">&ldquo;Smart Reply&rdquo; do Gmail deixa pessoas divididas</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://pt.wikipedia.org/wiki/Protesto_na_Pra%C3%A7a_da_Paz_Celestial_em_1989">Massacre da Praça da Paz Celestial de 1989</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Citizenfour, documentário sobre o vazamento de dados do Snowden&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p><a href="https://politica.estadao.com.br/noticias/geral,diretor-geral-do-google-no-brasil-e-preso-pela-policia-federal,936220">https://politica.estadao.com.br/noticias/geral,diretor-geral-do-google-no-brasil-e-preso-pela-policia-federal,936220</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p><a href="https://www1.folha.uol.com.br/mercado/2016/05/1766869-justica-determina-bloqueio-do-whatsapp-em-todo-o-brasil-por-72-horas.shtml">https://www1.folha.uol.com.br/mercado/2016/05/1766869-justica-determina-bloqueio-do-whatsapp-em-todo-o-brasil-por-72-horas.shtml</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+      </div>
+    </article>
+
+    <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Tor%20e%20PGP%3a%20navegando%20no%20anonimato&amp;caption=Tor%20e%20PGP%3a%20navegando%20no%20anonimato&amp;canonicalUrl=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Tor%20e%20PGP%3a%20navegando%20no%20anonimato&amp;body=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f&amp;media=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f;description=Tor%20e%20PGP%3a%20navegando%20no%20anonimato" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f&amp;title=Tor%20e%20PGP%3a%20navegando%20no%20anonimato&amp;summary=Tor%20e%20PGP%3a%20navegando%20no%20anonimato&amp;source=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f&amp;resubmit=true&amp;title=Tor%20e%20PGP%3a%20navegando%20no%20anonimato" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f;title=Tor%20e%20PGP%3a%20navegando%20no%20anonimato" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Tor%20e%20PGP%3a%20navegando%20no%20anonimato%20https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f&amp;t=Tor%20e%20PGP%3a%20navegando%20no%20anonimato" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Tor%20e%20PGP%3a%20navegando%20no%20anonimato&amp;url=https%3a%2f%2fenigma-unicamp.github.io%2fposts%2fprivacidade-tor-pgp%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+      <div class="pagination">
+        
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://enigma-unicamp.github.io/posts/asymmetric-encryption/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Criptografia de chave pública</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://enigma-unicamp.github.io/posts/roadsec2018/">
+                    <span class="button__text">Caravana para Roadsec 2018</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+  </main>
+</div>
+            
+            
+                <footer class="footer">
+                    
+                        <div class="footer__inner">
+                            <div class="footer__content">
+                                
+                            </div>
+                        </div>
+                    
+                    
+                        <div class="footer__inner">
+                            <div class="footer__content">
+                                <span><a href="http://gohugo.io">Hugo</a> template by <a href="https://github.com/rhazdon">rhazdon</a>. Adapted by Andreis Purim.</span>
+                            </div>
+                        </div>
+                    
+                </footer>
+            
+            
+        </div>
+        
+        
+        
+        
+        
+        <script type="text/javascript" src="https://enigma-unicamp.github.io/bundle.min.205d491810c28f95aa953fae884e1c27abe13fdf93ec63b882d0036b248d4a6282eb2d134e4e7225c6ad6e86db87b08488a361ca4a7383d01fcff43f3d57b9c3.js" integrity="sha512-IF1JGBDCj5WqlT&#43;uiE4cJ6vhP9&#43;T7GO4gtADaySNSmKC6y0TTk5yJcatbobbh7CEiKNhykpzg9Afz/Q/PVe5ww=="></script>
+        
+    </body>
+</html>
