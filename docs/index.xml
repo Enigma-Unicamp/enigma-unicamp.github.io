@@ -1,0 +1,87 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Enigma Unicamp</title>
+        <link>http://localhost:1313/</link>
+        <description>Recent content on Enigma Unicamp</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Posts</title>
+            <link>http://localhost:1313/posts/</link>
+            <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/posts/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+        <item>
+            <title>Sobre nós</title>
+            <link>http://localhost:1313/about/</link>
+            <pubDate>Sat, 18 Aug 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/about/</guid>
+            <description>&lt;p&gt;O &lt;strong&gt;Enigma&lt;/strong&gt; é uma entidade formada por alunos e alunas da Unicamp com o propósito de estudar
+privacidade, segurança e criptografia, além de outros assuntos relacionados.&lt;/p&gt;
+&lt;p&gt;Assim, organizamos encontros, mini cursos, palestras e desafios para incentivar o desenvolvimento desta área na universidade.
+Todas as pessoas são bem vindas, independentemente do seu curso e nível técnico!&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;http://localhost:1313/img/members/pedro.gif&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;20 anos, 022 da Ciência da Computação. Comecei estudando cibersegurança por conta própria e logo me aprofundei em criptografia com a minha iniciação científica. Atualmente sou o Presidente do ENIGMA.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Diretor de materiais&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;http://localhost:1313/img/members/marcio.gif&#34; width=&#34;500&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;March&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;$420&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;hr&gt;</description>
+            <content type="html"><![CDATA[<p>O <strong>Enigma</strong> é uma entidade formada por alunos e alunas da Unicamp com o propósito de estudar
+privacidade, segurança e criptografia, além de outros assuntos relacionados.</p>
+<p>Assim, organizamos encontros, mini cursos, palestras e desafios para incentivar o desenvolvimento desta área na universidade.
+Todas as pessoas são bem vindas, independentemente do seu curso e nível técnico!</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><img src="/img/members/pedro.gif"></td>
+          <td style="text-align: left">20 anos, 022 da Ciência da Computação. Comecei estudando cibersegurança por conta própria e logo me aprofundei em criptografia com a minha iniciação científica. Atualmente sou o Presidente do ENIGMA.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Diretor de materiais</td>
+          <td style="text-align: left"><img src="/img/members/marcio.gif" width="500"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">March</td>
+          <td style="text-align: left">$420</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<hr>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

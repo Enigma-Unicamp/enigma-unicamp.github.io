@@ -1,0 +1,628 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Talks on Enigma Unicamp</title>
+        <link>http://localhost:1313/tags/talks/</link>
+        <description>Recent content in Talks on Enigma Unicamp</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 29 Sep 2018 00:00:00 +0000</lastBuildDate>
+        <atom:link href="http://localhost:1313/tags/talks/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Tor e PGP: navegando no anonimato</title>
+            <link>http://localhost:1313/posts/privacidade-tor-pgp/</link>
+            <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/posts/privacidade-tor-pgp/</guid>
+            <description>&lt;center&gt;
+Slides da palestra do dia 26/09/18
+[aqui](https://enigma.ic.unicamp.br/talks/privacy-tor-pgp/talk.pdf)
+&lt;/center&gt;
+&lt;center&gt;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/posts/privacidade-tor-pgp/bigbrother.jpg&#34; width=&#34;400&#34;&gt;
+&lt;/figure&gt;
+
+O grande irmão está te observando
+&lt;/center&gt;
+&lt;p&gt;Imagine você em um país, chamado &lt;strong&gt;Oceania&lt;/strong&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Nesse país, apesar da
+aparente
+democracia, seu povo não tinha poder. Tanto que seu adorável líder proibiu o
+festejo nas suas dependências e, não satisfeito, delimitou plenos poderes
+aos administradores da rede estatal, em nome do fim da pirataria,
+disseminação de vírus na rede e conteúdo impróprio. Como era previsto no
+instrumento que proibia as festividades, é proibido organizar, produzir ou
+divulgar qualquer conteúdo pró-festa.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<center>
+Slides da palestra do dia 26/09/18
+[aqui](https://enigma.ic.unicamp.br/talks/privacy-tor-pgp/talk.pdf)
+</center>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/bigbrother.jpg" width="400">
+</figure>
+
+O grande irmão está te observando
+</center>
+<p>Imagine você em um país, chamado <strong>Oceania</strong><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Nesse país, apesar da
+aparente
+democracia, seu povo não tinha poder. Tanto que seu adorável líder proibiu o
+festejo nas suas dependências e, não satisfeito, delimitou plenos poderes
+aos administradores da rede estatal, em nome do fim da pirataria,
+disseminação de vírus na rede e conteúdo impróprio. Como era previsto no
+instrumento que proibia as festividades, é proibido organizar, produzir ou
+divulgar qualquer conteúdo pró-festa.</p>
+<p>Agora você, cidadã desse país, está muito insatisfeita com a atual política.
+Oceania, assim como a Eurásia e a Lestásia, é regida por hierarquias e metas
+contraproducentes. Uma das poucas oportunidades de encontrar seus migos e
+relaxar agora foi cortada. Você então descobriu um website
+<code>www.voltafesta.net</code>, onde é possível ler manifestos pró-festa e encontrar
+datas de encontros clandestinos. Esse site está hospedado no exterior e
+portanto não está em risco de ser perseguido.</p>
+<p>Você acessa o site e fica muito contente de ver que não é a única! Imprime
+alguns planfetos, coloca no mural do centro acadêmico, fala sobre isso no
+bandejão e&hellip; é presa.</p>
+<h3 id="rastros-na-navegação">Rastros na navegação</h3>
+<p>Apesar de ter agido discretamente, as autoridades conseguiram facilmente
+descobrir quem tinha acessado o <code>www.voltafesta.net</code>. Isso é por causa da
+arquitetura da Internet, e de como ela foi construída. Quando uma pessoa requer
+uma página web, ela tem que requisitar para um intermediário para realizar o
+serviço. A sua máquina não está conectada diretamente ao <code>www.facebook.com</code>, por
+exemplo, mas o seu provedor de internet (Vivo, NET, Claro, &hellip;), esse sim
+está. É algo parecido com o sistema telefônico: você sabe o nome da pessoa e
+onde ela está e tudo mais, mas isso não é suficiente para realizar a ligação, é
+preciso usar a infraestrutura da sua operadora telefônica. Inclusive, as URLs
+(<code>www.site.com.br</code>) são como os nomes dos seus contatos e o IP (<em>Internet
+Protocol</em>, endereços como este: <code>143.106.7.54</code>) seria como o número do telefone,
+o dado que os protocolos precisam para efetuar a conexão. Todo equipamento que
+se conecta à internet tem um endereço IP, como celulares e computadores. Eles
+não são exatamente únicos e podem mudar com frequência de acordo com o seu
+provedor.</p>
+<p>Portanto, é assim que funciona:</p>
+<ol>
+<li>Você pede ao seu navegador para acessar o <code>www.voltafesta.net</code></li>
+<li>Seu navegador envia um pacote HTTP/S (<em>Hypertext Transfer Protocol</em> protocolo
+para comunicação usado pelas páginas web) para o seu ISP (<em>Internet Service
+Provider</em>, o seu provedor de internet) pedindo a página do site</li>
+<li>Seu ISP, conhecendo onde está hospedado o <code>www.voltafesta.net</code>, pede para ele
+a página e te devolve</li>
+<li>Tanto o ISP quanto o <code>www.voltafesta.net</code> conhecem o IP de quem pediu a
+página</li>
+</ol>
+<p>O conteúdo da página pode até vir de forma cifrada, de forma que só você e as
+administradoras do <code>www.voltafesta.net</code> conheçam seu conteúdo. Contudo, quem
+estiver no passo <code>2.</code> pode conhecer quem pediu cada página, através do endereço
+IP, que identifica máquinas na Internet (os endereços IP não são exatamente
+identificadores únicos de cada máquinas, mas com dados suficientes é possível
+traçar uma correlação de uso). Como os administradores de rede do país ganharam
+poderes irrestritos, eles podem tranquilamete checar esse dado. Esse dado sobre
+um dado é o que chamamos de <strong>metadado</strong>. Apesar de não revelar o conteúdo,
+metadados contam muito sobre nossos hábitos<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. E foi assim que te
+prenderam. Mesmo usando um provedor de internet privado, o estado pode requerer
+deles informações de seus usuários em nome da segurança nacional. Inclusive,
+poucas empresas resistiram em fazê-lo quando aconteceu.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> Na verdade, qualquer
+intermediário entre você e o site que esteja <em>sniffando</em><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> a rede consegueria
+ler seus pacotes e conhecer seu acesso.</p>
+<h3 id="navegando-sem-rastros">Navegando sem rastros</h3>
+<h4 id="vpnproxy">VPN/Proxy</h4>
+<p>Por motivos de simplicidade, vamos considerar a arquitetura de um Proxy e de
+uma VPN (<em>Virtual Private Network</em>) como iguais.</p>
+<p>Já que nos descobriram pelo nosso endereço IP, vamos tentar usar o IP de outra
+pessoa na requisição. Esse é um dos propósitos de uma VPN: ela empresta o IP
+dela para que o site não saiba quem pediu a página nem o ISP qual site foi
+pedido. Antes de começar, você e a VPN combinam uma chave criptográfica, para
+garantir sigilo entre vocês. Funciona da seguinte maneira:</p>
+<ol>
+<li>Você envia um pacote criptografado para a VPN. Dentro desse pacote, existe
+um pedido para acessar o <code>www.voltafesta.net</code></li>
+<li>Seu ISP recebe o pacote e repassa para a VPN. Como o pacote está
+criptografado, o ISP não sabe seu conteúdo</li>
+<li>A VPN, com posse da chave criptográfica, abre o pacote e descobre que você
+quer acessar <code>www.voltafesta.net</code>. Ele então faz a requisição para o
+<code>www.voltafesta.net</code> e faz o caminho inverso para te entregar o pacote (também
+criptografado).</li>
+<li>O <code>www.voltafesta.net</code> só conhece o IP da VPN e não sabe quem pediu a
+página de verdade, e o ISP só conhece o IP da VPN e não sabe qual site foi
+pedido.</li>
+</ol>
+<p>Aparentemente o problema de conhecer o IP está resolvido. Mas se a VPN sabe de
+tudo, como confiar na VPN?<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<h4 id="o-problema-da-confiança">O problema da confiança</h4>
+<p>Nos deparamos com uma situação difícil: como achar alguém em quem podemos
+confiar e que esteja disposto a disponibilizar um servidor VPN público?
+Existem vários serviçoes pagos de VPNs por aí, geridos por empresas. Você
+poderia criar seu próprio servidor VPN. Entretanto, isso não resolve o
+problema! É necessário que várias pessoas acessem o mesmo servidor para que
+seu tráfego seja misturado ao dos outros usuários e seja impossível - ou pelo
+menos difícil - determinar qual requisição é de qual usuário. Você poderia
+criar um servidor VPN público, mas isso iria requerer bastantes recursos
+computacionais, uma vez que o tráfego precisa ser alto para garantir o
+anonimato.</p>
+<p>Uma solução para este problema é o <strong>Tor</strong>. Na verdade, o Tor não resolve o
+problema de achar alguém confiável. Entretanto, ele faz com que ninguém
+precise confiar em ninguém.</p>
+<h3 id="a-rede-tor">A rede Tor</h3>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/onion.png" width="400">
+</figure>
+
+</center>
+<p>Agora, imaginemos que, em uma realidade alternativa, você foi a
+uma palestra de uma entidade de privacidade da sua faculdade, chamada Charada
+e com um quebra-cabeça de logo. Nessa palestra você ouviu falar da rede Tor, e
+que nela é possível navegar anonimamente. Como?</p>
+<p>Tor é uma rede de vários <em>relays</em>, ou nós, através dos quais seu tráfego é
+redirecionado de forma cifrada até que chegue ao seu destino final. Geralmente,
+três nós são utilizados: um de entrada, um de meio e um de saída.</p>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/how-tor-works.jpg" width="600">
+</figure>
+
+[Créditos](http://www.visualcapitalist.com/dark-web/)
+</center>
+<p>Suponhamos que você queira acessar <code>www.voltafesta.net</code> utilizando o Tor.
+Primeiramente, seu cliente Tor irá abrir uma conexão cifrada com um nó de
+entrada. Isso garante que os dados trafegados não possam ser interceptados por
+alguém no meio - como o governo ou seu ISP (<em>Internet Service Provider</em>, o seu
+provedor de internet) - embora o administrador do nó de entrada possa saber quem
+você é através do seu endereço de IP. Em seguida, seu cliente Tor irá pedir para
+o nó de entrada estender a conexão com outro nó (de meio). Esse canal de
+comunicação estendido agora tem duas camadas de criptografia: uma criptografia
+de ponta-a-ponta com o nó de entrada e outra de ponta-a-ponta com o nó do
+meio. O nó de entrada consegue identificar que o usuário está se comunicando com
+o nó do meio, mas os dados trafegados não farão sentido para ele, uma vez que só
+você e o nó do meio conhecem o segredo da sua criptografia de ponta-a-ponta. O
+cliente, então, pede para que o nó do meio estenda o canal de comunicação com um
+terceiro nó: o nó de saída. Novamente, o usuário combina uma chave para cifração
+de ponta-a-ponta com o terceiro nó.  Finalmente, o cliente Tor pede para que o
+terceiro nó acesse a página <code>www.voltafesta.net</code>.</p>
+<p>Embora o nó de saída saiba que alguém está acessando <code>wwww.voltafesta.net</code>, ele
+não sabe de onde a conexão está vindo (ele enxerga apenas o nó do meio). Desta
+maneira, é muito difícil determinar quem está acessando o serviço. Temos, desta
+forma, uma conexão totalmente anônima entre você e <code>www.voltafesta.net</code>. No
+passo-a-passo, funciona assim:</p>
+<ol>
+<li>Você envia um pacote três vezes criptografado para a nó de entrada. Dentro
+desse pacote, existe um pedido para acessar o <code>www.voltafesta.net</code></li>
+<li>O nó de entrada pega e repassa para o nó do meio, sem conhecer seu conteúdo</li>
+<li>O nó do meio pega e repassa para o nó final, sem conhecer quem enviou o
+pacote e o que tem dentro</li>
+<li>O nó final então abre o pacote e descobre que você quer acessar
+<code>www.voltafesta.net</code>. Ele então faz a requisição para o <code>www.voltafesta.net</code> e
+faz o caminho inverso para te entregar o pacote (também criptografado).</li>
+<li>O <code>www.voltafesta.net</code> só conhece o IP do nó final e não sabe quem pediu a
+página de verdade, o nó de entrada só conhece seu IP, o nó do meio não sabe
+praticamente nada e o ISP só sabe que você fez uma conexão na rede Tor.</li>
+</ol>
+<p>Dessa forma, mesmo se alguém quiser contar o que sabe, ninguém tem a
+informação completa, identificando que você acessou o site. Para uma
+desanonimização ser bem sucedida, seria necessário um operador ter os
+três nós do seu circuito ao mesmo tempo. Mas como os circuitos são formados
+de maneira aleatória, isso é muito improvável de acontecer. Se ele possuir
+o primeiro e o último, ele pode fazer uma correlação temporal do acesso,
+mas ele não conseguirá ter certeza.</p>
+<p>O conteúdo que você acessa na rede Tor é sigiloso e os administradores da rede
+não sabem o que você acessou. Contudo, o acesso à rede Tor em si não é
+sigiloso, e isso os administradores de rede sabem. Se só você acessar a rede
+Tor, fica fácil perceber quem andou acessando conteúdos proibidos (embora sem
+provas diretas, apenas indícios). Mas você tem sorte e convenceu suas amigas a
+proteger a privacidade delas também! Agora, com vários acessos à rede Tor, não
+é possível saber quem acessou o que, e niguém será preso!</p>
+<p>Usando o Tor Browser, podemos ver os <em>relays</em> que estamos usando para acessar
+algum site.</p>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/tor1.png" width="400">
+</figure>
+
+Exemplo de nós usados para acessar o torproject.org
+</center>
+<p>O projeto Tor, compromissado com a transparência, deixa listado todos os IPs dos
+nós da rede Tor. Mas se os IPs dos nós da rede Tor são publicos,
+não basta bloqueá-los e ninguém mais irá conseguir entrar na rede?</p>
+<h4 id="pontes">Pontes</h4>
+<p>De fato, isso acontece em lugares onde a rede Tor é proibida, como a China.
+Nesse caso, a rede Tor tem alguns <em>relays</em> especiais, chamados <em>bridges</em>
+(pontes),que não são listados publicamente. Se a rede Tor é bloqueada no seu
+país, você requisita ao projeto Tor alguns IPs de pontes para poder usar. A rede
+te provê alguns por alguma horas depois de você responder um CAPTCHA<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Dessa
+forma, um atacante demoraria muito tempo e necessitaria de muitos recursos para
+conseguir bloquear todas as <em>bridges</em>.</p>
+<p>Pronto! Navegação anônima com sucesso :)</p>
+<h3 id="hospedando-com-rastros">Hospedando com rastros</h3>
+<p>Após a ameaça de embargo comercial caso os países continuassem hospedando
+sites pró-festa, o <code>www.voltafesta.net</code> caiu. Agora, você é a única disposta
+na sua nação a continuar o movimento. Mas não é difícil descobrir onde uma
+página (ou um servido web) está hospedada. Por exemplo, o comando do
+GNU/Linux <code>whois</code> exibe algumas informações de quem possúi o domínio:</p>
+<ul>
+<li>
+<p>Informação sobre o registro do domínio, como nome de contato, número de
+telefone e endereço de e-mail</p>
+</li>
+<li>
+<p>Servidor DNS responsável pelo domínio</p>
+</li>
+</ul>
+<p>Por exemplo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ whois enigma.ic.unicamp.br
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>domain:      unicamp.br
+</span></span><span style="display:flex;"><span>owner:       UNIVERSIDADE ESTADUAL DE CAMPINAS
+</span></span><span style="display:flex;"><span>ownerid:     46.068.425/0001-33
+</span></span><span style="display:flex;"><span>responsible: Coord Tecnologia da Inform e Comunicacao
+</span></span><span style="display:flex;"><span>country:     BR
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>nic-hdl-br:  CTICO
+</span></span><span style="display:flex;"><span>person:      Coord Tecnologia da Inform e Comunicacao
+</span></span><span style="display:flex;"><span>e-mail:      noc@unicamp.br
+</span></span><span style="display:flex;"><span>country:     BR
+</span></span><span style="display:flex;"><span>created:     <span style="color:#ae81ff">20061027</span>
+</span></span><span style="display:flex;"><span>changed:     <span style="color:#ae81ff">20151022</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Conhecendo o servidor e, dependendo das leis do seu país, é possível
+requerer informações sobre o responsável por aquele domínio.</p>
+<h3 id="hospedando-sem-rastros">Hospedando sem rastros</h3>
+<p>E você não quer correr riscos de ser presa hospedando conteúdo proibido. Já
+conseguimos acessar anonimamente usando a rede Tor, será que ela também
+permite hospedar conteúdos dessa forma?</p>
+<p>Sim! É possível usar o que chamamos de <em>Onion Service</em>, que é um servidor
+hospedado na rede Tor. Os detalhes técnicos são bem complexos, então vamos
+dar uma simplificada. Basicamente, você irá, usando a rede Tor, entrar em
+contato com o servidor usando aquela ideia de circuito, mas, dessa vez, serão
+6 nós: 3 do lado do cliente e 3 do lado do servidor. De forma anônima vocês
+combinarão em qual relay se encontrarão e assim será formada a conexão.
+Como o servidor está atrás de 3 <em>relays</em> da rede Tor e, como visto
+anteriormente, isso garante anonimato, não teremos como descobrir onde está
+hospedado esse servidor. O endereços de serviços onion não podem ser
+arbritrariamente escolhidos pelo usuário, como em domínios normais, e são
+gerados automaticamente usando algumas informações criptográficas suas
+(nenhuma que comprometa sua segurança). Por exemplo,
+alguns endereços onion:</p>
+<ul>
+<li>Projeto Tor: <a href="http://expyuzz4wqqyqhjn.onion/">http://expyuzz4wqqyqhjn.onion/</a></li>
+<li>Serviço de submissão de arquivos do WikiLeaks: <a href="http://wlupld3ptjvsgwqw.onion">http://wlupld3ptjvsgwqw.onion</a></li>
+<li>Facebook: <a href="https://facebookcorewwwi.onion/">https://facebookcorewwwi.onion/</a> (veja como eles conseguiram esse endereço aqui<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>)</li>
+</ul>
+<p>Para abrir esses links <code>.onion</code>, é necessário usar o Tor Browser ou ter
+um proxy para a rede Tor na sua máquina. O exemplo do WikiLeaks é um caso claro
+de endereço sensível em que é perigoso que se conheça onde está hospedado.</p>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/tor2.png" width="400">
+</figure>
+
+Exemplo de nós usados para acessar o Onion Service do Tor Project
+</center>
+<h2 id="como-instalar-o-cliente-tor-e-o-navegador-tor">Como instalar o cliente Tor e o navegador Tor?</h2>
+<h3 id="tor-browser">Tor Browser</h3>
+<p>O jeito mais fácil de usar a rede Tor. Ele é <em>privacy by default</em>, ou seja
+as configurações protegem seu anonimato por padrão. Nem seu histório nem
+cookies são mantidos entre sessões e vem com extensões de segurança. Verifique
+<a href="https://www.torproject.org/download/download-easy.html.en">este endereço</a>
+para baixá-lo.</p>
+<p>Ele não necessita de instalação, basta baixar e executar (ou seja, da pra
+levar em um pendrive por aí!). Se você não
+estiver em algum lugar em que a rede Tor é bloqueada, basta seguir as
+configurações padrões para começar a navegar.</p>
+<h3 id="cliente-tor">Cliente Tor</h3>
+<p>O cliente da rede Tor é uma aplicação que permite, entre outras coisas
+&ldquo;torrificar&rdquo; todo o tráfego da sua máquina por um proxy, fazendo ele passar
+pela rede Tor e hospedar um <em>relay</em>. Para instalá-lo no GNU/Linux, use o
+seu gerenciador de pacotes e procure o pacote <code>tor</code>. Por exemplo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo apt install tor
+</span></span></code></pre></div><h3 id="como-rodar-um-relay-tor">Como rodar um relay Tor?</h3>
+<p>A rede Tor é o conjunto de <em>relays</em> hoperados por voluntárias e voluntários e
+para atingir maior anonimato e performace de rede, é preciso de cada vez mais
+pessoas rodando <em>relays</em>. Embora exista uma certa complexidade em hospedar um
+<em>relay</em>, não é muito mais difícil do que hospedar outros serviços. Você pode
+encontrar um guia em português
+<a href="https://trac.torproject.org/projects/tor/wiki/TorRelayGuide-ptbr">aqui</a>.</p>
+<h3 id="no-celular">No celular</h3>
+<p>É possível usar o Tor no Android também! Instale <a href="https://guardianproject.info/apps/orbot/">este
+aplicativo.</a></p>
+<h2 id="pgp-pretty-good-privacy">PGP: Pretty Good Privacy</h2>
+<p><strong>PGP</strong> é um programa que combina um grande conjunto de ferramentas
+criptográficas para privacidade, como ferramentas para criptografar arquivos,
+e-mails, bem como assiná-los digitalmente. Você também pode usar ele para gerar
+e gerenciar suas chaves criptográficas. Essa é uma forma de garantir que
+ninguém além do destinatário irá ler o seu e-mail. Quando você manda um e-mail,
+o seu provedor pode acessar as suas mensagens, se assim desejar. O Gmail deixou
+isso bem claro em uma funcionalidade que sugere respostas automáticas para
+você<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+<h3 id="o-criador">O criador</h3>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/zimmerman.jpg" width="300">
+</figure>
+
+Phill Zimmerman
+</center>
+<p>O criador dessa ferramenta foi Phill Zimmerman, com a motivação de democratizar
+o acesso à privacidade através de ferramentas criptográficas. Ele liberou o
+programa e seu código-fonte de forma pública em 1991, até que eventualmente se
+tornaria o programa de criptografar e-mails mais popular do mundo. Contudo, essa
+abertura permitiu com que pessoas de fora dos Estados Unidos tivessem acesso
+a ferramentas criptográficas. O problema disso é que softwares criptográficos
+fortes eram considerados como munição nos Estados Unidos, enquadrando esse
+caso como contrabando ilegal de armas. Felizmente, em 1996, a acusão caiu.</p>
+<h3 id="chave-pública-x-chave-privada">Chave pública x chave privada</h3>
+<p>Na criptografia assimétrica, utilizada para troca de mensagens, existem duas
+chaves: a chave pública, disponível para todo mundo, e a chave privada,
+que só a detentora dela deve ter acesso. A chave privada é usada para abrir
+mensagens cifradas com a chave pública e para assinar digitalmente arquivos. A
+chave pública serve para cifrar um arquivo para enviar para alguém e para
+verificar assinaturas.</p>
+<p>E se eu quiser enviar o e-mail para alguém, como eu consigo a chave privada? Se
+você se encontrar com a pessoa, ela pode te entregar a chave para que você
+possa usá-la. Mas, se a pessoa estiver do outro lado do mundo, como achamos a
+chave da pessoa? Para isso, existem servidores de chave pública. Um dos mais
+famosos é do MIT, o <a href="https://pgp.mit.edu/">MIT PGP Public Key Server</a>. Esses
+servidores possuem rotinas de sincronia, e frequetemente trocas chaves entre
+eles para que todos permaneçam conectados. Você pode fazer uma busca pelo
+nome, e-mail ou ID da chave e também pode submeter sua própria chave nessas
+páginas.</p>
+<p>Agora você tem a chave da pessoa. Mas será que podemos confiar que essa chave
+é dela e não de um atacante?</p>
+<h3 id="web-of-trust">Web of Trust</h3>
+<p>Para resolver isso, existe o conceito de &ldquo;assinar&rdquo; chaves. Você sabe que a
+chave K é da pessoa P, e para explicitar para o mundo que isso é verdade, você
+assina a chave da pessoa e envia sua assinatura para o servidor de chaves. E
+assim, aparece no servidor: &ldquo;a pessoa Y assinou a chave da pessoa P&rdquo;. Conforme
+esse procedimento é repetido, as pessoas prosseguem assinando seus conhecidos.
+Colocamos em prática o conceito de <em>Web of Trust</em>. Se verificarmos que a chave
+da pessoa P está com várias assinaturas, parece ser um indício de que várias
+pessoas confiam naquela chave. Contudo, um atacante muito esforçado poderia
+criar várias contas falsas para te convencer de que aquela chave é confiável.
+Além de ter um número razoável de assinaturas, o ideal é encontrar pessoas
+conhecidas entre as assinaturas. Se você confia na pessoa F, e você viu que a
+pessoa F assinou a chave de P, por transitividade a chave de P é confiável.
+Quanto mais assinaturas conhecidas existirem, mais confiável é essa chave.</p>
+<h4 id="exemplo-de-como-pegar-uma-chave">Exemplo de como pegar uma chave</h4>
+<p>Vamos supor que gostaríamos de conversar com Roger Dingledine, um dos criadores
+do Tor, para tirarmos algumas dúvidas sobre seu funcionamento. Vamos ao
+procedimento:</p>
+<ol>
+<li>
+<p>Começamos com algum servidor de chave públicas, escolhi este aqui:
+<a href="https://pgp.surfnet.nl/">https://pgp.surfnet.nl/</a></p>
+</li>
+<li>
+<p>Fazemos uma busca com o nome dele, &ldquo;Roger Dingledine&rdquo;</p>
+ <center>
+ <figure><img src="/img/posts/privacidade-tor-pgp/roger1.png" width="400">
+	</figure>
+
+ </center>
+</li>
+<li>
+<p>Temos várias opções, algumas estão marcadas com <code>*** KEY REVOKED ***</code>. Isso
+significa que a pessoa quem possuía a chave, por motivos de vazamento da chave
+privada, porque não tem mais acesso a chave ou esqueceu sua senha revogou
+ela, marcando ela para não ser mais usada.</p>
+</li>
+<li>
+<p>Analisamos a primeira chave, mas parece que ninguém assinou ela&hellip;</p>
+ <center>
+ <figure><img src="/blog/img/posts/privacidade-tor-pgp/roger2.png" width="400">
+	</figure>
+
+ </center>
+</li>
+<li>
+<p>Agora, analisando a próxima chave válida, encontramos que muitas pessoas
+assinaram. Se você conhece alguém dessa lista, parece que é um bom sinal de
+que você está no caminho certo!</p>
+</li>
+</ol>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/roger3.png" width="400">
+</figure>
+
+</center>
+<p>Nesse exemplo, poderíamos ter consultado o site do Tor Project para conseguir a
+chave <a href="https://www.torproject.org/about/corepeople.html.en">aqui</a>.
+Agora podemos usar isso para ver se é a mesma. Como é a mesma,
+parece que acertamos :)</p>
+<p>A chave será uma grande sequência de caracteres sem sentido. Você precisará
+colar essa chave no seu programa de PGP quando for usá-la, ou adicioná-la usando
+as ferramentas de busca disponíveis no seu PGP. Todo esse procedimento que
+realizamos poderia ter sido feito pelo terminal também.</p>
+<h3 id="usando-pgp">Usando PGP</h3>
+<p>A implementação mais utilizada hoje em dia é a <em>GNU Privacy Guard</em> (abreviada
+para GnuPG or GPG). Ela já vem por padrão em distribuições GNU/Linux. Alguns
+comandos básicos são:</p>
+<ul>
+<li>
+<p><strong>Criação de chave</strong>:
+<code>gpg --generate-key</code></p>
+</li>
+<li>
+<p><strong>Obter uma chave pública da Internet:</strong>
+<code>gpg --keyserver pgp.mit.edu --search-keys snowden</code></p>
+</li>
+<li>
+<p><strong>Procurar e adicionar uma chave:</strong>
+<code>gpg --search-keys [nome, e-mail ou ID da chave]</code></p>
+</li>
+<li>
+<p><strong>Listar chaves públicas salvas:</strong>
+<code>gpg --list-public-keys</code></p>
+</li>
+<li>
+<p><strong>Cifrar com uma chave pública</strong>:
+<code>gpg --encrypt [--armor] [--sign] -r DESTINATARIO [Mensagem]</code></p>
+</li>
+<li>
+<p><strong>Decifrar uma mensagem:</strong>
+<code>gpg --decrypt MENSAGEM</code></p>
+</li>
+<li>
+<p><strong>Cifrar utilizando chave simétrica:</strong>
+<code>gpg --symmetric [--armor] [Mensagem]</code></p>
+</li>
+<li>
+<p><strong>Mais?</strong>
+<code>gpg --help</code></p>
+</li>
+</ul>
+<h2 id="mas-onde-fica-oceania">Mas, onde fica Oceania?</h2>
+<p>Será que nosso país da ficção existe em algum lugar do mundo? Sim, existe e
+está espalhada pelo mundo. Todo lugar que sofre de censura e/ou vigilância na
+internet, por parte estatal ou privada, tem um pouquinho da Oceania. Vamos ver
+os exemplos mais populares, mas essa é uma lista não exaustiva, nem seus
+exemplos.</p>
+<h3 id="china">China</h3>
+<p>A China, além de possuir a &ldquo;Grande Muralha&rdquo;, também possui o &ldquo;Grande
+Firewall&rdquo;. As conexões cabeadas, ao entrarem em território chinês passam por
+máquinas que já bloqueiam pacotes de acordo com seu domínio, mantendo a
+censura ativa e indo totalmente contra o conceito de neutralidade da rede. O
+governo anuncia que os assuntos bloquedos são &ldquo;superstição, pornografia,
+violência e jogos de azar&rdquo;. Contudo, se você tentar fazer uma busca usando
+algum buscador chinês dos seguintes termos, você receberá uma página em branco:
+&ldquo;Tibete, brutalidade policial, Tawian, liberdade de expressão, 1989<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, &hellip;&rdquo;</p>
+<p>Entre os sites bloquedos, estão:</p>
+<ul>
+<li>Gmail, YouTube, Blogspot</li>
+<li>Facebook, Twitter, Instagram, Reddit</li>
+<li>Pirate Bay, Dropbox</li>
+<li>New York Times</li>
+<li>Projeto Tor e seus <em>relays</em></li>
+</ul>
+<p>As pontes são muito úteis na China, onde todos os relays são bloqueados. Se
+você usar somente os meios permitidos pelo governos, você nunca conseguirá ver
+essa icónica foto:</p>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/tankman.jpg" width="500">
+</figure>
+
+_Homem anônimo para temporariamente tanques durante protestos na China, 1989_
+</center>
+<h3 id="primavera-árabe">Primavera Árabe</h3>
+<p>Durante os movimentos revolucionários ocorridos no norte da África e Oriente
+Médio entre 2010 e 2012, a internet exerceu um papel fundamental para seu
+alcance e propagação de ideias, bem como sua organização. O YouTube era usado
+para mostrar para o mundo a repressão policial, o Twitter para troca
+rápida de novidades e o Facebook para marcar protestos.</p>
+<p>No início, algumas páginas pró-revolucionárias forem sendo bloqueadas, até o
+momento em que toda as conexões foram cortadas, causando um blecaute total da
+internet. Ironicamente, em alguns lugares as pessoas, ao notarem que não havia
+internet, saíram às ruas para buscar informações e se juntaram aos protestos.
+Também ocorreram casos de invasão de contas de Facebook e blogueiras/os sendo
+presos e mortos pelo conteúdo de seus posts.</p>
+<h3 id="estados-unidos">Estados Unidos</h3>
+<p>Após os atentados terroristas de setembro de 2001 nos Estados Unidos, o
+governo norte-americano aprovou o &ldquo;Ato Patriota&rdquo;, que concede &ldquo;super poderes
+jurídicos&rdquo; aos órgãos investigativos, como a NSA e CIA, para combater o
+terrorismo. Durante muito tempo, boatos de que a NSA estaria espionando sua
+própria população se espalharam, mas não tinham muito embasamento e logo eram
+desacreditados.</p>
+<h4 id="o-vazamento">O vazamento</h4>
+<center>
+<figure><img src="/img/posts/privacidade-tor-pgp/snowden.jpg" width="500">
+</figure>
+
+_Edward Snowden_
+</center>
+<p>Em 2013, um analista de segurança subcontratado pela NSA, decidiu que era
+necessário alertar o mundo e seus compatriotas do que estava acontecendo. Ele
+então recolheu muitos dados internos, incluindo apresentações de slides de
+programas de espionagem. Em seguida, contactou o jornalista Glenn Greenwald e a
+diretora de cinema Laura Poitras para divulgar o conteúdo que encontrou. Eles
+se encontram em Hong Kong, onde Laura gravou um documentário<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> sobre o
+ocorrido.</p>
+<p>Os vazamentos mostraram dados assustadores: a espionagem estava
+institucionalisada no governo a nas empresas. Os telefonemas dos
+norte-americanos eram copiados, bem como o tráfego que passava pela operadoras
+de internet. É válido lembrar que, devido à grande infraestrutra tecnológica
+dos EUA, boa parte do tráfego de dados passa por lá. Ou seja, o uso de
+internet de boa parte do planeta está sendo registrado para eventual consulta.
+Grampos também foram feitos em outros países, como, por exemplo, no gabinete
+presidencial em Brasília. Isso significa uma vantagem dos EUA sobre trâmites
+políticos e econômicos internacionais, já que eles possuiam informação
+privilegiada, o que também significa o enfraquecimento da soberania nacional do
+Brasil.</p>
+<h3 id="brasil">Brasil?</h3>
+<p>O Brasil não possúi grandes ocorrências de censura ou vigilância, comparado
+com os outros países. Entre os exemplos mais famosos, estão os seguintes:</p>
+<ul>
+<li>
+<p>Em 2012, o diretor-geral da Google no Brasil foi preso pela Polícia Federal
+porque a Google não removeu um vídeo no YouTube que atacava um candidato a
+prefeito de Campo Grande (MS)<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></p>
+</li>
+<li>
+<p>O bloqueio do WhatsApp por operadoras (duas vezes), através de madato judical
+após a empresa não quebrar o sigilo de usuários para uma investigação
+policial. Quando bloquear da próxima vez, já sabe: use o Tor!<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></p>
+</li>
+</ul>
+<hr>
+<h2 id="referências">Referências</h2>
+<ul>
+<li>
+<p>Cypherpunks - Liberdade e o futuro da internet, livro escrito por Julian
+Assange (fundador do WikiLeaks)</p>
+</li>
+<li>
+<p>No Place to Hide: Edward Snowden, The NSA and the US Surveillance State - livro do jornalista <a href="http://www.glenngreenwald.net/">Glenn Greenwald</a></p>
+</li>
+<li>
+<p><a href="https://www.dummies.com/programming/networking/how-to-use-footprinting-to-plan-an-ethical-hack/">Como recolher informações de um servidor</a></p>
+</li>
+<li>
+<p><a href="https://temboinalinha.org">https://temboinalinha.org</a>: página informativa sobre vigilância e ferramentas
+de defesa</p>
+</li>
+<li>
+<p><a href="https://ssd.eff.org/pt-br">https://ssd.eff.org/pt-br</a>: Autodefesa contra Vigilância: Dicas, ferramentas
+e tutoriais para uma maior segurança nas comunicações online</p>
+</li>
+<li>
+<p><a href="https://datadetox.myshadow.org/pt/detox">https://datadetox.myshadow.org/pt/detox</a>: Guia de desintoxicação de maus
+hábitos de privacidade em redes sociais</p>
+</li>
+<li>
+<p><a href="https://encripta.org/dicas_e_tutoriais_seguranca/">https://encripta.org/dicas_e_tutoriais_seguranca/</a>: Nesta página estão
+reunidos diversos guias sobre segurança e privacidade na internet</p>
+</li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Oceania, Eurásia e Lestásia são países fictícios do mundo de 1984, de George Orwell&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Como já diria um funcionário da NSA, &ldquo;Nós matamos pessoas basedo em metadados&rdquo;. <a href="https://www.rt.com/usa/158460-cia-director-metadata-kill-people/">Fonte</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29">PRISM</a> (programa de vigilância na internet dos EUA)&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><em>Sniffar</em> é uma tradução forçada do termo em inglês <em>sniffing</em>, que significa fareijar, que também é usado para &ldquo;cheirar&rdquo; a rede, interceptar e analisar passivamente uma rede.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Uma <a href="https://vpnleaks.com/">lista</a> de VPNs não confiáveis que não respeitam a privacidade.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>[Como o Facebook conseguiu obter a URL facebookcorewwwi.onion?] (<a href="https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion">https://www.quora.com/How-did-Facebook-manage-to-create-the-vanity-URL-Page-on-facebookcorewwwi-onion</a>)&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://www.thisisinsider.com/gmails-smart-reply-has-people-divided-2018-9">&ldquo;Smart Reply&rdquo; do Gmail deixa pessoas divididas</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://pt.wikipedia.org/wiki/Protesto_na_Pra%C3%A7a_da_Paz_Celestial_em_1989">Massacre da Praça da Paz Celestial de 1989</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Citizenfour, documentário sobre o vazamento de dados do Snowden&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p><a href="https://politica.estadao.com.br/noticias/geral,diretor-geral-do-google-no-brasil-e-preso-pela-policia-federal,936220">https://politica.estadao.com.br/noticias/geral,diretor-geral-do-google-no-brasil-e-preso-pela-policia-federal,936220</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p><a href="https://www1.folha.uol.com.br/mercado/2016/05/1766869-justica-determina-bloqueio-do-whatsapp-em-todo-o-brasil-por-72-horas.shtml">https://www1.folha.uol.com.br/mercado/2016/05/1766869-justica-determina-bloqueio-do-whatsapp-em-todo-o-brasil-por-72-horas.shtml</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

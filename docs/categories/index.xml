@@ -1,0 +1,52 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on Enigma Unicamp</title>
+        <link>http://localhost:1313/categories/</link>
+        <description>Recent content in Categories on Enigma Unicamp</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
+        <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>ENIGMA</title>
+            <link>http://localhost:1313/categories/enigma/</link>
+            <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/categories/enigma/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+        <item>
+            <title>Talks</title>
+            <link>http://localhost:1313/categories/talks/</link>
+            <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/categories/talks/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+        <item>
+            <title>Caravana</title>
+            <link>http://localhost:1313/categories/caravana/</link>
+            <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/categories/caravana/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+        <item>
+            <title>Decifre.me</title>
+            <link>http://localhost:1313/categories/decifre.me/</link>
+            <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/categories/decifre.me/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+    </channel>
+</rss>

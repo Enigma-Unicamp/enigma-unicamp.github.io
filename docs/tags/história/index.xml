@@ -1,0 +1,83 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>História on Enigma Unicamp</title>
+        <link>http://localhost:1313/tags/hist%C3%B3ria/</link>
+        <description>Recent content in História on Enigma Unicamp</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 18 Aug 2018 00:00:00 +0000</lastBuildDate>
+        <atom:link href="http://localhost:1313/tags/hist%C3%B3ria/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Gênesis</title>
+            <link>http://localhost:1313/posts/genesis/</link>
+            <pubDate>Sat, 18 Aug 2018 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/posts/genesis/</guid>
+            <description>&lt;center&gt;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/posts/genesis/thecreationoflight.jpg&#34; width=&#34;400&#34;&gt;
+&lt;/figure&gt;
+
+The Creation of Light, por Gustave Dore
+&lt;/center&gt;
+&lt;p&gt;Dois alunos da Unicamp, depois de quase um ano de pesquisa e trabalho em
+privacidade, segurança e criptografia, sentiam que a comunidade do Instituto
+de Computação podia (e merecia!) ir muito mais longe no assunto. Contudo, com
+a saída de um dos mais
+&lt;a href=&#34;https://sites.google.com/site/dfaranha/&#34;&gt;importantes pesquisadores&lt;/a&gt; da área
+para a Europa somada a falta de pespectiva para a contratação de novas/os
+professoras/es devido a situação financeira da Univerisidade, levaram a crer
+que uma iniciativa somente seria possível se viesse do corpo estudantil. Ao
+comparecerem em um dos maiores
+&lt;a href=&#34;https://cryptorave.org/&#34;&gt;eventos sobre privacidade&lt;/a&gt; do mundo, viram que o
+mundo avançava à passos largos de volta à &lt;a href=&#34;https://pt.wikipedia.org/wiki/Nineteen_Eighty-Four&#34;&gt;1984&lt;/a&gt; e perceberam que o cenário nas outras universidades do Brasil estava aquecendo: várias universidades tinham grupos de estudo de segurança criados, principalmente, nos dois últimos anos.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<center>
+<figure><img src="/img/posts/genesis/thecreationoflight.jpg" width="400">
+</figure>
+
+The Creation of Light, por Gustave Dore
+</center>
+<p>Dois alunos da Unicamp, depois de quase um ano de pesquisa e trabalho em
+privacidade, segurança e criptografia, sentiam que a comunidade do Instituto
+de Computação podia (e merecia!) ir muito mais longe no assunto. Contudo, com
+a saída de um dos mais
+<a href="https://sites.google.com/site/dfaranha/">importantes pesquisadores</a> da área
+para a Europa somada a falta de pespectiva para a contratação de novas/os
+professoras/es devido a situação financeira da Univerisidade, levaram a crer
+que uma iniciativa somente seria possível se viesse do corpo estudantil. Ao
+comparecerem em um dos maiores
+<a href="https://cryptorave.org/">eventos sobre privacidade</a> do mundo, viram que o
+mundo avançava à passos largos de volta à <a href="https://pt.wikipedia.org/wiki/Nineteen_Eighty-Four">1984</a> e perceberam que o cenário nas outras universidades do Brasil estava aquecendo: várias universidades tinham grupos de estudo de segurança criados, principalmente, nos dois últimos anos.</p>
+<p>Era inevitável: as próximas semanas foram focadas em trabalhar as ideias e
+convidar pessoas para construir a entidade. Felizmente, não poderíamos estar
+em companhia melhor. Pessoas de diferentes áreas de atuação  se juntaram porque
+acreditaram na proposta e estavam dispostas a trabalhar por ela. Com o tempo,
+chegamos em um nome, <strong>ENIGMA</strong><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, e um logo, um labirinto.</p>
+<p>Nosso primeiro compromisso firmado foi uma palestra na <a href="https://secomp.com.br/">SECOMP 2018</a>, e aconteceu dois meses depois do primeiro encontro do grupo. A palestra &ldquo;Quem mexeu nos meus dados?&rdquo; tratou de quatro vulnerabilidades comuns no dia-a-dia das pessoas e que eram fáceis de serem previnidas (<em>man-in-the-middle</em>, <em>Android Clipboard Security Hole</em>, <em>spoof caller id</em> e disco-rígido não criptografado). Para aumentar o alcance do grupo e da palestra, criamos e hospedamos um desafio de <em>hacking</em> em <a href="https://decifre.me">decifre.me</a>, baseados nos moldes de CTFs<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<center>
+<figure><img src="/img/posts/genesis/cartazes.png" width="450">
+</figure>
+
+Cartazes usados na divulgação, por [kraussx](https://www.behance.net/jupkrauss)
+</center>
+<p>O desafio foi lançado no segundo dia da SECOMP e acabou no dia da nossa palestra, durando quatro dias. O prêmio (entregue na palestra) foi uma RaspberryPi 3, e o desafio envolvia conhecimentos de engenharia reversa, criptografia, vulnerabilidades web e esteganografia. Não satisfeitos em criarmos os desafios, desenvolvemos também a plataforma web do jogo, utilizando Django. A plataforma ficou pronta muito em cima da hora, mas ela estava funcional e segura (ninguém hackeou o site dos hackers!). Mais de 50 pessoas se aventuraram em resolvê-lo, muito acima da expectativa de 15 pessoas.</p>
+<p>Esse foi o início do Enigma, com seus três pilares: <strong>privacidade</strong>, <strong>segurança</strong> e <strong>criptografia</strong>. Desejamos levar isso de forma acessível e prática para todas as pessoas interessadas, independentemente do seu nível técnico. Também achamos importante utilizar e promover serviços que não firam a privacidade e que sejam software livre<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Enigma Isn&rsquo;t Good at Making Acronyms&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><em>Capture the Flag</em> (CTF) é uma competição de segurança da informação onde os jogadores devem resolver o maior número possível de desafios no menor tempo possível. Por exemplo: <a href="https://2017.picoctf.com/">https://2017.picoctf.com/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>software livre é aquele que promove as seguintes liberades: de utilizar o software para qualquer propósito; estudar e adequá-lo para suas necessidades; redistribuí-lo; modificá-lo e distribuir a modificação.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
